@@ -1,4 +1,4 @@
-# test-app
+# Waveflow
 
 ## Project setup
 ```
