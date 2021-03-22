@@ -2,14 +2,14 @@
   <div class="top3">
     <div class="leftbox">
       <div class="lbtitle">
-        Se vilka tre artister som är <br>
-        mest spelade på Sveriges radio <br>
+        Se vilka tre artister som är <br />
+        mest spelade på Sveriges radio <br />
         sorterat på år och vecka.
       </div>
 
       <div class="weekyear">
-      <label for="week">År Vecka</label>
-      <input type="week" name="week" id="week" />
+        <label for="week">År Vecka</label>
+        <input type="button" @click="addArtistsToList(2016, 25)" />
       </div>
     </div>
 
@@ -17,57 +17,112 @@
       <div class="rbtitle">TOPP 3</div>
 
       <div>
-        <apexchart
-          width="380"
-          type="pie"
-          :options="chartOptions"
-          :series="series"
-        ></apexchart>
+        <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist" >{{ artist }}</bubble>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import VueApexCharts from "vue3-apexcharts";
+import Bubble from "./ArtistBubble";
 export default {
   components: {
-    apexchart: VueApexCharts,
+    Bubble,
   },
-  name: "Top3",
   data() {
     return {
-      series: [60, 30, 10],
-      chartOptions: {
-        chart: {
-          width: 380,
-          type: "pie",
-        },
-        labels: ["Artist 1", "Artist 2", "Artist 3"],
-        responsive: [
-          {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200,
-              },
-              legend: {
-                position: "bottom",
-              },
-            },
-          },
-        ],
-      },
+      topThreeArtists: [],
     };
   },
+  name: "Top3",
+
   methods: {
-    //metoder för att fetcha från api m.m
+    addArtistToMap(artistMap, artist) {
+      let value = 0;
+      if (artistMap.has(artist)) {
+        value = artistMap.get(artist) + 1;
+        artistMap.set(artist, value);
+      } else {
+        artistMap.set(artist, 1);
+      }
+    },
+
+    formatDate(date) {
+      var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
+
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+
+      return [year, month, day].join("-");
+    },
+
+    getDateOfISOWeek(year, week, index) {
+      var simple = new Date(year, 0, 1 + (week - 1) * 7);
+      var dow = simple.getDay();
+      var ISOweekStart = simple;
+      if (dow <= 4)
+        ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1 + index);
+      else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay() + index);
+      return this.formatDate(ISOweekStart);
+    },
+
+    async getSongs(date) {
+      let json;
+      try {
+        let resp = await fetch(
+          `http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&startdatetime=${date}&size=5000&format=json`
+        );
+        if (!resp.ok) {
+          throw new Error(resp.status);
+        }
+        json = await resp.json();
+      } catch (err) {
+        console.log(err);
+        alert("Something went wrong.");
+      }
+      if (json !== undefined) {
+        return json.song;
+      }
+    },
+
+    async addArtistsToList(year, week) {
+      let artistMap = new Map();
+      let artistList = [];
+      for (let i = 0; i < 7; i++) {
+        let songs = await this.getSongs(this.getDateOfISOWeek(year, week, i));
+        for (const song of songs) {
+          if (song.artist.includes(",") || song.artist.includes("&")) {
+            let artistsInCollab = song.artist.replaceAll("&", ",").split(",");
+            for (let artist of artistsInCollab) {
+              artist = artist.trim();
+              this.addArtistToMap(artistMap, artist);
+            }
+          } else {
+            this.addArtistToMap(artistMap, song.artist);
+          }
+        }
+      }
+      for (const [key, value] of artistMap.entries()) {
+        artistList.push({ artist: key, plays: value });
+      }
+      artistList.sort(function (a, b) {
+        return b.plays - a.plays;
+      });
+      this.topThreeArtists = [artistList[0], artistList[1], artistList[2]];
+    },
   },
 };
 </script>
 
 
 <style scoped>
+.rightbox {
+    position: relative;
+}
+
 .top3 {
   display: grid;
   background-color: rgb(178, 223, 223);
@@ -75,6 +130,7 @@ export default {
   grid-template-rows: 1fr;
   margin-left: 7em;
   margin-right: 7em;
+  height: 300px;
 }
 
 .lbtitle {
@@ -86,5 +142,21 @@ export default {
   flex-direction: column;
   margin-left: 3em;
   margin-right: 3em;
+}
+
+div + #bubble {
+    background: rgba(0, 194, 129, 0.486);
+    height: 125px;
+    width: 125px;
+    margin-left: 41%;
+    margin-top: 18%;
+}
+
+div + #bubble + #bubble {
+    background: rgba(255, 251, 0, 0.39);
+    height: 100px;
+    width: 100px;
+    margin-left: 25%;
+    margin-top: 31%;
 }
 </style>
