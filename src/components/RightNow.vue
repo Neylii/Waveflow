@@ -4,10 +4,10 @@
       <div id="left" class="border">
         <info-text />
         <div id="leftbottom" class="border">
-          <radio-station station="p1" id="132" />
-          <radio-station station="p2" id="163" />
-          <radio-station station="p3" id="164" :checked="true" />
-          <radio-station station="p4" />
+          <radio-station station="P1" id="132" />
+          <radio-station station="P2" id="163" />
+          <radio-station station="P3" id="164" :checked="true" />
+          <radio-station station="P4" />
         </div>
       </div>
       <div id="right" class="border">
