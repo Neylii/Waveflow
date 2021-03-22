@@ -24,5 +24,6 @@ export default {
 #contentcontainer {
   text-align: center;
   flex-grow: 1;
+  min-width: 10em;
 }
 </style>
