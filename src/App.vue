@@ -1,85 +1,91 @@
 <template>
-  <div>
-    <div class="header">
-      <img src="./assets/wave.png" alt="Wave" />
-      <Waveflow msg="Waveflow" />
-      <p>
-        Big company announcement or simple sub-header taking two or more lines. <br>
-        Big company announcement or simple sub-header taking two or more lines. <br>
-        Big company announcement or simple sub-header taking two or more lines. <br>
-        Big company announcement or simple sub-header taking two or more lines. <br>
-      </p>
-    </div>
+    <div>
+        <div class="header">
+            <img src="./assets/wave.png" class="scaling" alt="Wave" />
+            <Waveflow msg="Waveflow" />
+            <p>
+                Big company announcement or simple sub-header taking two or more lines. <br />
+                Big company announcement or simple sub-header taking two or more lines. <br />
+                Big company announcement or simple sub-header taking two or more lines. <br />
+                Big company announcement or simple sub-header taking two or more lines. <br />
+            </p>
+        </div>
 
-    <top-three />
-    <take-me-to />
-    <right-now />
-  </div>
+        <top-three />
+        <take-me-to />
+        <right-now />
+    </div>
 </template>
 
 <script>
-import Waveflow from "./components/Waveflow.vue";
-import TopThree from "./components/TopThree.vue";
-import TakeMeTo from "./components/TakeMeTo.vue";
-import RightNow from './components/RightNow.vue';
+import Waveflow from "./components/Waveflow.vue"
+import TopThree from "./views/TopThree.vue"
+import TakeMeTo from "./views/TakeMeTo.vue"
+import RightNow from "./views/RightNow.vue"
 
 export default {
-  name: "App",
-  components: {
-    Waveflow,
-    TopThree,
-    TakeMeTo,
-    RightNow,
-  },
-};
+    name: "App",
+    components: {
+        Waveflow,
+        TopThree,
+        TakeMeTo,
+        RightNow,
+    },
+}
 </script>
 
 <style>
 #app {
-  display: flex;
-  flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  align-items: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+    color: #2c3e50;
+    margin: 5vh 1rem;
+    height: 90vh;
+    text-align: center;
 }
 
 .header {
-  font-size: xx-large;
-  margin-bottom: 2em;
+    grid-column: 1/3;
+    font-size: xx-large;
+    margin-bottom: 2em;
+    text-align: center;
 }
 
 .header > p {
- font-size: small;
+    font-size: small;
 }
 
-.leftbox {
-  grid-column: 1;
-  grid-row: 1;
-}
 .lbtitle {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-  margin-bottom: 3em;
-  margin-left: 7em;
-  margin-right: 7em;
-  border-radius: 0.8em;
-}
-
-.rightbox {
-  grid-column: 2;
-  grid-row: 1;
+    padding: 0.5em;
+    margin: 0em;
 }
 
 .rbtitle {
-  display: flex;
-  flex-direction: column;
-  font-weight: bolder;
-  font-size: xx-large;
+    display: flex;
+    flex-direction: column;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.scaling {
+    max-width: 100%;
+    height: auto;
+}
+.textAlignLeft {
+    text-align: left;
+}
+
+/* For bigger screens */
+@media screen and (min-width: 700px) {
+    #app {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+        text-align: center;
+    }
 }
 </style>
