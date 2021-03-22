@@ -14,6 +14,7 @@
         <top-three />
         <take-me-to />
         <right-now />
+        <Footer />
     </div>
 </template>
 
@@ -22,6 +23,7 @@ import Waveflow from "./components/Waveflow.vue"
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
+import Footer from "./views/Footer.vue"
 
 export default {
     name: "App",
@@ -30,11 +32,16 @@ export default {
         TopThree,
         TakeMeTo,
         RightNow,
+        Footer,
     },
 }
 </script>
 
 <style>
+/* .border {
+    border: 1px solid black;
+} */
+
 #app {
     display: flex;
     flex-direction: column;
