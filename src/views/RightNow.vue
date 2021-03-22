@@ -4,16 +4,18 @@
             <div id="left" class="border">
                 <Infobox msg="Här kan du visa vad som sänds just nu i de olika kanalerna." />
                 <div id="leftbottom" class="border">
-                    <radio-station station="P1" id="132" />
-                    <radio-station station="P2" id="163" />
-                    <radio-station station="P3" id="164" :checked="true" />
-                    <radio-station station="P4" />
+                    <div id="radioStationContainer">
+                        <radio-station station="P1" id="132" />
+                        <radio-station station="P2" id="163" />
+                        <radio-station station="P3" id="164" :checked="true" />
+                        <radio-station station="P4" />
+                    </div>
                 </div>
             </div>
         </div>
         <div id="right" class="border">
             <div id="righttop">
-                <h3 class="textAlignLeft">Start</h3>
+                <h3 class="textAlignLeft marginLeft">Start</h3>
             </div>
             <div id="rightbottom">
                 <program
@@ -56,9 +58,13 @@ export default {
             return i
         },
 
-        startTime(dateString) {
+        jsonDateToDate(dateString) {
             let timestamp = +dateString.replace(/\/Date\((.*?)\)\//g, "$1")
-            let programStartTime = new Date(timestamp)
+            return new Date(timestamp)
+        },
+
+        startTime(dateString) {
+            let programStartTime = this.jsonDateToDate(dateString)
             let h = programStartTime.getHours()
             let m = programStartTime.getMinutes()
             // add a zero in front of numbers<10
@@ -85,8 +91,8 @@ export default {
             let dateNow = new Date()
 
             for (let i = json.length - 1; i >= 0; i--) {
-                let timestamp = +json[i].endtimeutc.replace(/\/Date\((.*?)\)\//g, "$1")
-                let dateProgram = new Date(timestamp)
+
+                let dateProgram = this.jsonDateToDate(json[i].endtimeutc)
                 if (dateNow > dateProgram) {
                     json.splice(i, 1)
                 }
@@ -94,7 +100,7 @@ export default {
 
             Array.prototype.push.apply(this.allPrograms, json)
 
-            this.allPrograms = this.allPrograms.sort(function(a, b) {
+            this.allPrograms = this.allPrograms.sort(function (a, b) {
                 if (a.starttimeutc > b.starttimeutc) {
                     return 1
                 } else if (a.starttimeutc < b.starttimeutc) {
@@ -128,12 +134,13 @@ export default {
 <style scoped>
 .rightnow {
     display: flex;
-    background-color: rgb(240, 238, 247);
     flex-direction: column;
+    background-color: rgb(240, 238, 247);
+    padding-bottom: 5em;
 }
 
-.textAlignLeft {
-    margin-left: 2em;
+.marginLeft {
+    margin-left: 2.3em;
 }
 
 #container {
@@ -156,15 +163,22 @@ export default {
 }
 
 #leftbottom {
-    display: grid;
-    margin: 1em;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#radioStationContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1em;
 }
 
 #right {
     flex-grow: 1;
+    padding-right: 4em;
 }
 
 #righttop {
@@ -172,7 +186,7 @@ export default {
 }
 
 #rightbottom {
-    max-height: 1000px;
+    max-height: 700px;
     overflow-y: auto;
 }
 
@@ -184,10 +198,12 @@ export default {
         grid-template-rows: 1fr;
         width: 100%;
     }
-    /* #container,
-    #left,
-    #right {
+
+    #radioStationContainer {
         display: grid;
-    } */
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 4em;
+    }
 }
 </style>
