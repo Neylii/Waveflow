@@ -54,7 +54,11 @@ export default {
 }
 
 .stationimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-left: 2px lightgray solid;
+    
 }
 
 .stationimg > img {
