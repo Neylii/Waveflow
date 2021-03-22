@@ -1,6 +1,6 @@
 <template>
   <div class="radiostation border">
-    <img :src="station + '.png'" />
+   <img :src="station + '.png'" />
     <input
       type="checkbox"
       id="biggerCheckBox"

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Waveflow from "./components/Waveflow.vue"
+import Waveflow from "./views/Waveflow.vue"
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
@@ -75,6 +75,9 @@ export default {
     max-width: 100%;
     height: auto;
 }
+.textAlignLeft {
+    text-align: left;
+}
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
@@ -84,14 +87,6 @@ export default {
         grid-template-rows: 1fr;
         width: 100%;
         text-align: center;
-    }
-    .lbtitle {
-        display: flex;
-        flex-direction: column;
-        margin-top: 1em;
-        margin-bottom: 3em;
-        margin-left: 7em;
-        margin-right: 7em;
     }
 }
 </style>
