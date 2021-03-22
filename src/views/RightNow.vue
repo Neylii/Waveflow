@@ -174,6 +174,7 @@ export default {
     justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
+    margin-top: 1em;
 }
 
 #right {
