@@ -125,7 +125,7 @@ export default {
         },
     },
     mounted() {
-        this.getTablo("http://api.sr.se/api/v2/scheduledepisodes?channelid=164&size=500&format=json")
+        this.getTablo("https://api.sr.se/api/v2/scheduledepisodes?channelid=164&size=500&format=json")
         console.log(this.allPrograms)
     },
 }
