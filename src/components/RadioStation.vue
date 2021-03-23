@@ -19,7 +19,7 @@ export default {
         getProgramsForStation(event) {
             if (event.target.checked) {
                 this.$parent.getTablo(
-                    `http://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&size=500&format=json`
+                    `https://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&size=500&format=json`
                 )
             } else {
                 this.$parent.removeProgramsFromList(this.id)
