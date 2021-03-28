@@ -72,7 +72,7 @@ export default {
             let json
             try {
                 let resp = await fetch(
-                    `http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&startdatetime=${date}&size=5000&format=json`
+                    `https://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&startdatetime=${date}&size=5000&format=json`
                 )
                 if (!resp.ok) {
                     throw new Error(resp.status)
