@@ -41,6 +41,9 @@ export default {
 /* .border {
     border: 1px solid black;
 } */
+body {
+    background-color: rgba(46, 93, 101, 0.8);
+}
 
 #app {
     display: flex;
