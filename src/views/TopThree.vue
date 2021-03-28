@@ -122,7 +122,6 @@ export default {
 }
 
 .top3 {
-    background-color: rgb(178, 223, 223);
     display: flex;
     flex-direction: column;
 }
