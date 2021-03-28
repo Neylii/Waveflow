@@ -115,7 +115,6 @@ export default {
 <style scoped>
 .takeme {
     display: flex;
-    background-color: rgb(234, 235, 191);
     flex-direction: column;
 }
 

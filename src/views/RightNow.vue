@@ -8,7 +8,7 @@
                         <radio-station station="P1" id="132" />
                         <radio-station station="P2" id="163" />
                         <radio-station station="P3" id="164" :checked="true" />
-                        <radio-station station="P4" />
+                        <radio-station station="P4 Göteborg" id="212" />
                     </div>
                 </div>
             </div>
@@ -135,7 +135,6 @@ export default {
 .rightnow {
     display: flex;
     flex-direction: column;
-    background-color: rgb(240, 238, 247);
     padding-bottom: 5em;
 }
 
