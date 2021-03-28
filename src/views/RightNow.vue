@@ -19,7 +19,7 @@
             </div>
             <div id="rightbottom">
                 <program
-                    v-for="program in allPrograms"
+                    v-for="program in showCertainNumberOfPrograms"
                     :key="program"
                     :time="startTime(program.starttimeutc)"
                     :title="program.title"
@@ -128,6 +128,12 @@ export default {
         this.getTablo("http://api.sr.se/api/v2/scheduledepisodes?channelid=164&size=500&format=json")
         console.log(this.allPrograms)
     },
+    computed: {
+        showCertainNumberOfPrograms() {
+            let numberOfProgramsToShow = 6
+            return this.allPrograms.slice(0, numberOfProgramsToShow)
+        }
+    }
 }
 </script>
 
@@ -136,6 +142,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
+    height: 100vh;
 }
 
 .marginLeft {
