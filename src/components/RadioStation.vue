@@ -16,11 +16,16 @@ export default {
         return {}
     },
     methods: {
-        getProgramsForStation(event) {
+        async getProgramsForStation(event) {
             if (event.target.checked) {
-                this.$parent.getTablo(
-                    `https://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&size=500&format=json`
+                await this.$parent.getTablo(
+                    `http://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&date=${this.$parent.todaysDate}&size=500&format=json`
                 )
+                if (this.$parent.allPrograms.length < 6) {
+                    this.$parent.getTablo(
+                        `http://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&date=${this.$parent.tomorrowsDate}&size=500&format=json`
+                    )
+                }
             } else {
                 this.$parent.removeProgramsFromList(this.id)
             }
@@ -52,9 +57,8 @@ img {
     }
 
     #biggerCheckBox {
-    width: 40px;
-    height: 40px;
-}
-
+        width: 40px;
+        height: 40px;
+    }
 }
 </style>

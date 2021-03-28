@@ -19,7 +19,7 @@
             </div>
             <div id="rightbottom">
                 <program
-                    v-for="program in allPrograms"
+                    v-for="program in showCertainNumberOfPrograms"
                     :key="program"
                     :time="startTime(program.starttimeutc)"
                     :title="program.title"
@@ -43,6 +43,8 @@ export default {
     data() {
         return {
             allPrograms: [],
+            todaysDate: String,
+            tomorrowsDate: String,
         }
     },
     components: {
@@ -51,7 +53,7 @@ export default {
         Program,
     },
     methods: {
-        checkTime(i) {
+        addZerosToSingleDigits(i) {
             if (i < 10) {
                 i = "0" + i
             }
@@ -68,9 +70,46 @@ export default {
             let h = programStartTime.getHours()
             let m = programStartTime.getMinutes()
             // add a zero in front of numbers<10
-            h = this.checkTime(h)
-            m = this.checkTime(m)
+            h = this.addZerosToSingleDigits(h)
+            m = this.addZerosToSingleDigits(m)
             return h + ":" + m
+        },
+
+        getDateFormatter(dateObj) {
+            let month = dateObj.getUTCMonth() + 1
+            let day = dateObj.getUTCDate()
+            let year = dateObj.getUTCFullYear()
+
+            month = this.addZerosToSingleDigits(month)
+            day = this.addZerosToSingleDigits(day)
+
+            return year + "-" + month + "-" + day
+        },
+
+        setTodaysAndTomorrowsDate() {
+            let today = new Date()
+            this.todaysDate = this.getDateFormatter(today)
+
+            let tomorrow = new Date()
+            tomorrow.setDate(today.getDate() + 1)
+            this.tomorrowsDate = this.getDateFormatter(tomorrow)
+        },
+
+        sortArrayOnTime(arrayToSort) {
+            arrayToSort = arrayToSort.sort(function (a, b) {
+                if (a.starttimeutc > b.starttimeutc) {
+                    return 1
+                } else if (a.starttimeutc < b.starttimeutc) {
+                    return -1
+                }
+                if (a.channel.name > b.channel.name) {
+                    return 1
+                } else if (a.channel.name < b.channel.name) {
+                    return -1
+                }
+                return 0
+            })
+            return arrayToSort
         },
 
         async getTablo(api) {
@@ -91,7 +130,6 @@ export default {
             let dateNow = new Date()
 
             for (let i = json.length - 1; i >= 0; i--) {
-
                 let dateProgram = this.jsonDateToDate(json[i].endtimeutc)
                 if (dateNow > dateProgram) {
                     json.splice(i, 1)
@@ -100,19 +138,7 @@ export default {
 
             Array.prototype.push.apply(this.allPrograms, json)
 
-            this.allPrograms = this.allPrograms.sort(function (a, b) {
-                if (a.starttimeutc > b.starttimeutc) {
-                    return 1
-                } else if (a.starttimeutc < b.starttimeutc) {
-                    return -1
-                }
-                if (a.channel.name > b.channel.name) {
-                    return 1
-                } else if (a.channel.name < b.channel.name) {
-                    return -1
-                }
-                return 0
-            })
+            this.allPrograms = this.sortArrayOnTime(this.allPrograms)
         },
 
         removeProgramsFromList(id) {
@@ -124,9 +150,22 @@ export default {
             }
         },
     },
-    mounted() {
-        this.getTablo("https://api.sr.se/api/v2/scheduledepisodes?channelid=164&size=500&format=json")
-        console.log(this.allPrograms)
+    async mounted() {
+        this.setTodaysAndTomorrowsDate()
+        await this.getTablo(
+            `http://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.todaysDate}&size=500&format=json`
+        )
+        if (this.allPrograms.length < 6) {
+            this.getTablo(
+                `http://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.tomorrowsDate}&size=500&format=json`
+            )
+        }
+    },
+    computed: {
+        showCertainNumberOfPrograms() {
+            let numberOfProgramsToShow = 6
+            return this.allPrograms.slice(0, numberOfProgramsToShow)
+        },
     },
 }
 </script>
@@ -136,6 +175,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
+    height: 100vh;
 }
 
 .marginLeft {
