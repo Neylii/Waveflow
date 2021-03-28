@@ -19,11 +19,11 @@ export default {
         async getProgramsForStation(event) {
             if (event.target.checked) {
                 await this.$parent.getTablo(
-                    `http://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&date=${this.$parent.todaysDate}&size=500&format=json`
+                    `https://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&date=${this.$parent.todaysDate}&size=500&format=json`
                 )
                 if (this.$parent.allPrograms.length < 6) {
                     this.$parent.getTablo(
-                        `http://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&date=${this.$parent.tomorrowsDate}&size=500&format=json`
+                        `https://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&date=${this.$parent.tomorrowsDate}&size=500&format=json`
                     )
                 }
             } else {

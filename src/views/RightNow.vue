@@ -153,11 +153,11 @@ export default {
     async mounted() {
         this.setTodaysAndTomorrowsDate()
         await this.getTablo(
-            `http://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.todaysDate}&size=500&format=json`
+            `https://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.todaysDate}&size=500&format=json`
         )
         if (this.allPrograms.length < 6) {
             this.getTablo(
-                `http://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.tomorrowsDate}&size=500&format=json`
+                `https://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.tomorrowsDate}&size=500&format=json`
             )
         }
     },
