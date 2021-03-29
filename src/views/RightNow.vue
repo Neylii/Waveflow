@@ -130,15 +130,6 @@ export default {
             Array.prototype.push.apply(tempArray, json)
         },
 
-        removeProgramsFromList(id) {
-            id = Number(id)
-            for (let i = this.allPrograms.length - 1; i >= 0; i--) {
-                if (this.allPrograms[i].channel.id === id) {
-                    this.allPrograms.splice(i, 1)
-                }
-            }
-        },
-
         async fillUpChanneltoProgramList(channelId) {
             let date = new Date()
             let tempArray = []
