@@ -1,21 +1,26 @@
 <template>
     <div class="top3">
         <div class="leftbox">
-            <Infobox msg="Se vilka låtar som var mest populära på en kanal vid en viss tidpunkt." />
-
-            <div class="weekyear">
-                <label for="week">År Vecka</label>
-                <input type="button" @click="addArtistsToList(2016, 25)" />
+            <div class="upperleft">
+                <div class="lbtitle">Topp 3</div>
+                <Infobox msg="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka." />
+            </div>
+            <div class="bottomleft">
+                <div class="weekyear">
+                    <div class="selectWeekYear">
+                        <input type="text" placeholder="year" class="dateField" v-model="year" />
+                        <input type="text" placeholder="week" class="dateField" v-model="week" />
+                    </div>
+                    <div class="button-container">
+                        <input type="button" value="GO" class="go-button" @click="addArtistsToList()" />
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="rightbox">
-            <div class="rbtitle">TOPP 3</div>
-
             <div>
-                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{
-                    artist
-                }}</bubble>
+                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{ artist }}</bubble>
             </div>
         </div>
     </div>
@@ -32,6 +37,8 @@ export default {
     data() {
         return {
             topThreeArtists: [],
+            year: null,
+            week: null,
         }
     },
     name: "Top3",
@@ -59,8 +66,8 @@ export default {
             return [year, month, day].join("-")
         },
 
-        getDateOfISOWeek(year, week, index) {
-            var simple = new Date(year, 0, 1 + (week - 1) * 7)
+        getDateOfISOWeek(index) {
+            var simple = new Date(this.year, 0, 1 + (this.week - 1) * 7)
             var dow = simple.getDay()
             var ISOweekStart = simple
             if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1 + index)
@@ -87,11 +94,11 @@ export default {
             }
         },
 
-        async addArtistsToList(year, week) {
+        async addArtistsToList() {
             let artistMap = new Map()
             let artistList = []
             for (let i = 0; i < 7; i++) {
-                let songs = await this.getSongs(this.getDateOfISOWeek(year, week, i))
+                let songs = await this.getSongs(this.getDateOfISOWeek(i))
                 for (const song of songs) {
                     if (song.artist.includes(",") || song.artist.includes("&")) {
                         let artistsInCollab = song.artist.replaceAll("&", ",").split(",")
