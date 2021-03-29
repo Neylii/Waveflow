@@ -1,38 +1,28 @@
 <template>
     <div>
-        <div class="header">
-            <img src="./assets/wave.png" class="scaling" alt="Wave" />
-            <Waveflow msg="Waveflow" />
-            <p>
-                Big company announcement or simple sub-header taking two or more lines. <br />
-                Big company announcement or simple sub-header taking two or more lines. <br />
-                Big company announcement or simple sub-header taking two or more lines. <br />
-                Big company announcement or simple sub-header taking two or more lines. <br />
-            </p>
-        </div>
-
-        <top-three />
-        <take-me-to />
-        <right-now />
-        <Footer />
+        <start-page/>
+        <top-three/>
+        <take-me-to/>
+        <right-now/>
+        <Footer/>
     </div>
 </template>
 
 <script>
-import Waveflow from "./components/Waveflow.vue"
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
 import Footer from "./views/Footer.vue"
+import StartPage from './views/StartPage.vue'
 
 export default {
     name: "App",
     components: {
-        Waveflow,
         TopThree,
         TakeMeTo,
         RightNow,
         Footer,
+        StartPage,
     },
 }
 </script>
@@ -91,9 +81,6 @@ body {
 /* For bigger screens */
 @media screen and (min-width: 700px) {
     #app {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
         width: 100%;
         text-align: center;
     }
