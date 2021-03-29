@@ -133,15 +133,70 @@ export default {
     flex-direction: column;
 }
 
-.infobox {
-    background-color: rgb(71, 182, 182);
+.leftbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.upperleft {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.bottomleft {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 5;
+}
+
+.lbtitle {
+    width: 100%;
+    height: 100%;
+
+    font-family: Pacifico;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 6em;
+    /* identical to box height */
+
+    color: rgba(250, 254, 255, 0.9);
+
+    transform: rotate(-17.85deg);
 }
 
 .weekyear {
     display: flex;
     flex-direction: column;
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-top: 5%;
+    width: 100%;
+    align-items: center;
+}
+
+.selectWeekYear {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+}
+
+.dateField {
+    width: 20%;
+    height: 100%;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 5%;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+}
+
+.go-button {
+    height: 100%;
+    width: 10%;
 }
 
 div + #bubble {
@@ -166,7 +221,7 @@ div + #bubble + #bubble {
 @media screen and (min-width: 700px) {
     .top3 {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 5fr 6fr;
         grid-template-rows: 1fr;
         width: 100%;
     }
