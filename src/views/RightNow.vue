@@ -7,7 +7,7 @@
                     <div id="radioStationContainer">
                         <Radio-station station="P1" id="132" />
                         <Radio-station station="P2" id="163" />
-                        <Radio-station station="P3" id="164" :checked="true" />
+                        <Radio-station station="P3" id="164" :mcChecked="true" />
                         <Radio-station station="P4 Göteborg" id="212" />
                     </div>
                 </div>
@@ -17,7 +17,7 @@
             <div id="righttop">
                 <h3 class="textAlignLeft marginLeft">Start</h3>
             </div>
-            <div id="rightbottom">
+            <div>
                 <Program
                     v-for="program in showCertainNumberOfPrograms"
                     :key="program"
@@ -177,7 +177,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .marginLeft {
@@ -225,11 +225,6 @@ export default {
 
 #righttop {
     margin-right: auto;
-}
-
-#rightbottom {
-    max-height: 700px;
-    overflow-y: auto;
 }
 
 /* For bigger screens */
