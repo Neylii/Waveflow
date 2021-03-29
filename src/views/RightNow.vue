@@ -5,10 +5,10 @@
                 <Infobox msg="Här kan du visa vad som sänds just nu i de olika kanalerna." />
                 <div id="leftbottom" class="border">
                     <div id="radioStationContainer">
-                        <radio-station station="P1" id="132" />
-                        <radio-station station="P2" id="163" />
-                        <radio-station station="P3" id="164" :checked="true" />
-                        <radio-station station="P4 Göteborg" id="212" />
+                        <Radio-station station="P1" id="132" />
+                        <Radio-station station="P2" id="163" />
+                        <Radio-station station="P3" id="164" :checked="true" />
+                        <Radio-station station="P4 Göteborg" id="212" />
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <h3 class="textAlignLeft marginLeft">Start</h3>
             </div>
             <div id="rightbottom">
-                <program
+                <Program
                     v-for="program in showCertainNumberOfPrograms"
                     :key="program"
                     :time="startTime(program.starttimeutc)"
@@ -27,7 +27,7 @@
                     :imgSrc="program.channel.name + '.png'"
                 >
                     {{ program }}
-                </program>
+                </Program>
             </div>
         </div>
     </div>
@@ -43,8 +43,8 @@ export default {
     data() {
         return {
             allPrograms: [],
-            todaysDate: String,
-            tomorrowsDate: String,
+            programArrayTemp: [],
+            numberOfProgramsToShow: 6,
         }
     },
     components: {
@@ -86,15 +86,6 @@ export default {
             return year + "-" + month + "-" + day
         },
 
-        setTodaysAndTomorrowsDate() {
-            let today = new Date()
-            this.todaysDate = this.getDateFormatter(today)
-
-            let tomorrow = new Date()
-            tomorrow.setDate(today.getDate() + 1)
-            this.tomorrowsDate = this.getDateFormatter(tomorrow)
-        },
-
         sortArrayOnTime(arrayToSort) {
             arrayToSort = arrayToSort.sort(function (a, b) {
                 if (a.starttimeutc > b.starttimeutc) {
@@ -112,7 +103,7 @@ export default {
             return arrayToSort
         },
 
-        async getTablo(api) {
+        async getSingleTablo(api, tempArray) {
             let json = null
 
             try {
@@ -136,35 +127,46 @@ export default {
                 }
             }
 
-            Array.prototype.push.apply(this.allPrograms, json)
-
-            this.allPrograms = this.sortArrayOnTime(this.allPrograms)
+            Array.prototype.push.apply(tempArray, json)
         },
 
-        removeProgramsFromList(id) {
-            id = Number(id)
-            for (let i = this.allPrograms.length - 1; i >= 0; i--) {
-                if (this.allPrograms[i].channel.id === id) {
-                    this.allPrograms.splice(i, 1)
+        async fillUpChanneltoProgramList(channelId) {
+            let date = new Date()
+            let tempArray = []
+
+            do {
+                await this.getSingleTablo(
+                    `https://api.sr.se/api/v2/scheduledepisodes?channelid=${channelId}&date=${this.getDateFormatter(
+                        date
+                    )}&size=500&format=json`,
+                    tempArray
+                )
+                date.setDate(date.getDate() + 1)
+            } while (tempArray.length < this.numberOfProgramsToShow)
+
+            Array.prototype.push.apply(this.programArrayTemp, tempArray)
+
+            this.programArrayTemp = this.sortArrayOnTime(this.programArrayTemp)
+        },
+
+        updateAllChannels() {
+            this.programArrayTemp = []
+            let checkBoxes = document.getElementsByName("checkBoxStation")
+
+            checkBoxes.forEach((station) => {
+                if (station.checked) {
+                    this.fillUpChanneltoProgramList(station.parentNode.id)
                 }
-            }
+            })
+            this.allPrograms = this.programArrayTemp
         },
     },
-    async mounted() {
-        this.setTodaysAndTomorrowsDate()
-        await this.getTablo(
-            `https://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.todaysDate}&size=500&format=json`
-        )
-        if (this.allPrograms.length < 6) {
-            this.getTablo(
-                `https://api.sr.se/api/v2/scheduledepisodes?channelid=164&date=${this.tomorrowsDate}&size=500&format=json`
-            )
-        }
+    mounted() {
+        this.updateAllChannels()
     },
     computed: {
         showCertainNumberOfPrograms() {
-            let numberOfProgramsToShow = 6
-            return this.allPrograms.slice(0, numberOfProgramsToShow)
+            return this.allPrograms.slice(0, this.numberOfProgramsToShow)
         },
     },
 }

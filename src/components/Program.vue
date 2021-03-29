@@ -3,7 +3,7 @@
     <div class="timecontainer border">
       <p><strong>{{time}}</strong></p>
     </div>
-    <program-container :title="title" :description="description" />
+    <Program-container :title="title" :description="description" />
     <div class="stationimg border">
       <img :src="imgSrc" />
     </div>
