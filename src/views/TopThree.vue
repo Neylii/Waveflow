@@ -107,7 +107,7 @@ export default {
             for (const [key, value] of artistMap.entries()) {
                 artistList.push({ artist: key, plays: value })
             }
-            artistList.sort(function(a, b) {
+            artistList.sort(function (a, b) {
                 return b.plays - a.plays
             })
             this.topThreeArtists = [artistList[0], artistList[1], artistList[2]]
@@ -138,19 +138,21 @@ export default {
 }
 
 div + #bubble {
-    background: rgba(0, 194, 129, 0.486);
-    height: 125px;
-    width: 125px;
-    margin-left: 41%;
-    margin-top: 18%;
+    width: 19.051875em;
+    height: 17.45125em;
+    left: 0em;
+    top: 13em;
+
+    background: linear-gradient(180deg, rgba(0, 88, 104, 0.69) 0%, #145f6d 100%);
 }
 
 div + #bubble + #bubble {
-    background: rgba(255, 251, 0, 0.39);
-    height: 100px;
-    width: 100px;
-    margin-left: 25%;
-    margin-top: 31%;
+    width: 16.935em;
+    height: 15.489375em;
+    left: 17em;
+    top: 27em;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #84c1cc;
 }
 
 /* For bigger screens */
