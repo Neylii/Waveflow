@@ -1,7 +1,14 @@
 <template>
     <div class="radiostation border">
-        <img :src="station + '.png'" />
-        <input type="checkbox" class="biggerCheckBox" name="checkBoxStation" @click="$parent.updateAllChannels" :checked="checked" />
+        <img :src="station + '.png'" :name="station" @click="activateCheckbox" />
+        <input
+            type="checkbox"
+            class="biggerCheckBox"
+            name="checkBoxStation"
+            :id="station"
+            @click="$parent.updateAllChannels"
+            :checked="mcChecked"
+        />
     </div>
 </template>
 
@@ -9,7 +16,15 @@
 export default {
     props: {
         station: String,
-        checked: Boolean,
+        mcChecked: Boolean,
+    },
+    methods: {
+        activateCheckbox() {
+            let checkBox = document.getElementById(this.station)
+            checkBox.checked = !checkBox.checked
+
+            this.$parent.updateAllChannels()
+        },
     },
 }
 </script>
