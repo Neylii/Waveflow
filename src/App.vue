@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="header">
-            <img src="./assets/wave.png" class="scaling" alt="Wave" />
             <Waveflow msg="Waveflow" />
             <p>
                 Big company announcement or simple sub-header taking two or more lines. <br />
@@ -91,9 +90,6 @@ body {
 /* For bigger screens */
 @media screen and (min-width: 700px) {
     #app {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
         width: 100%;
         text-align: center;
     }
