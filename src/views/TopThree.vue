@@ -1,21 +1,26 @@
 <template>
     <div class="top3">
         <div class="leftbox">
-            <Infobox msg="Se vilka låtar som var mest populära på en kanal vid en viss tidpunkt." />
-
-            <div class="weekyear">
-                <label for="week">År Vecka</label>
-                <input type="button" @click="addArtistsToList(2016, 25)" />
+            <div class="upperleft">
+                <div class="lbtitle">Topp 3</div>
+                <Infobox msg="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka." />
+            </div>
+            <div class="bottomleft">
+                <div class="weekyear">
+                    <div class="selectWeekYear">
+                        <input type="text" placeholder="year" class="dateField" v-model="year" />
+                        <input type="text" placeholder="week" class="dateField" v-model="week" />
+                    </div>
+                    <div class="button-container">
+                        <input type="button" value="GO" class="go-button" @click="addArtistsToList()" />
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="rightbox">
-            <div class="rbtitle">TOPP 3</div>
-
             <div>
-                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{
-                    artist
-                }}</bubble>
+                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{ artist }}</bubble>
             </div>
         </div>
     </div>
@@ -32,6 +37,8 @@ export default {
     data() {
         return {
             topThreeArtists: [],
+            year: null,
+            week: null,
         }
     },
     name: "Top3",
@@ -59,8 +66,8 @@ export default {
             return [year, month, day].join("-")
         },
 
-        getDateOfISOWeek(year, week, index) {
-            var simple = new Date(year, 0, 1 + (week - 1) * 7)
+        getDateOfISOWeek(index) {
+            var simple = new Date(this.year, 0, 1 + (this.week - 1) * 7)
             var dow = simple.getDay()
             var ISOweekStart = simple
             if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1 + index)
@@ -87,11 +94,11 @@ export default {
             }
         },
 
-        async addArtistsToList(year, week) {
+        async addArtistsToList() {
             let artistMap = new Map()
             let artistList = []
             for (let i = 0; i < 7; i++) {
-                let songs = await this.getSongs(this.getDateOfISOWeek(year, week, i))
+                let songs = await this.getSongs(this.getDateOfISOWeek(i))
                 for (const song of songs) {
                     if (song.artist.includes(",") || song.artist.includes("&")) {
                         let artistsInCollab = song.artist.replaceAll("&", ",").split(",")
@@ -107,7 +114,7 @@ export default {
             for (const [key, value] of artistMap.entries()) {
                 artistList.push({ artist: key, plays: value })
             }
-            artistList.sort(function(a, b) {
+            artistList.sort(function (a, b) {
                 return b.plays - a.plays
             })
             this.topThreeArtists = [artistList[0], artistList[1], artistList[2]]
@@ -126,38 +133,95 @@ export default {
     flex-direction: column;
 }
 
-.infobox {
-    background-color: rgb(71, 182, 182);
+.leftbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.upperleft {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.bottomleft {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 5;
+}
+
+.lbtitle {
+    width: 100%;
+    height: 100%;
+
+    font-family: Pacifico;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 6em;
+    /* identical to box height */
+
+    color: rgba(250, 254, 255, 0.9);
+
+    transform: rotate(-17.85deg);
 }
 
 .weekyear {
     display: flex;
     flex-direction: column;
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-top: 5%;
+    width: 100%;
+    align-items: center;
+}
+
+.selectWeekYear {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+}
+
+.dateField {
+    width: 20%;
+    height: 100%;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 5%;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+}
+
+.go-button {
+    height: 100%;
+    width: 10%;
 }
 
 div + #bubble {
-    background: rgba(0, 194, 129, 0.486);
-    height: 125px;
-    width: 125px;
-    margin-left: 41%;
-    margin-top: 18%;
+    width: 19.051875em;
+    height: 17.45125em;
+    left: 0em;
+    top: 13em;
+
+    background: linear-gradient(180deg, rgba(0, 88, 104, 0.69) 0%, #145f6d 100%);
 }
 
 div + #bubble + #bubble {
-    background: rgba(255, 251, 0, 0.39);
-    height: 100px;
-    width: 100px;
-    margin-left: 25%;
-    margin-top: 31%;
+    width: 16.935em;
+    height: 15.489375em;
+    left: 17em;
+    top: 27em;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #84c1cc;
 }
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
     .top3 {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 5fr 6fr;
         grid-template-rows: 1fr;
         width: 100%;
     }
