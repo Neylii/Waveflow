@@ -161,6 +161,8 @@ export default {
 .takeme {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    width: 99vw;
 }
 
 .input {
@@ -220,7 +222,8 @@ input[type="radio"] {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        width: 100%;
+        height: 100vh;
+        width: 99vw;
     }
 
     .channelcontainer {
