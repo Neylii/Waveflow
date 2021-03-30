@@ -6,16 +6,29 @@
             <div class="input">
                 <Sectiontitle msg="Take me to" />
 
-                <div class="channel">
+                <div class="channelcontainer">
                     <label for="channel">Välj en kanal<br /></label>
-                    <input type="radio" value="P1" v-model="inputChannel" /> P1
-                    <input type="radio" value="P2" v-model="inputChannel" /> P2
-                    <input type="radio" value="P3" v-model="inputChannel" /> P3
+                    <div>
+                        <label for="P1"><img src="P1.png" class="imgsize"/></label>
+                        <input type="radio" value="P1" id="P1" v-model="inputChannel" checked />
+                    </div>
+                    <div>
+                        <label for="P2"><img src="P2.png"/></label>
+                        <input type="radio" value="P2" id="P2" v-model="inputChannel" />
+                    </div>
+                    <div>
+                        <label for="P3"><img src="P3.png"/></label>
+                        <input type="radio" value="P3" id="P3" v-model="inputChannel" />
+                    </div>
+                    <div>
+                        <label for="P4"><img src="P4.png"/></label>
+                        <input type="radio" value="P4 Göteborg" id="P4" v-model="inputChannel" />
+                    </div>
                 </div>
 
                 <div class="date">
                     <label for="takeme">Välj ett datum<br /></label>
-                    <input type="date" v-model="inputDate"/>
+                    <input type="date" v-model="inputDate" />
                     <br />
                     <input type="button" id="btnsearch" value="Sök" @click="getSongMix" />
                 </div>
@@ -23,8 +36,6 @@
         </div>
 
         <div class="rightbox">
-            <div class="rbtitle">{{ inputDate }} mix/låtar på {{ inputChannel }}</div>
-
             <div class="songbox">
                 <ul id="songlist">
                     <li v-for="description in songMix" :key="description">{{ description }}</li>
@@ -50,7 +61,6 @@ export default {
             channelForQuery: "",
             channelID: [],
             songMix: [],
-            
         }
     },
     mounted() {
@@ -68,6 +78,8 @@ export default {
                     this.channelID.push({ name: channel.name, id: channel.id })
                 } else if (channel.name === "P3") {
                     this.channelID.push({ name: channel.name, id: channel.id })
+                } else if (channel.name === "P4 Göteborg") {
+                    this.channelID.push({ name: channel.name, id: channel.id })
                 }
             }
             console.log(this.channelID)
@@ -82,25 +94,59 @@ export default {
         },
 
         async getSongMix() {
-
             //checks which channel the user chose.
             this.channelCheck()
 
             //clears the list each time the function is called
-            this.songMix = [] 
+            this.songMix = []
             let json = await this.fetchIt()
 
-            for (let i = 0; i < 6; i++) {
+            // If less than or equal to 6 songs in json, print out the songs.
+            if (json.song.length <= 6) {
+                for (let i = 0; i < json.song.length; i++) {
+                    this.songMix.push(json.song[i].description)
+                }
+                // If more than 6 songs in json, take 6 songs at random
+            } else {
+                for (let i = 0; i < 6; i++) {
+                    this.addSong(json)
+
+                    // Check for duplicates
+                    while (this.checkDuplicates(this.songMix)) {
+                        this.refillSongs(json)
+                    }
+                }
+            }
+        },
+
+        addSong(json) {
+            let randomIndex = Math.floor(Math.random() * json.song.length)
+            this.songMix.push(json.song[randomIndex].description)
+        },
+
+        checkDuplicates(array) {
+            let noDup = new Set(array)
+
+            if (array.length !== noDup.size) {
+                return true
+            } else {
+                return false
+            }
+        },
+
+        refillSongs(json) {
+            let uniqSongs = new Set(this.songMix)
+            do {
+                this.songMix = [...uniqSongs]
                 let randomIndex = Math.floor(Math.random() * json.song.length)
                 this.songMix.push(json.song[randomIndex].description)
-            }
+                console.log("change")
+            } while (this.songMix.length > 7)
         },
 
         async fetchIt() {
             let query = `id=${this.channelForQuery}&startdatetime=${this.inputDate}&format=json`
-            let response = await fetch(
-                `https://api.sr.se/api/v2/playlists/getplaylistbychannelid?${query}`
-            )
+            let response = await fetch(`https://api.sr.se/api/v2/playlists/getplaylistbychannelid?${query}`)
             if (!response.ok) {
                 throw new Error(response.status + " " + response.statusText)
             } else {
@@ -131,8 +177,23 @@ export default {
     margin-bottom: 1em;
 }
 
-.channel {
-    margin-bottom: 0.5em;
+.channelcontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+input[type="radio"] {
+    height: 25px;
+    width: 25px;
+    padding: 5em;
+    margin-top: 0;
+    margin-left: 0;
 }
 
 .date {
@@ -141,12 +202,7 @@ export default {
 
 #btnsearch {
     margin-top: 0.5em;
-    border-radius: 0.5em; 
-}
-
-.rbtitle {
-    margin-bottom: 0.5em;
-    font-size: x-large;
+    border-radius: 0.5em;
 }
 
 .songbox {
@@ -166,6 +222,11 @@ export default {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
         width: 100%;
+    }
+
+    .channelcontainer {
+        max-width: 100%;
+        height: auto;
     }
 }
 </style>
