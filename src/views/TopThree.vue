@@ -2,7 +2,7 @@
     <div class="top3">
         <div class="leftbox">
             <div class="upperleft">
-                <div class="lbtitle">Topp 3</div>
+                <Sectiontitle msg="Topp 3" />
                 <Infobox msg="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka." />
             </div>
             <div class="bottomleft">
@@ -29,10 +29,12 @@
 <script>
 import Infobox from "../components/Infobox"
 import Bubble from "../components/ArtistBubble"
+import Sectiontitle from "../components/Sectiontitle"
 export default {
     components: {
         Bubble,
         Infobox,
+        Sectiontitle,
     },
     data() {
         return {
@@ -149,21 +151,6 @@ export default {
     display: flex;
     flex-direction: row;
     flex-grow: 5;
-}
-
-.lbtitle {
-    width: 100%;
-    height: 100%;
-
-    font-family: Pacifico;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 6em;
-    /* identical to box height */
-
-    color: rgba(250, 254, 255, 0.9);
-
-    transform: rotate(-17.85deg);
 }
 
 .weekyear {

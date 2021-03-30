@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Navbar/>
         <start-page/>
         <top-three/>
         <take-me-to/>
@@ -14,6 +15,7 @@ import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
 import Footer from "./views/Footer.vue"
 import StartPage from './views/StartPage.vue'
+import Navbar from "./components/Navbar.vue"
 
 export default {
     name: "App",
@@ -23,6 +25,7 @@ export default {
         RightNow,
         Footer,
         StartPage,
+        Navbar,
     },
 }
 </script>
@@ -42,8 +45,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
         "Helvetica Neue", sans-serif;
     color: #2c3e50;
-    margin: 5vh 1rem;
-    height: 90vh;
     text-align: center;
 }
 
@@ -52,10 +53,6 @@ body {
     font-size: xx-large;
     margin-bottom: 2em;
     text-align: center;
-}
-
-.header > p {
-    font-size: small;
 }
 
 .lbtitle {
@@ -80,9 +77,9 @@ body {
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
-    #app {
+    /* #app {
         width: 100%;
         text-align: center;
-    }
+    } */
 }
 </style>
