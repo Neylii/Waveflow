@@ -1,27 +1,25 @@
 <template>
-  <div class="infobox">
-    {{ msg }}
-  </div>
+    <div class="infobox">
+        {{ msg }}
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'Infobox',
-  props: {
-    msg: String
-  }
+    name: "Infobox",
+    props: {
+        msg: String,
+    },
 }
 </script>
 
 <style scoped>
-
 .infobox {
     padding: 0.5em;
     margin: 0em;
 }
 
 @media screen and (min-width: 700px) {
-   
     .infobox {
         display: flex;
         flex-direction: column;
@@ -29,7 +27,16 @@ export default {
         margin-bottom: 3em;
         margin-left: 7em;
         margin-right: 7em;
+        border-left: 0.0625em solid #ffffff;
+        border-bottom: 0.0625em solid #ffffff;
+
+        font-family: Armata;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.5em;
+        line-height: 1.875em;
+
+        color: #fafeff;
     }
 }
-
 </style>
