@@ -1,15 +1,14 @@
 <template>
     <div class="takeme">
         <div class="leftbox">
-            <Infobox msg="Se vilka låtar som var mest populära på en kanal vid en viss  tidpunkt." />
+            <Sectiontitle msg="Låtlistan" />
+            <Infobox msg="En mix av låtar som var mest populära på en kanal vid en viss tidpunkt" />
 
             <div class="input">
-                <Sectiontitle msg="Take me to" />
-
+                <div>Välj kanal</div>
                 <div class="channelcontainer">
-                    <label for="channel">Välj en kanal<br /></label>
                     <div>
-                        <label for="chP1"><img src="P1.png" class="imgsize"/></label>
+                        <label for="chP1"><img src="P1.png"/></label>
                         <input type="radio" value="P1" id="chP1" v-model="inputChannel" checked />
                     </div>
                     <div>
@@ -27,7 +26,7 @@
                 </div>
 
                 <div class="date">
-                    <label for="takeme">Välj ett datum<br /></label>
+                    <label for="takeme">Välj datum<br /></label>
                     <input type="date" v-model="inputDate" />
                     <br />
                     <input type="button" id="btnsearch" value="Sök" @click="getSongMix" />
@@ -164,10 +163,6 @@ export default {
     flex-direction: column;
 }
 
-.infobox {
-    background-color: rgb(219, 224, 144);
-}
-
 .input {
     display: flex;
     flex-direction: column;
@@ -181,6 +176,10 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 5em;
+    margin-right: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 img {

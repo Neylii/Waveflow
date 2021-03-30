@@ -7,7 +7,7 @@
                     <div id="radioStationContainer">
                         <Radio-station station="P1" id="132" />
                         <Radio-station station="P2" id="163" />
-                        <Radio-station station="P3" id="164" :checked="true" />
+                        <Radio-station station="P3" id="164" :mcChecked="true" />
                         <Radio-station station="P4 Göteborg" id="212" />
                     </div>
                 </div>
@@ -192,9 +192,6 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-.infobox {
-    background-color: rgb(228, 225, 241);
 }
 
 #lefttop {
