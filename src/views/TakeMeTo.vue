@@ -9,20 +9,20 @@
                 <div class="channelcontainer">
                     <label for="channel">Välj en kanal<br /></label>
                     <div>
-                        <label for="P1"><img src="P1.png" class="imgsize"/></label>
-                        <input type="radio" value="P1" id="P1" v-model="inputChannel" checked />
+                        <label for="chP1"><img src="P1.png" class="imgsize"/></label>
+                        <input type="radio" value="P1" id="chP1" v-model="inputChannel" checked />
                     </div>
                     <div>
-                        <label for="P2"><img src="P2.png"/></label>
-                        <input type="radio" value="P2" id="P2" v-model="inputChannel" />
+                        <label for="chP2"><img src="P2.png"/></label>
+                        <input type="radio" value="P2" id="chP2" v-model="inputChannel" />
                     </div>
                     <div>
-                        <label for="P3"><img src="P3.png"/></label>
-                        <input type="radio" value="P3" id="P3" v-model="inputChannel" />
+                        <label for="chP3"><img src="P3.png"/></label>
+                        <input type="radio" value="P3" id="chP3" v-model="inputChannel" />
                     </div>
                     <div>
-                        <label for="P4"><img src="P4.png"/></label>
-                        <input type="radio" value="P4 Göteborg" id="P4" v-model="inputChannel" />
+                        <label for="chP4"><img src="P4 Göteborg.png"/></label>
+                        <input type="radio" value="P4 Göteborg" id="chP4" v-model="inputChannel" />
                     </div>
                 </div>
 
