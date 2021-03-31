@@ -1,7 +1,16 @@
 <template>
     <div class="radiostation border">
-        <img :src="station + '.png'" />
-        <input type="checkbox" id="biggerCheckBox" @click="getProgramsForStation" :name="station" :checked="checked" />
+        <label :for="station">
+            <img :src="station + '.png'" :name="station" />
+        </label>
+        <input
+            type="checkbox"
+            class="biggerCheckBox"
+            name="checkBoxStation"
+            :id="station"
+            @click="$parent.updateAllChannels"
+            :checked="checked"
+        />
     </div>
 </template>
 
@@ -10,21 +19,6 @@ export default {
     props: {
         station: String,
         checked: Boolean,
-        id: String,
-    },
-    data() {
-        return {}
-    },
-    methods: {
-        getProgramsForStation(event) {
-            if (event.target.checked) {
-                this.$parent.getTablo(
-                    `http://api.sr.se/api/v2/scheduledepisodes?channelid=${this.id}&size=500&format=json`
-                )
-            } else {
-                this.$parent.removeProgramsFromList(this.id)
-            }
-        },
     },
 }
 </script>
@@ -40,7 +34,7 @@ img {
     width: 100px;
 }
 
-#biggerCheckBox {
+.biggerCheckBox {
     width: 30px;
     height: 30px;
 }
@@ -51,10 +45,9 @@ img {
         width: 140px;
     }
 
-    #biggerCheckBox {
-    width: 40px;
-    height: 40px;
-}
-
+    .biggerCheckBox {
+        width: 40px;
+        height: 40px;
+    }
 }
 </style>

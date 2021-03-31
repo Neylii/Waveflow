@@ -1,38 +1,31 @@
 <template>
     <div>
-        <div class="header">
-            <img src="./assets/wave.png" class="scaling" alt="Wave" />
-            <Waveflow msg="Waveflow" />
-            <p>
-                Big company announcement or simple sub-header taking two or more lines. <br />
-                Big company announcement or simple sub-header taking two or more lines. <br />
-                Big company announcement or simple sub-header taking two or more lines. <br />
-                Big company announcement or simple sub-header taking two or more lines. <br />
-            </p>
-        </div>
-
-        <top-three />
-        <take-me-to />
-        <right-now />
-        <Footer />
+        <Navbar/>
+        <start-page/>
+        <top-three/>
+        <take-me-to/>
+        <right-now/>
+        <Footer/>
     </div>
 </template>
 
 <script>
-import Waveflow from "./components/Waveflow.vue"
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
 import Footer from "./views/Footer.vue"
+import StartPage from './views/StartPage.vue'
+import Navbar from "./components/Navbar.vue"
 
 export default {
     name: "App",
     components: {
-        Waveflow,
         TopThree,
         TakeMeTo,
         RightNow,
         Footer,
+        StartPage,
+        Navbar,
     },
 }
 </script>
@@ -41,6 +34,9 @@ export default {
 /* .border {
     border: 1px solid black;
 } */
+body {
+    background-color: rgba(46, 93, 101, 0.8);
+}
 
 #app {
     display: flex;
@@ -49,8 +45,6 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
         "Helvetica Neue", sans-serif;
     color: #2c3e50;
-    margin: 5vh 1rem;
-    height: 90vh;
     text-align: center;
 }
 
@@ -59,10 +53,6 @@ export default {
     font-size: xx-large;
     margin-bottom: 2em;
     text-align: center;
-}
-
-.header > p {
-    font-size: small;
 }
 
 .lbtitle {
@@ -87,12 +77,9 @@ export default {
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
-    #app {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
+    /* #app {
         width: 100%;
         text-align: center;
-    }
+    } */
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="timecontainer border">
       <p><strong>{{time}}</strong></p>
     </div>
-    <program-container :title="title" :description="description" />
+    <Program-container :title="title" :description="description" />
     <div class="stationimg border">
       <img :src="imgSrc" />
     </div>
@@ -54,7 +54,11 @@ export default {
 }
 
 .stationimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-left: 2px lightgray solid;
+    
 }
 
 .stationimg > img {
