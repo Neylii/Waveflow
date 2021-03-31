@@ -34,6 +34,11 @@ export default {
 /* .border {
     border: 1px solid black;
 } */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: rgba(46, 93, 101, 0.8);
 }
