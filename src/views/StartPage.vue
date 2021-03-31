@@ -20,7 +20,7 @@ export default {
 <style scoped>
 #startPage {
     height: 100vh;
-    width: 99vw;
+    width: 100vw;
 }
 
 .text-container {
@@ -35,7 +35,7 @@ h1 {
     font-family: Pacifico;
     font-style: normal;
     font-weight: normal;
-    font-size: 750%;
+    font-size: 500%;
     text-align: center;
     color: #84c1cc;
 }
@@ -44,11 +44,11 @@ p {
     font-family: Abel;
     font-style: normal;
     font-weight: normal;
-    line-height: 100%;
+    line-height: 130%;
     color: #fafeff;
     text-align: start;
     font-size: 150%;
     margin-left: 5%;
-    padding-bottom: 4%;
+    padding-bottom: 3%;
 }
 </style>
