@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Navbar/>
-        <start-page/>
-        <top-three/>
-        <take-me-to/>
-        <right-now/>
-        <Footer/>
+        <Navbar />
+        <start-page />
+        <top-three />
+        <take-me-to />
+        <right-now />
+        <about-us />
     </div>
 </template>
 
@@ -13,8 +13,8 @@
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
-import Footer from "./views/Footer.vue"
-import StartPage from './views/StartPage.vue'
+import AboutUs from "./views/AboutUs.vue"
+import StartPage from "./views/StartPage.vue"
 import Navbar from "./components/Navbar.vue"
 
 export default {
@@ -23,7 +23,7 @@ export default {
         TopThree,
         TakeMeTo,
         RightNow,
-        Footer,
+        AboutUs,
         StartPage,
         Navbar,
     },
@@ -34,6 +34,12 @@ export default {
 /* .border {
     border: 1px solid black;
 } */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: rgba(46, 93, 101, 0.8);
 }
