@@ -1,69 +1,87 @@
 <template>
-  <div class="programcontainer border">
-    <div class="timecontainer border">
-      <p><strong>{{time}}</strong></p>
+    <div class="programcontainer border">
+        <div class="timecontainer border">
+            <p>
+                <strong>{{ time }}</strong>
+            </p>
+        </div>
+        <Program-container :title="title" :description="description" />
+        <div class="stationimg border">
+            <img :src="imgSrc" />
+        </div>
     </div>
-    <Program-container :title="title" :description="description" />
-    <div class="stationimg border">
-      <img :src="imgSrc" />
-    </div>
-  </div>
 </template>
 
 <script>
 import ProgramContainer from "./ProgramDescription"
 
 export default {
-  name: "Program",
-  props: {
-      title: String,
-      description: String,
-      time: String,
-      imgSrc: String,
-  },
-  components: {
-      ProgramContainer
-  }
+    name: "Program",
+    props: {
+        title: String,
+        description: String,
+        time: String,
+        imgSrc: String,
+    },
+    components: {
+        ProgramContainer,
+    },
 }
 </script>
 
 
 <style scoped>
 .programcontainer {
-  display: flex;
-  border: 2px lightgray solid;
+    display: flex;
+    background: rgba(20, 95, 109, 0.3);
+    border: 1px solid #84c1cc;
+    border-radius: 10px;
 }
 
-.programcontainer + .programcontainer{
-  border-top: none;
+.programcontainer + .programcontainer {
+    border-top: none;
 }
 
 .timecontainer {
-  display: flex;
-  align-items: center;
-  border-right: 2px lightgray solid;
-  padding: 0.5em;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #84c1cc;
+    padding: 0.5em;
 }
 
 .timecontainer > p {
-    font-size: 1.25em;
+    font-size: 16px;
 }
 
 .timecontainer > p {
-  margin: 1em;
+    margin: 1em;
 }
 
 .stationimg {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 2px lightgray solid;
-    
+    border-left: 1px solid #84c1cc;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .stationimg > img {
-  height: 80px;
-  width: 80px;
-  margin: 1em;
+    height: 4em;
+    width: 4em;
+    margin: 0.3em;
+}
+
+@media screen and (min-width: 700px) {
+    .timecontainer > p {
+        font-size: 24px;
+    }
+
+    .stationimg > img {
+        height: 5em;
+        width: 5em;
+        margin: 1em;
+    }
 }
 </style>
