@@ -179,7 +179,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
-    min-height: 90vh;
+    min-height: 99vh;
 }
 
 #container {
