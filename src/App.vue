@@ -1,11 +1,12 @@
 <template>
     <div>
-        <Navbar />
-        <start-page />
-        <top-three />
-        <take-me-to />
-        <right-now />
-        <about-us />
+        <Navbar/>
+        <div id="section1" class="section"><start-page/></div>
+        <div id="section2" class="section"><top-three/></div>
+        <div id="section3" class="section"><take-me-to/></div>
+        <div id="section4" class="section"><right-now/></div>
+        <div id="section5" class="section"><Footer/></div>      
+
     </div>
 </template>
 
@@ -34,10 +35,13 @@ export default {
 /* .border {
     border: 1px solid black;
 } */
-
 * {
     margin: 0;
     padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -52,6 +56,13 @@ body {
         "Helvetica Neue", sans-serif;
     color: #2c3e50;
     text-align: center;
+}
+
+.class section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
 .header {
@@ -83,9 +94,9 @@ body {
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
-    /* #app {
+    #app {
         width: 100%;
         text-align: center;
-    } */
+    }
 }
 </style>
