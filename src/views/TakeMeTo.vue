@@ -1,29 +1,30 @@
 <template>
-    <div class="outer">
-        <div class="leftbox">
-            <div class="info">
-                <div><Sectiontitle msg="Låtlistan" /></div>
-                <div><Infobox msg="En mix av låtar som var mest populära på en kanal vid en viss tidpunkt" /></div>
-            </div>
-
-            <div class="input">
-                <div>Välj kanal</div>
-                <div class="channelcontainer">
-                    <div><Channel channel="P1" channelID="chP1" /></div>
-                    <div><Channel channel="P2" channelID="chP2" /></div>
-                    <div><Channel channel="P3" channelID="chP3" /></div>
-                    <div><Channel channel="P4 Göteborg" channelID="chP4" /></div>
+    <div id="takemeto">
+        <div class="container">
+            <div class="left">
+                <div class="info">
+                    <div><Sectiontitle msg="Låtlistan" /></div>
+                    <div><Infobox msg="En mix av låtar som var mest populära på en kanal vid en viss tidpunkt" /></div>
                 </div>
 
-                <div class="date">
-                    <label for="takeme">Välj datum<br /></label>
-                    <input type="date" v-model="inputDate" />
-                    <input type="button" id="btn" value="Sök" @click="getSongMix" />
+                <div class="leftbottom">
+                    <!-- <span >Välj kanal <br/></span> -->
+                    <div id="channelcontainer">
+                        <div><Channel channel="P1" channelID="chP1" /></div>
+                        <div><Channel channel="P2" channelID="chP2" /></div>
+                        <div><Channel channel="P3" channelID="chP3" /></div>
+                        <div><Channel channel="P4 Göteborg" channelID="chP4" /></div>
+                    </div>
+                    <div class="date">
+                        <label for="takeme">Välj datum<br /></label>
+                        <input type="date" v-model="inputDate" />
+                        <input type="button" id="btn" value="Sök" @click="getSongMix" />
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="rightbox">
+        <div class="right">
             <div class="songbox">
                 <ul id="songlist">
                     <li v-for="description in songMix" :key="description">{{ description }}</li>
@@ -149,7 +150,7 @@ export default {
 </script>
 
 <style scoped>
-.outer {
+#takemeto {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
@@ -157,76 +158,129 @@ export default {
     color: #ffffff;
 }
 
+.container {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .info {
     display: flex;
     flex-direction: row;
 }
 
-.input {
+.lefttop {
     display: flex;
     flex-direction: column;
-    margin-left: 3em;
-    margin-right: 3em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    align-items: center;
+}
+
+.leftbottom {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
+    text-align: center;
+}
+
+#channelcontainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.date {
+    font-style: Armata;
+    display: flex;
     flex-direction: column;
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform: scale(1.5);
 }
 
-#btn:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-}
-
-.channelcontainer {
-    display: inline-flex;
-    flex-direction: row;
+.right {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin-right: 2em;
+    margin-left: 2em;
 }
 
-img {
-    height: 100px;
-    width: 100px;
+.songbox {
+    background: rgba(20, 95, 109, 0.3);
+    border: 2px solid #84c1cc;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-top: -3em;
 }
-
-input[type="radio"] {
-    height: 2em;
-    width: 2em;
-    padding: 5em;
-    margin-top: 0;
-    margin-left: 0;
-}
-
-/* just to make it easier to see
-/* .songbox {
-    border-top: solid grey;
-} */
 
 #songlist > li {
-    margin-top: 3em;
-    margin-left: 3em;
+    display: flex;
+    align-items: flex-end;
+    color: #ffffff;
+    font-family: Arimo;
     list-style-type: none;
+    padding: 0.3em;
+
+    margin: 1em;
     text-align: start;
-    font-size: large;
 }
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
-    .outer {
+    #takemeto {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
+        width: 100%;
+        transform: scale(0.8);
     }
 
     .info {
         display: grid;
     }
 
-    .channelcontainer {
+    #channelcontainer {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        transform: scale(0.8);
+    }
+
+    .songbox {
+        background: rgba(20, 95, 109, 0.3);
+        padding: 2.15em;
+        border: 2px solid #84c1cc;
+        border-radius: 10px;
+
+        /* snyggare men är inte så responsiv */
+        /* min-width: 30em;
+        min-height: 30em; */
+        /* left: 47em;
+        top: 25em; */
+    }
+
+    #songlist > li {
+        display: flex;
+        align-items: flex-end;
+        color: #ffffff;
+        font-family: Arimo;
+        font-size: x-large;
+        list-style-type: none;
+        padding: 0.3em;
+        margin: 1em;
+        text-align: start;
     }
 }
 </style>
