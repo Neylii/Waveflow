@@ -5,7 +5,7 @@
         <div id="section2" class="section"><top-three/></div>
         <div id="section3" class="section"><take-me-to/></div>
         <div id="section4" class="section"><right-now/></div>
-        <div id="section5" class="section"><Footer/></div>      
+        <div id="section5" class="section"><about-us/></div>      
 
     </div>
 </template>
@@ -14,8 +14,8 @@
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
-import Footer from "./views/Footer.vue"
-import StartPage from './views/StartPage.vue'
+import AboutUs from "./views/AboutUs.vue"
+import StartPage from "./views/StartPage.vue"
 import Navbar from "./components/Navbar.vue"
 
 export default {
@@ -24,7 +24,7 @@ export default {
         TopThree,
         TakeMeTo,
         RightNow,
-        Footer,
+        AboutUs,
         StartPage,
         Navbar,
     },
