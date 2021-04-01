@@ -8,43 +8,43 @@
             <div class="mainContentTop">
                 <about-us-box
                     class="mainContentTopLeft"
-                    :name="'Niklas'"
-                    :description="'Musikskapande och hunden Nala, då trivs Niklas!'"
-                    :role="'JAVA'"
+                    name="Niklas"
+                    description="Musikskapande och hunden Nala, då trivs Niklas!"
+                    role="JAVA"
                 />
                 <about-us-box
                     class="mainContentTopRight"
-                    :name="'Emma'"
-                    :description="'Frölundabo som gillar tidiga mornar på gymmet'"
-                    :role="'JAVA'"
+                    name="Emma"
+                    description="Frölundabo som gillar tidiga mornar på gymmet"
+                    role="JAVA"
                 />
             </div>
             <div class="mainContentMiddle">
                 <about-us-box
-                    :name="'Marcus'"
-                    :description="'Surfdrömmande majornabo som siktar mot Portugal'"
-                    :role="'Ux-design'"
+                    name="Marcus"
+                    description="Surfdrömmande majornabo som siktar mot Portugal"
+                    role="Ux-design"
                 />
                 <about-us-box
-                    :name="'Oscar'"
-                    :description="'Tefantasten som lämnade Schlätta för Göteborg'"
-                    :role="'UX-design'"
+                    name="Oscar"
+                    description="Tefantasten som lämnade Schlätta för Göteborg"
+                    role="UX-design"
                 />
             </div>
             <div class="mainContentCenter">
                 <about-us-box
-                    :name="'Caroline'"
-                    :description="'Den kloka samhällsanalytikern med sin bas i Olskroken'"
-                    :role="'UX-design'"
+                    name="Caroline"
+                    description="Den kloka samhällsanalytikern med sin bas i Olskroken"
+                    role="UX-design"
                 />
             </div>
             <div class="mainContentBottom">
                 <about-us-box
-                    :name="'Mia'"
-                    :description="'Vinkonnässören som lämnade Borås för Lerum'"
-                    :role="'UX-design'"
+                    name="Mia"
+                    description="Vinkonnässören som lämnade Borås för Lerum"
+                    role="UX-design"
                 />
-                <about-us-box :name="'Tom'" :description="'Den discogolfande gamern från Torslanda'" :role="'JAVA'" />
+                <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
             </div>
         </div>
         <div id="bottomText">Waveflow är en applikation baserad på data från Sveriges Radio. Version 1.0</div>
@@ -124,7 +124,6 @@ export default {
 }
 
 @media screen and (min-width: 320px) {
-    
     .mainContentTop {
         gap: 0;
     }
@@ -137,7 +136,5 @@ export default {
     .mainContentBottom {
         gap: 1.5em;
     }
-
-
 }
 </style>

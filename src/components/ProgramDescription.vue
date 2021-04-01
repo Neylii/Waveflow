@@ -21,7 +21,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    flex-grow: 1;
 }
 
 #contentcontainer > * {
