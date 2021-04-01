@@ -1,15 +1,16 @@
 <template>
-    <div class="takeme">
+    <div class="outer">
         <div class="leftbox">
-            <Infobox msg="Se vilka låtar som var mest populära på en kanal vid en viss  tidpunkt." />
+            <div class="info">
+                <div><Sectiontitle msg="Låtlistan" /></div>
+                <div><Infobox msg="En mix av låtar som var mest populära på en kanal vid en viss tidpunkt" /></div>
+            </div>
 
             <div class="input">
-                <Sectiontitle msg="Take me to" />
-
+                <div>Välj kanal</div>
                 <div class="channelcontainer">
-                    <label for="channel">Välj en kanal<br /></label>
                     <div>
-                        <label for="chP1"><img src="P1.png" class="imgsize"/></label>
+                        <label for="chP1"><img src="P1.png"/></label>
                         <input type="radio" value="P1" id="chP1" v-model="inputChannel" checked />
                     </div>
                     <div>
@@ -27,10 +28,9 @@
                 </div>
 
                 <div class="date">
-                    <label for="takeme">Välj ett datum<br /></label>
+                    <label for="takeme">Välj datum<br /></label>
                     <input type="date" v-model="inputDate" />
-                    <br />
-                    <input type="button" id="btnsearch" value="Sök" @click="getSongMix" />
+                    <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
             </div>
         </div>
@@ -159,13 +159,16 @@ export default {
 </script>
 
 <style scoped>
-.takeme {
-    display: flex;
+.outer {
+    display: inline-flex;
+    position: relative;
     flex-direction: column;
+    color: #ffffff;
 }
 
-.infobox {
-    background-color: rgb(219, 224, 144);
+.info {
+    display: flex;
+    flex-direction: row;
 }
 
 .input {
@@ -177,8 +180,12 @@ export default {
     margin-bottom: 1em;
 }
 
+#btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+}
+
 .channelcontainer {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     align-items: center;
 }
@@ -189,44 +196,40 @@ img {
 }
 
 input[type="radio"] {
-    height: 25px;
-    width: 25px;
+    height: 2em;
+    width: 2em;
     padding: 5em;
     margin-top: 0;
     margin-left: 0;
 }
 
-.date {
-    margin-bottom: 0.5em;
-}
-
-#btnsearch {
-    margin-top: 0.5em;
-    border-radius: 0.5em;
-}
-
-.songbox {
-    border-top: solid 0.1em grey;
-}
+/* just to make it easier to see
+/* .songbox {
+    border-top: solid grey;
+} */
 
 #songlist > li {
-    margin-bottom: 1em;
-    list-style-type: circle;
+    margin-top: 3em;
+    list-style-type: none;
     text-align: start;
+    font-size: large;
 }
 
 /* For bigger screens */
 @media screen and (min-width: 700px) {
-    .takeme {
+    .outer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        width: 100%;
+    }
+
+    .info {
+        display: grid;
     }
 
     .channelcontainer {
-        max-width: 100%;
-        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 </style>

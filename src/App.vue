@@ -1,10 +1,12 @@
 <template>
     <div>
-        <start-page/>
-        <top-three/>
-        <take-me-to/>
-        <right-now/>
-        <Footer/>
+        <Navbar/>
+        <div id="section1" class="section"><start-page/></div>
+        <div id="section2" class="section"><top-three/></div>
+        <div id="section3" class="section"><take-me-to/></div>
+        <div id="section4" class="section"><right-now/></div>
+        <div id="section5" class="section"><about-us/></div>      
+
     </div>
 </template>
 
@@ -12,8 +14,9 @@
 import TopThree from "./views/TopThree.vue"
 import TakeMeTo from "./views/TakeMeTo.vue"
 import RightNow from "./views/RightNow.vue"
-import Footer from "./views/Footer.vue"
-import StartPage from './views/StartPage.vue'
+import AboutUs from "./views/AboutUs.vue"
+import StartPage from "./views/StartPage.vue"
+import Navbar from "./components/Navbar.vue"
 
 export default {
     name: "App",
@@ -21,8 +24,9 @@ export default {
         TopThree,
         TakeMeTo,
         RightNow,
-        Footer,
+        AboutUs,
         StartPage,
+        Navbar,
     },
 }
 </script>
@@ -31,6 +35,15 @@ export default {
 /* .border {
     border: 1px solid black;
 } */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background-color: rgba(46, 93, 101, 0.8);
 }
@@ -42,9 +55,14 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
         "Helvetica Neue", sans-serif;
     color: #2c3e50;
-    margin: 5vh 1rem;
-    height: 90vh;
     text-align: center;
+}
+
+.class section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
 .header {
@@ -52,10 +70,6 @@ body {
     font-size: xx-large;
     margin-bottom: 2em;
     text-align: center;
-}
-
-.header > p {
-    font-size: small;
 }
 
 .lbtitle {

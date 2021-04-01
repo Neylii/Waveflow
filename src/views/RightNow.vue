@@ -193,9 +193,6 @@ export default {
     flex-direction: column;
     flex-grow: 1;
 }
-.infobox {
-    background-color: rgb(228, 225, 241);
-}
 
 #lefttop {
     display: flex;
