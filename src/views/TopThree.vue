@@ -1,11 +1,14 @@
 <template>
     <div class="top3">
-        <div class="leftbox">
-            <div class="upperleft">
-                <Sectiontitle msg="Topp 3" />
-                <Infobox msg="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka." />
+        <div class="info-selection-box">
+            <div class="info-box">
+                <Sectiontitle msg="Topp 3" class="top-three-title" />
+                <Infobox
+                    msg="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka."
+                    class="description-text"
+                />
             </div>
-            <div class="bottomleft">
+            <div class="select-date-box">
                 <div class="weekyear">
                     <div class="selectWeekYear">
                         <input type="text" placeholder="year" class="dateField" v-model="year" />
@@ -18,9 +21,11 @@
             </div>
         </div>
 
-        <div class="rightbox">
+        <div class="artist-bubble-box">
             <div>
-                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{ artist }}</bubble>
+                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{
+                    artist
+                }}</bubble>
             </div>
         </div>
     </div>
@@ -126,28 +131,50 @@ export default {
 </script>
 
 <style scoped>
-.rightbox {
+.artist-bubble-box {
     position: relative;
+    width: 100%;
+    font-family: Armata;
+    font-style: normal;
+    font-weight: normal;
+    color: #ffffff;
 }
 
 .top3 {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
-.leftbox {
+.info-selection-box {
     display: flex;
     flex-direction: column;
 }
 
-.upperleft {
+.info-box {
     position: relative;
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
+    align-items: center;
 }
 
-.bottomleft {
+.top-three-title {
+    display: flex;
+    font-size: 2.5em;
+    width: 40%;
+    justify-content: center;
+}
+
+.description-text {
+    width: 60%;
+    font-family: Armata;
+    line-height: 2em;
+    font-size: 0.9em;
+    color: #ffffff;
+}
+
+.select-date-box {
     display: flex;
     flex-direction: row;
     flex-grow: 5;
@@ -163,43 +190,43 @@ export default {
 
 .selectWeekYear {
     display: flex;
-    height: 10%;
+    height: 3em;
     width: 100%;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .dateField {
-    width: 20%;
+    width: 40%;
     height: 100%;
 }
 
 .button-container {
     display: flex;
     margin-top: 5%;
-    height: 10%;
+    height: 2.5em;
     width: 100%;
     justify-content: center;
 }
 
 .go-button {
-    height: 100%;
-    width: 10%;
+    height: 3em;
+    width: 5em;
 }
 
 div + #bubble {
-    width: 19.051875em;
-    height: 17.45125em;
-    left: 0em;
-    top: 13em;
+    width: 11em;
+    height: 11em;
+    left: 2.5em;
+    top: 8em;
 
     background: linear-gradient(180deg, rgba(0, 88, 104, 0.69) 0%, #145f6d 100%);
 }
 
 div + #bubble + #bubble {
-    width: 16.935em;
-    height: 15.489375em;
-    left: 17em;
-    top: 27em;
+    width: 9.5em;
+    height: 9.5em;
+    left: 13.5em;
+    top: 15em;
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #84c1cc;
 }
