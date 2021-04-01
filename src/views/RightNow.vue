@@ -2,7 +2,10 @@
     <div class="rightnow">
         <div id="container" class="border">
             <div id="left" class="border">
-                <Infobox msg="Här kan du visa vad som sänds just nu i de olika kanalerna." />
+                <div class="info">
+                    <div><Sectiontitle msg="Tablå" /></div>
+                    <div><Infobox msg="Här kan du se vad som sänds under dagen i vald kanal" /></div>
+                </div>
                 <div id="leftbottom" class="border">
                     <div id="radioStationContainer">
                         <Radio-station station="P1" id="132" />
@@ -32,6 +35,7 @@
 
 <script>
 import Infobox from "../components/Infobox.vue"
+import Sectiontitle from "../components/Sectiontitle.vue"
 import RadioStation from "../components/RadioStation"
 import Program from "../components/Program"
 
@@ -46,6 +50,7 @@ export default {
     },
     components: {
         Infobox,
+        Sectiontitle,
         RadioStation,
         Program,
     },
@@ -174,7 +179,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 #container {
@@ -213,6 +218,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-grow: 1;
 }
 
