@@ -9,22 +9,10 @@
             <div class="input">
                 <div>Välj kanal</div>
                 <div class="channelcontainer">
-                    <div>
-                        <label for="chP1"><img src="P1.png"/></label>
-                        <input type="radio" value="P1" id="chP1" v-model="inputChannel" checked />
-                    </div>
-                    <div>
-                        <label for="chP2"><img src="P2.png"/></label>
-                        <input type="radio" value="P2" id="chP2" v-model="inputChannel" />
-                    </div>
-                    <div>
-                        <label for="chP3"><img src="P3.png"/></label>
-                        <input type="radio" value="P3" id="chP3" v-model="inputChannel" />
-                    </div>
-                    <div>
-                        <label for="chP4"><img src="P4 Göteborg.png"/></label>
-                        <input type="radio" value="P4 Göteborg" id="chP4" v-model="inputChannel" />
-                    </div>
+                    <div><Channel channel="P1" channelID="chP1" /></div>
+                    <div><Channel channel="P2" channelID="chP2" /></div>
+                    <div><Channel channel="P3" channelID="chP3" /></div>
+                    <div><Channel channel="P4 Göteborg" channelID="chP4" /></div>
                 </div>
 
                 <div class="date">
@@ -48,11 +36,13 @@
 <script>
 import Infobox from "../components/Infobox.vue"
 import Sectiontitle from "../components/Sectiontitle.vue"
+import Channel from "../components/Channel.vue"
 export default {
     name: "Take me to",
     components: {
         Infobox,
         Sectiontitle,
+        Channel,
     },
     data() {
         return {
@@ -160,9 +150,10 @@ export default {
 
 <style scoped>
 .outer {
-    display: inline-flex;
-    position: relative;
+    display: flex;
     flex-direction: column;
+    padding-bottom: 5em;
+    min-height: 90vh;
     color: #ffffff;
 }
 
@@ -178,10 +169,15 @@ export default {
     margin-right: 3em;
     margin-top: 1em;
     margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    flex-direction: column;
 }
 
 #btn:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .channelcontainer {
@@ -210,6 +206,7 @@ input[type="radio"] {
 
 #songlist > li {
     margin-top: 3em;
+    margin-left: 3em;
     list-style-type: none;
     text-align: start;
     font-size: large;
