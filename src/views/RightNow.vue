@@ -14,9 +14,6 @@
             </div>
         </div>
         <div id="right" class="border">
-            <div id="righttop">
-                <h3 class="textAlignLeft marginLeft">Start</h3>
-            </div>
             <div>
                 <Program
                     v-for="program in showCertainNumberOfPrograms"
@@ -180,12 +177,9 @@ export default {
     min-height: 100vh;
 }
 
-.marginLeft {
-    margin-left: 2.3em;
-}
-
 #container {
     display: flex;
+    margin-bottom: 2em;
 }
 
 #left {
@@ -216,12 +210,10 @@ export default {
 }
 
 #right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-grow: 1;
-    padding-right: 4em;
-}
-
-#righttop {
-    margin-right: auto;
 }
 
 /* For bigger screens */
