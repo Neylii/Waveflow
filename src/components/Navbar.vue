@@ -1,10 +1,10 @@
 <template>
     <div class="navbar">
-        <a href="#">Waveflow</a>
-        <a href="#">Topp 3</a>
-        <a href="#">Låtlistan</a>
-        <a href="#">Tablå</a>
-        <a href="#">Om oss</a>
+        <a href="#section1">Waveflow</a>
+        <a href="#section2">Topp 3</a>
+        <a href="#section3">Låtlistan</a>
+        <a href="#section4">Tablå</a>
+        <a href="#section5">Om oss</a>
     </div>
 </template>
 
