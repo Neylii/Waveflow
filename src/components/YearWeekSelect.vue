@@ -1,11 +1,23 @@
 <template>
     <div id="year-week-select">
-        <select name="year" class="date-dropdown" v-model="selectedYear" @change="createListOfWeeks(); selections()">
-            <option :value="year" v-for="year in years" :key="year">{{ year }}</option>
-        </select>
-        <select name="week" class="date-dropdown" v-model="selectedWeek" @change="selections()">
-            <option :value="week" v-for="week in weeks" :key="week">{{ week }}</option>
-        </select>
+        <label for="year" class="arimo-font">
+            Välj år
+            <select
+                name="year"
+                class="date-dropdown arimo-font"
+                v-model="selectedYear"
+                @change="
+                    createListOfWeeks();
+                    selections()">
+                <option :value="year" v-for="year in years" :key="year">{{ year }}</option>
+            </select></label
+        >
+        <label for="week" class="arimo-font">
+            Välj vecka
+            <select name="week" class="date-dropdown arimo-font" v-model="selectedWeek" @change="selections()">
+                <option :value="week" v-for="week in weeks" :key="week">{{ week }}</option>
+            </select></label
+        >
     </div>
 </template>
 
@@ -75,4 +87,39 @@ export default {
 </script>
 
 <style>
+.arimo-font {
+    font-family: Arimo;
+    font-style: normal;
+}
+
+#year-week-select {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 5%;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #FAFEFF;
+}
+
+.date-dropdown {
+    border: 1px solid #84c1cc;
+    border-radius: 25px;
+    text-indent: 20px;
+    font-size: 16px;
+    line-height: 23px;
+    color: #145F6D;
+    width: 9em;
+    height: 3em;
+    margin-top: 5%;
+}
+
+select > option {
+    border: 1px solid #84c1cc;
+    border-radius: 25px;
+}
 </style>
