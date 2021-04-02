@@ -17,13 +17,14 @@ export default {
         return {
             years: [],
             weeks: [],
-            selectedYear: null,
-            selectedWeek: null,
+            selectedYear: 2021,
+            selectedWeek: 1,
         }
     },
 
     mounted() {
         this.createListOfAvailableYears()
+        this.createListOfWeeks()
     },
 
     methods: {
@@ -65,10 +66,10 @@ export default {
 
         // emits the selected year and week so that it can be used in the main view
         selections() {
-            this.$emit('year', this.selectedYear)
-            this.$emit('week', this.selectedWeek)
-            console.log(this.selectedYear + ', ' + this.selectedWeek)
-        }
+            this.$emit("year", this.selectedYear)
+            this.$emit("week", this.selectedWeek)
+            console.log(this.selectedYear + ", " + this.selectedWeek)
+        },
     },
 }
 </script>
