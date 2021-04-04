@@ -1,10 +1,10 @@
 <template>
-    <div class="channelcontainer">
-        <label :for="channelID">
+    <label :for="channelID">
+        <div class="channel">
             <img :src="channel + '.png'" />
-        </label>
-        <input type="radio" :value="channel" :id="channelID" v-model="$parent.inputChannel" />
-    </div>
+            <input type="radio" :value="channel" :id="channelID" v-model="$parent.inputChannel" />
+        </div>
+    </label>
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style scoped>
-.channelcontainer {
+.channel {
     display: flex;
     flex-direction: column;
     align-items: center;
