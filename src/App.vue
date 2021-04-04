@@ -1,11 +1,11 @@
 <template>
     <div>
         <Navbar/>
-        <div id="section1" class="section"><start-page/></div>
-        <div id="section2" class="section"><top-three/></div>
-        <div id="section3" class="section"><take-me-to/></div>
-        <div id="section4" class="section"><right-now/></div>
-        <div id="section5" class="section"><about-us/></div>      
+        <div id="Startpage" class="section"><start-page/></div>
+        <div id="Top3" class="section"><top-three/></div>
+        <div id="List" class="section"><take-me-to/></div>
+        <div id="Tableau" class="section"><right-now/></div>
+        <div id="Aboutus" class="section"><about-us/></div>      
 
     </div>
 </template>

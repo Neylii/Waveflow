@@ -17,16 +17,18 @@ export default {
 .infobox {
     padding: 0.5em;
     margin: 0em;
+    text-align: start;
+    
 }
 
 @media screen and (min-width: 700px) {
     .infobox {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin-top: 1em;
-        margin-bottom: 3em;
-        margin-left: 7em;
-        margin-right: 7em;
+        margin-bottom: 0.5em;
+        margin-left: 4em;
+        margin-right: 4em;
         border-left: 0.0625em solid #ffffff;
         border-bottom: 0.0625em solid #ffffff;
 

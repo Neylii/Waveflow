@@ -1,10 +1,30 @@
 <template>
     <div class="navbar">
-        <a href="#section1">Waveflow</a>
-        <a href="#section2">Topp 3</a>
-        <a href="#section3">Låtlistan</a>
-        <a href="#section4">Tablå</a>
-        <a href="#section5">Om oss</a>
+        <a class="showondesktop" href="#Startpage"><div>Waveflow</div></a>
+        <div class="box">
+            <a href="#Top3">
+                <div id="linkbgr"><img src="../assets/topp3.png" /></div>
+                <p>Topp 3</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="#List">
+                <div id="linkbgr"><img src="../assets/takemeto.png" /></div>
+                <p>Låtlistan</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="#Tableau">
+                <div id="linkbgr"><img src="../assets/rightnow.png"/></div>
+                <p>Tablå</p>
+            </a>
+        </div>
+        <div class="box">
+            <a class="aboutus" href="#Aboutus">
+                <div id="linkbgr"><img src="../assets/about.png"/></div>
+                <p>Om oss</p>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -17,58 +37,98 @@ export default {
 
 <style>
 .navbar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+
+    justify-content: center;
     width: 100%;
     background-color: #294c53;
-    overflow: auto;
+    overflow: visible;
     position: fixed;
     z-index: 10;
     bottom: 0;
-    height: 7em;
+    max-height: 6em;
 }
 
-.navbar > a {
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#linkbgr {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 0.5em;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: rgba(229, 238, 240, 0.7);
+}
+
+#linkbgr > img {
+    margin-top: 0.5em;
+    transform: scale(1.1);
+}
+
+a {
     font-family: Armata;
+    font-size: small;
+    text-align: center;
     float: left;
-    width: 12%;
-    padding: 0.5em 2em 0.5em;
-    color: #FAFEFF;
+    color: #fafeff;
     text-decoration: none;
-    margin-top: 4em;
 }
 
-.navbar > a:first-child {
+.showondesktop {
     display: none;
 }
 
 @media screen and (min-width: 700px) {
     .navbar {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        align-content: center;
         top: 0%;
         background-color: #53787f;
     }
 
-    .navbar > a {
-        background-color: rgba(20, 95, 109, 0.3);
-        border-radius: 1.25em;
-        color: #e5eef0;
-        margin-top: 2%;
-    }
-
-    .navbar > a:first-child {
+    .showondesktop {
         display: initial;
         background: none;
         font-family: Pacifico;
         font-size: xxx-large;
         color: #84c1cc;
-        /* width: 10%; */
-        margin-top: -0.5em;
-        text-align: left;
+        margin-top: 1em;
     }
 
-    .navbar > a:last-child {
+    a {
+        border-radius: 1.25em;
+        color: #e5eef0;
+        margin-top: 2%;
+        width: 60%;
+        height: 3em;
         background-color: rgba(56, 12, 21, 0.1);
-        width: 10%;
-        margin-left: 5%;
-        padding: 0.5em;
+        margin-top: 1em;
+    }
+
+    a > p {
+        margin-top: 0.7em;
+    }
+
+    .aboutus {
+        background-color: rgba(132, 193, 204, 0.1);
+        margin-top: -10%;
+        width: 45%;
+    }
+
+    #linkbgr {
+        display: none;
     }
 }
 </style>

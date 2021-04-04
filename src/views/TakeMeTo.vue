@@ -4,22 +4,22 @@
             <div class="left">
                 <div class="info">
                     <div><Sectiontitle msg="Låtlistan" /></div>
-                    <div><Infobox msg="En mix av låtar som var mest populära på en kanal vid en viss tidpunkt" /></div>
+                    <div class="infobox"><Infobox msg="Välj datum och se en mix av låtar som spelats på din valda radiokanal" /></div>
                 </div>
 
+                <label for="channel" class="description">Välj kanal<br /></label>
                 <div class="leftbottom">
-                    <!-- <span >Välj kanal <br/></span> -->
                     <div id="channelcontainer">
                         <div><Channel channel="P1" channelID="chP1" /></div>
                         <div><Channel channel="P2" channelID="chP2" /></div>
                         <div><Channel channel="P3" channelID="chP3" /></div>
                         <div><Channel channel="P4 Göteborg" channelID="chP4" /></div>
                     </div>
-                    <div class="date">
-                        <label for="takeme">Välj datum<br /></label>
-                        <input type="date" v-model="inputDate" />
-                        <input type="button" id="btn" value="Sök" @click="getSongMix" />
-                    </div>
+                </div>
+                <label for="date" class="description">Välj datum<br /></label>
+                <div class="date">
+                    <input type="date" v-model="inputDate" />
+                    <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
             </div>
         </div>
@@ -150,6 +150,7 @@ export default {
 </script>
 
 <style scoped>
+/* for smallest screens */
 #takemeto {
     display: flex;
     flex-direction: column;
@@ -172,6 +173,8 @@ export default {
 .info {
     display: flex;
     flex-direction: row;
+    min-height: 20%;
+    transform: scale(0.8);
 }
 
 .lefttop {
@@ -186,6 +189,8 @@ export default {
     flex-wrap: wrap;
     gap: 1em;
     text-align: center;
+    margin-left: -2em;
+    margin-right: -2em;
 }
 
 #channelcontainer {
@@ -194,17 +199,25 @@ export default {
     flex-wrap: wrap;
     gap: 0.5em;
     margin-top: 1em;
+    /* transform: scale(0.8); */
+    margin-left: 1em;
 }
 
 .date {
     font-style: Armata;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-left: 3em;
     margin-right: 3em;
+    margin-top: 1em;
+    margin-bottom: -3em;
     justify-content: center;
     flex-wrap: wrap;
-    transform: scale(1.5);
+    transform: scale(1.2);
+}
+
+.description {
+    display: none;
 }
 
 .right {
@@ -222,7 +235,7 @@ export default {
     border: 2px solid #84c1cc;
     box-sizing: border-box;
     border-radius: 10px;
-    margin-top: -3em;
+    transform: scale(0.9);
 }
 
 #songlist > li {
@@ -231,19 +244,29 @@ export default {
     color: #ffffff;
     font-family: Arimo;
     list-style-type: none;
-    padding: 0.3em;
+    padding: 0.2em;
 
     margin: 1em;
     text-align: start;
 }
 
-/* For bigger screens */
+@media screen and (min-width: 576px) {
+    .songbox {
+        transform: scale(1);
+    }
+
+    .info {
+        transform: scale(1);
+    }
+}
+
+/* For medium screens */
 @media screen and (min-width: 700px) {
     #takemeto {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        width: 100%;
+        margin-left: -2em;
         transform: scale(0.8);
     }
 
@@ -251,9 +274,18 @@ export default {
         display: grid;
     }
 
+    .infobox {
+        transform: scale(0.9);
+    }
+
+    .description {
+        display: initial;
+        font-size: large;
+    }
+
     #channelcontainer {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
         transform: scale(0.8);
     }
@@ -263,12 +295,6 @@ export default {
         padding: 2.15em;
         border: 2px solid #84c1cc;
         border-radius: 10px;
-
-        /* snyggare men är inte så responsiv */
-        /* min-width: 30em;
-        min-height: 30em; */
-        /* left: 47em;
-        top: 25em; */
     }
 
     #songlist > li {
@@ -281,6 +307,18 @@ export default {
         padding: 0.3em;
         margin: 1em;
         text-align: start;
+    }
+
+    /* For biggest screens */
+    @media screen and (min-width: 992px) {
+        #channelcontainer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr;
+            transform: scale(0.8);
+        }
+
+
     }
 }
 </style>
