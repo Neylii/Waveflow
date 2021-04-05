@@ -1,12 +1,12 @@
 <template>
-    <div class="programcontainer border">
-        <div class="timecontainer border">
+    <div class="programcontainer">
+        <div class="timecontainer">
             <p>
                 <strong>{{ time }}</strong>
             </p>
         </div>
         <Program-container :title="title" :description="description" />
-        <div class="stationimg border">
+        <div class="stationimg">
             <img :src="imgSrc" />
         </div>
     </div>
@@ -36,6 +36,8 @@ export default {
     background: rgba(20, 95, 109, 0.3);
     border: 1px solid #84c1cc;
     border-radius: 10px;
+    max-width: 22em;
+    width: 100%;
 }
 
 .programcontainer + .programcontainer {
@@ -74,6 +76,10 @@ export default {
 }
 
 @media screen and (min-width: 700px) {
+    .programcontainer {
+        max-width: 40em;
+    }
+
     .timecontainer > p {
         font-size: 24px;
     }

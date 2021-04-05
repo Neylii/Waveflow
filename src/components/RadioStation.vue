@@ -1,8 +1,6 @@
 <template>
-    <div class="radiostation border">
-        <label :for="station">
-            <img :src="station + '.png'" :name="station" />
-        </label>
+    <label :for="station" class="radiostation border">
+        <img :src="station + '.png'" :name="station" />
         <input
             type="checkbox"
             class="biggerCheckBox"
@@ -11,7 +9,7 @@
             @click="$parent.updateAllChannels"
             :checked="checked"
         />
-    </div>
+    </label>
 </template>
 
 <script>
@@ -25,19 +23,21 @@ export default {
 
 <style scoped>
 .radiostation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 1em;
-    border: 4px solid #84c1cc;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 1em;
+        border: 4px solid #84c1cc;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
 img {
     height: 4em;
     width: 4em;
+    margin-bottom: 1em;
 }
 
 .biggerCheckBox {
@@ -46,6 +46,7 @@ img {
 }
 
 @media screen and (min-width: 700px) {
+
     img {
         height: 8.75em;
         width: 8.75em;
