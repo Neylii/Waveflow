@@ -10,10 +10,7 @@
             </div>
             <div class="select-date-box">
                 <div class="weekyear">
-                    <div class="selectWeekYear">
-                        <input type="text" placeholder="year" class="dateField" v-model="year" />
-                        <input type="text" placeholder="week" class="dateField" v-model="week" />
-                    </div>
+                    <year-week-select @year="setYear" @week="setWeek" />
                     <div class="button-container">
                         <input type="button" value="GO" class="go-button" @click="addArtistsToList()" />
                     </div>
@@ -35,22 +32,36 @@
 import Infobox from "../components/Infobox"
 import Bubble from "../components/ArtistBubble"
 import Sectiontitle from "../components/Sectiontitle"
+import yearWeekSelect from "../components/YearWeekSelect"
+
 export default {
     components: {
         Bubble,
         Infobox,
         Sectiontitle,
+        yearWeekSelect,
     },
     data() {
         return {
             topThreeArtists: [],
-            year: null,
-            week: null,
+            year: 2021,
+            week: 1,
+            showNoMatches: false,
         }
     },
     name: "Top3",
 
     methods: {
+        // Updates the year variable to the users selection. Value is sent from YearWeekSelect-component.
+        setYear(value) {
+            this.year = value
+        },
+
+        // Updates the week variable to the users selection. Value is sent from YearWeekSelect-component.
+        setWeek(value) {
+            this.week = value
+        },
+
         addArtistToMap(artistMap, artist) {
             let value = 0
             if (artistMap.has(artist)) {
@@ -106,6 +117,7 @@ export default {
             let artistList = []
             for (let i = 0; i < 7; i++) {
                 let songs = await this.getSongs(this.getDateOfISOWeek(i))
+
                 for (const song of songs) {
                     if (song.artist.includes(",") || song.artist.includes("&")) {
                         let artistsInCollab = song.artist.replaceAll("&", ",").split(",")
