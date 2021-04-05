@@ -19,8 +19,8 @@ export default {
 #contentcontainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    flex-grow: 1;
+    padding: 1em;
 }
 
 #contentcontainer > * {
@@ -39,13 +39,9 @@ p {
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
+    margin-top: 1em;
 }
 
-#contentcontainer {
-    text-align: center;
-    flex-grow: 1;
-    min-width: 10em;
-}
 
 @media screen and (min-width: 700px) {
     h2 {

@@ -6,7 +6,7 @@
                     <div><Sectiontitle msg="Tablå" /></div>
                     <div><Infobox msg="Här kan du se vad som sänds under dagen i vald kanal" /></div>
                 </div>
-                <div id="leftbottom" class="border">
+                <div id="leftbottom">
                     <div id="radioStationContainer">
                         <Radio-station station="P1" id="132" />
                         <Radio-station station="P2" id="163" />
@@ -16,8 +16,8 @@
                 </div>
             </div>
         </div>
-        <div id="right" class="border">
-            <div>
+        <div id="right">
+            <div class="programs">
                 <Program
                     v-for="program in showCertainNumberOfPrograms"
                     :key="program"
@@ -179,7 +179,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding-bottom: 5em;
-    min-height: 90vh;
+    min-height: 99vh;
 }
 
 #container {
@@ -209,21 +209,38 @@ export default {
 #radioStationContainer {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1em;
     margin-top: 1em;
+    gap: 0.2em;
 }
 
 #right {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+    justify-content: unset;
+    flex-grow: 0;
+}
+
+.programs {
+    padding-right: 0em;
 }
 
 /* For bigger screens */
+@media screen and (min-width: 400px) {
+    #right {
+        flex-grow: 1;
+    }
+
+    #radioStationContainer {
+        gap: 0.5em;
+    }
+}
+
 @media screen and (min-width: 700px) {
+    .programs {
+        padding-right: 2em;
+    }
+
     .rightnow {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -231,11 +248,16 @@ export default {
         width: 100%;
     }
 
+    #right {
+        flex-grow: 1;
+        justify-content: center;
+    }
+
     #radioStationContainer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        gap: 4em;
+        gap: 2em;
     }
 }
 </style>
