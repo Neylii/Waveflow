@@ -52,6 +52,7 @@ export default {
 }
 
 .timecontainer > p {
+    font-family: arimo;
     font-size: 16px;
 }
 
@@ -75,7 +76,7 @@ export default {
     margin: 0.3em;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .programcontainer {
         max-width: 40em;
     }

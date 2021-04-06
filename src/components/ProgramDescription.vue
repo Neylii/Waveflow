@@ -24,11 +24,11 @@ export default {
 }
 
 #contentcontainer > * {
-    font-family: Arimo;
     font-style: normal;
 }
 
 h2 {
+    font-family: Arimo;
     font-weight: bold;
     font-size: 20px;
     line-height: 23px;
@@ -38,12 +38,10 @@ h2 {
 p {
     font-weight: normal;
     font-size: 12px;
-    line-height: 15px;
     margin-top: 1em;
 }
 
-
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     h2 {
         font-size: 20px;
     }

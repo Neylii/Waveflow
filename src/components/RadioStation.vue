@@ -45,7 +45,7 @@ img {
     height: 1.25em;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
 
     img {
         height: 8.75em;

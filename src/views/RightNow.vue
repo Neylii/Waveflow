@@ -1,18 +1,15 @@
 <template>
     <div class="rightnow">
-        <div id="container" class="border">
-            <div id="left" class="border">
-                <div class="info">
-                    <div><Sectiontitle msg="Tablå" /></div>
-                    <div><Infobox msg="Här kan du se vad som sänds under dagen i vald kanal" /></div>
-                </div>
-                <div id="leftbottom">
-                    <div id="radioStationContainer">
-                        <Radio-station station="P1" id="132" />
-                        <Radio-station station="P2" id="163" />
-                        <Radio-station station="P3" id="164" :checked="true" />
-                        <Radio-station station="P4 Göteborg" id="212" />
-                    </div>
+        <div id="left">
+            <div class="info">
+                <TopInfo title="Tablå" infotext="Här kan du se vad som sänds under dagen i vald kanal" />
+            </div>
+            <div id="leftbottom">
+                <div id="radioStationContainer">
+                    <Radio-station station="P1" id="132" />
+                    <Radio-station station="P2" id="163" />
+                    <Radio-station station="P3" id="164" :checked="true" />
+                    <Radio-station station="P4 Göteborg" id="212" />
                 </div>
             </div>
         </div>
@@ -34,10 +31,9 @@
 </template>
 
 <script>
-import Infobox from "../components/Infobox.vue"
-import Sectiontitle from "../components/Sectiontitle.vue"
 import RadioStation from "../components/RadioStation"
 import Program from "../components/Program"
+import TopInfo from "../components/TopInfo.vue"
 
 export default {
     name: "RightNow",
@@ -49,8 +45,7 @@ export default {
         }
     },
     components: {
-        Infobox,
-        Sectiontitle,
+        TopInfo,
         RadioStation,
         Program,
     },
@@ -178,8 +173,8 @@ export default {
 .rightnow {
     display: flex;
     flex-direction: column;
-    padding-bottom: 5em;
     min-height: 99vh;
+    padding-top: 6em;
 }
 
 #container {
@@ -190,7 +185,6 @@ export default {
 #left {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
 #lefttop {
@@ -222,7 +216,9 @@ export default {
 }
 
 .programs {
-    padding-right: 0em;
+    margin-top: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
 }
 
 /* For bigger screens */
@@ -236,11 +232,7 @@ export default {
     }
 }
 
-@media screen and (min-width: 700px) {
-    .programs {
-        padding-right: 2em;
-    }
-
+@media screen and (min-width: 768px) {
     .rightnow {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -250,7 +242,6 @@ export default {
 
     #right {
         flex-grow: 1;
-        justify-content: center;
     }
 
     #radioStationContainer {
