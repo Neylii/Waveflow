@@ -25,8 +25,8 @@ export default {
     border-radius: 10px;
     padding: 1em;
     border: 4px solid #84c1cc;
-    box-sizing: border-box;
 }
+
 img {
     height: 4em;
     width: 4em;
@@ -36,6 +36,7 @@ input[type="radio"] {
     padding: 5em;
     margin-top: 0;
     margin-left: 0;
+    transform: scale(1.2);
 }
 
 @media screen and (min-width: 768px) {
@@ -45,6 +46,7 @@ input[type="radio"] {
     }
 
     input[type="radio"] {
+        transform: scale(1.7);
     }
 }
 </style>
