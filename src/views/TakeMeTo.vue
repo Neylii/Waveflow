@@ -191,11 +191,8 @@ export default {
 .date {
     display: flex;
     flex-direction: row;
-    margin-left: 3em;
-    margin-right: 3em;
     margin-top: 1em;
     justify-content: center;
-    transform: scale(1.2);
 }
 
 .description {

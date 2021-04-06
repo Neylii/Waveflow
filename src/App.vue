@@ -57,8 +57,7 @@ body {
 .section {
     display: flex;
     flex-direction: column;
-    height: 99vh;
-    width: 99vw;
+    min-height: 100vh;
 }
 
 .header {
@@ -84,6 +83,7 @@ body {
     max-width: 100%;
     height: auto;
 }
+
 .textAlignLeft {
     text-align: left;
 }
