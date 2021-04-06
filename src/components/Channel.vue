@@ -34,9 +34,9 @@ img {
 
 input[type="radio"] {
     padding: 5em;
-    margin-top: 0;
+    margin-top: 1em;
     margin-left: 0;
-    transform: scale(1.2);
+    transform: scale(0.3);
 }
 
 @media screen and (min-width: 768px) {
@@ -46,7 +46,7 @@ input[type="radio"] {
     }
 
     input[type="radio"] {
-        transform: scale(1.7);
+        transform: scale(0.5);
     }
 }
 </style>
