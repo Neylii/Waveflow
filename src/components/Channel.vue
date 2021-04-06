@@ -33,7 +33,6 @@ img {
 }
 
 input[type="radio"] {
-    transform: scale(1.2);
     padding: 5em;
     margin-top: 0;
     margin-left: 0;
@@ -46,7 +45,6 @@ input[type="radio"] {
     }
 
     input[type="radio"] {
-        transform: scale(1.7);
     }
 }
 </style>
