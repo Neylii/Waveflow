@@ -19,8 +19,8 @@ export default {
 
 <style scoped>
 #startPage {
-    height: 100vh;
-    width: 100vw;
+    height: 99vh;
+    width: 99vw;
 }
 
 .text-container {
