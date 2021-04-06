@@ -59,7 +59,6 @@ body {
     flex-direction: column;
     height: 99vh;
     width: 99vw;
-    padding-top: 6em;
 }
 
 .header {
@@ -87,5 +86,9 @@ body {
 }
 .textAlignLeft {
     text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+    padding-top: 6em;
 }
 </style>
