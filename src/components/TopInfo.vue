@@ -30,11 +30,10 @@ export default {
     display: flex;
     flex-direction: row;
     min-height: 20%;
-    transform: scale(0.8);
 }
 
 .sectiontitle {
-    width: 80%;
+    min-width: 52%;
 }
 
 .infotext {
@@ -47,17 +46,19 @@ export default {
 
 @media screen and (min-width: 576px) {
     .topinfo {
-        transform: scale(1);
+        align-items: center;
     }
 }
 
 @media screen and (min-width: 768px) {
     .topinfo {
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        
     }
 
     .infotext {
-        transform: scale(0.9);
+        max-width: 300px;
     }
 }
 </style>
