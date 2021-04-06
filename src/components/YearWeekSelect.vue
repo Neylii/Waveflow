@@ -8,7 +8,9 @@
                 v-model="selectedYear"
                 @change="
                     createListOfWeeks();
-                    selections()">
+                    selections()
+                "
+            >
                 <option :value="year" v-for="year in years" :key="year">{{ year }}</option>
             </select></label
         >
@@ -103,7 +105,7 @@ label {
     display: flex;
     flex-direction: column;
     font-size: 12px;
-    color: #FAFEFF;
+    color: #fafeff;
 }
 
 .date-dropdown {
@@ -112,10 +114,11 @@ label {
     text-indent: 20px;
     font-size: 16px;
     line-height: 23px;
-    color: #145F6D;
+    color: #145f6d;
     width: 9em;
-    height: 3em;
+    height: 48px;
     margin-top: 5%;
+    font-weight: bold;
 }
 
 select > option {
