@@ -88,7 +88,7 @@ a {
     display: none;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .navbar {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
