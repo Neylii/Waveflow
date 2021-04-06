@@ -36,8 +36,7 @@ export default {
     background: rgba(20, 95, 109, 0.3);
     border: 1px solid #84c1cc;
     border-radius: 10px;
-    max-width: 22em;
-    width: 100%;
+    width: 17em;
 }
 
 .programcontainer + .programcontainer {
@@ -53,11 +52,8 @@ export default {
 
 .timecontainer > p {
     font-family: arimo;
-    font-size: 16px;
-}
-
-.timecontainer > p {
-    margin: 1em;
+    font-size: 14px;
+    margin: 0.5em;
 }
 
 .stationimg {
@@ -71,12 +67,61 @@ export default {
 }
 
 .stationimg > img {
-    height: 4em;
-    width: 4em;
-    margin: 0.3em;
+    height: 3em;
+    width: 3em;
+    margin: 0.2em;
+}
+
+@media screen and (min-width: 360px) {
+    .programcontainer {
+        width: 21em;
+    }
+
+    .timecontainer > p {
+        font-size: 18px;
+    }
+
+    .stationimg > img {
+        height: 4em;
+        width: 4em;
+        margin: 0.3em;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .programcontainer {
+        width: 27em;
+    }
+
+    .timecontainer > p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .programcontainer {
+        width: 33em;
+    }
 }
 
 @media screen and (min-width: 768px) {
+    .programcontainer {
+        max-width: 28em;
+        width: auto;
+    }
+
+    .timecontainer > p {
+        font-size: 20px;
+    }
+
+    .stationimg > img {
+        height: 4.5em;
+        width: 4.5em;
+        margin: 0.7em;
+    }
+}
+
+@media screen and (min-width: 1000px) {
     .programcontainer {
         max-width: 40em;
     }

@@ -184,6 +184,8 @@ export default {
 #left {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
 }
 
 #lefttop {
@@ -210,20 +212,24 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: unset;
-    flex-grow: 0;
 }
 
 .programs {
     margin-top: 2em;
-    padding-right: 2em;
-    padding-left: 2em;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
 }
 
 /* For bigger screens */
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 360px) {
+    .programs {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+
     #right {
         flex-grow: 1;
+        width: 100%;
     }
 
     #radioStationContainer {
@@ -231,16 +237,12 @@ export default {
     }
 }
 
+
+
 @media screen and (min-width: 768px) {
     .rightnow {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        width: 100%;
-    }
-
-    #right {
-        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
     }
 
     #radioStationContainer {

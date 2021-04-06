@@ -35,6 +35,18 @@ export default {
     }
 
 img {
+    height: 3em;
+    width: 3em;
+    margin-bottom: 1em;
+}
+
+.biggerCheckBox {
+    width: 1em;
+    height: 1em;
+}
+
+@media screen and (min-width: 360px) {
+    img {
     height: 4em;
     width: 4em;
     margin-bottom: 1em;
@@ -44,17 +56,42 @@ img {
     width: 1.25em;
     height: 1.25em;
 }
+}
 
-@media screen and (min-width: 768px) {
-
+@media screen and (min-width: 500px) {
     img {
-        height: 8.75em;
-        width: 8.75em;
+        height: 5.8em;
+        width: 5.8em;
     }
 
     .biggerCheckBox {
-        width: 2.5em;
-        height: 2.5em;
+        width: 1.75em;
+        height: 1.75em;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+    img {
+        height: 8em;
+        width: 8em;
+    }
+
+    .biggerCheckBox {
+        width: 2em;
+        height: 2em;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    img {
+        height: 10em;
+        width: 10em;
+    }
+
+    .biggerCheckBox {
+        width: 2.7em;
+        height: 2.7em;
     }
 }
 </style>
