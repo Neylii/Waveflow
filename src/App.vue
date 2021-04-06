@@ -89,6 +89,8 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-    padding-top: 6em;
+    .section {
+        padding-top: 6em;
+    }
 }
 </style>
