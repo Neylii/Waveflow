@@ -226,7 +226,6 @@ export default {
         grid-template-columns: 5fr 6fr;
         grid-template-rows: 1fr;
         width: 100%;
-        padding-top: 6em;
     }
 
     .info-box {
