@@ -230,5 +230,9 @@ export default {
     .info-box {
         flex-direction: column;
     }
+
+    .search-button {
+        width: 9em;
+    }
 }
 </style>
