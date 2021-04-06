@@ -25,11 +25,14 @@ export default {
     border-radius: 10px;
     padding: 1em;
     border: 4px solid #84c1cc;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 img {
-    height: 4em;
-    width: 4em;
+    height: 3em;
+    width: 3em;
+    /* margin-bottom: 1em; */
 }
 
 input[type="radio"] {
@@ -39,10 +42,33 @@ input[type="radio"] {
     transform: scale(0.3);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 360px) {
     img {
-        height: 8.75em;
-        width: 8.75em;
+        height: 4em;
+        width: 4em;
+        /* margin-bottom: 1em; */
+    }
+}
+
+@media screen and (min-width: 500px) {
+    img {
+        height: 5.8em;
+        width: 5.8em;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    img {
+        height: 8em;
+        width: 8em;
+        /* margin-bottom: 1.5em; */
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    img {
+        height: 10em;
+        width: 10em;
     }
 
     input[type="radio"] {

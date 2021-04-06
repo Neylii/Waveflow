@@ -20,7 +20,7 @@
                 </div>
                 <label for="date" class="description">Välj datum<br /></label>
                 <div class="date">
-                    <input type="date" v-model="inputDate" />
+                    <input type="date" id="inputdate" v-model="inputDate" />
                     <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
             </div>
@@ -195,6 +195,21 @@ export default {
     justify-content: center;
 }
 
+#btn {
+    border-radius: 50%;
+    border-color: #84C1CC;
+    width: 3.5em;
+    height: 3.5em;
+    text-transform: uppercase;
+}
+
+#inputdate {
+    border-radius: 1em;
+    border-color: #84C1CC;
+    width: 30%;
+    text-align: center;
+    text-transform: uppercase;
+}
 .description {
     display: none;
 }
@@ -234,7 +249,6 @@ export default {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        transform: scale(0.8);
     }
 
     .description {
@@ -246,7 +260,7 @@ export default {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
-        transform: scale(0.8);
+        transform: scale(0.9);
     }
 
     .songbox {
