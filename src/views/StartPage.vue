@@ -1,10 +1,10 @@
 <template>
     <div id="startPage">
-        <div class="text-container">
-            <h1>Waveflow</h1>
-            <div class="paragraphs">
-                <p>Välkommen till Waveflow!</p>
-                <p>Här kan du se information och statistik från Sveriges Radio.</p>
+        <div>
+            <img src="../assets/Waveflow2.png" alt="logo">
+            <div class="text-container">
+                <p>Välkommen till Waveflow!<br>
+                Här kan du se information och statistik från Sveriges Radio.</p>
             </div>
         </div>
     </div>
@@ -18,37 +18,31 @@ export default {
 
 
 <style scoped>
-#startPage {
-    height: 99vh;
-    width: 99vw;
-}
 
 .text-container {
-    margin-top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 6em;
 }
 
-.paragraphs {
-    width: 80%;
+img {
+    width: 100%;
 }
 
-h1 {
-    font-family: Pacifico;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 500%;
-    text-align: center;
-    color: #84c1cc;
+#startPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 p {
     font-family: Abel;
     font-style: normal;
     font-weight: normal;
-    line-height: 130%;
     color: #fafeff;
     text-align: start;
-    font-size: 150%;
-    margin-left: 5%;
-    padding-bottom: 3%;
+    font-size: 24px;
 }
 </style>
