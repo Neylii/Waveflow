@@ -1,6 +1,12 @@
 <template>
     <div class="navbar">
-        <a class="showondesktop" href="#Startpage"><div>Waveflow</div></a>
+        <div class="box desktop">
+            <a href="#Startpage">
+                <div id="linkbgr"><img src="../assets/home.png" /></div>
+                <p class="mobileText">Hem</p>
+                <p class="desktopText">Waveflow</p>
+            </a>
+        </div>
         <div class="box">
             <a href="#Top3">
                 <div id="linkbgr"><img src="../assets/topp3.png" /></div>
@@ -15,13 +21,13 @@
         </div>
         <div class="box">
             <a href="#Tableau">
-                <div id="linkbgr"><img src="../assets/rightnow.png"/></div>
+                <div id="linkbgr"><img src="../assets/rightnow.png" /></div>
                 <p>Tablå</p>
             </a>
         </div>
         <div class="box">
             <a class="aboutus" href="#Aboutus">
-                <div id="linkbgr"><img src="../assets/about.png"/></div>
+                <div id="linkbgr"><img src="../assets/about.png" /></div>
                 <p>Om oss</p>
             </a>
         </div>
@@ -38,13 +44,11 @@ export default {
 <style>
 .navbar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
-
     justify-content: center;
     width: 100%;
     background-color: #294c53;
-    overflow: visible;
     position: fixed;
     z-index: 10;
     bottom: 0;
@@ -61,8 +65,6 @@ export default {
 }
 
 #linkbgr {
-    margin-left: 1em;
-    margin-right: 1em;
     padding: 0.5em;
     width: 3em;
     height: 3em;
@@ -70,51 +72,55 @@ export default {
     background-color: rgba(229, 238, 240, 0.7);
 }
 
+.desktopText {
+    display: none;
+}
+
 #linkbgr > img {
     margin-top: 0.5em;
-    transform: scale(1.1);
 }
 
 a {
-    font-family: Armata;
     font-size: small;
-    text-align: center;
-    float: left;
     color: #fafeff;
     text-decoration: none;
 }
 
-.showondesktop {
-    display: none;
-}
-
 @media screen and (min-width: 768px) {
     .navbar {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: 1fr;
         align-content: center;
         top: 0%;
         background-color: #53787f;
     }
 
-    .showondesktop {
+    #linkbgr {
+        display: none;
+    }
+
+    .desktop :first-child {
+        background: none;
+        width: 80%;
+        height: 7em;
+    }
+
+    .mobileText {
+        display: none;
+    }
+
+    .desktopText {
         display: initial;
         background: none;
         font-family: Pacifico;
         font-size: xxx-large;
-        color: #84c1cc;
-        margin-top: 1em;
+        color: #9CD9E4
     }
 
     a {
         border-radius: 1.25em;
         color: #e5eef0;
-        margin-top: 2%;
         width: 60%;
         height: 3em;
         background-color: rgba(56, 12, 21, 0.1);
-        margin-top: 1em;
     }
 
     a > p {
@@ -125,10 +131,6 @@ a {
         background-color: rgba(132, 193, 204, 0.1);
         margin-top: -10%;
         width: 45%;
-    }
-
-    #linkbgr {
-        display: none;
     }
 }
 </style>
