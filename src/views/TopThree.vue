@@ -2,25 +2,21 @@
     <div class="top3">
         <div class="info-selection-box">
             <div class="info-box">
-                <Sectiontitle msg="Topp 3" class="top-three-title" />
-                <Infobox
-                    msg="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka."
-                    class="description-text"
-                />
+                <TopInfo title="Topp 3" infotext="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka."/>
             </div>
             <div class="select-date-box">
                 <div class="weekyear">
                     <year-week-select @year="setYear" @week="setWeek" />
                     <div class="button-container">
-                        <input type="button" value="GO" class="go-button" @click="addArtistsToList()" />
+                        <input type="button" value="Sök" class="search-button arimo-font" @click="addArtistsToList()" />
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="artist-bubble-box">
-            <div>
-                <bubble v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{
+            <div class="bubble-container">
+                <bubble class="bubbles" v-for="artist in topThreeArtists" :key="artist" :artistName="artist.artist">{{
                     artist
                 }}</bubble>
             </div>
@@ -29,17 +25,15 @@
 </template>
 
 <script>
-import Infobox from "../components/Infobox"
 import Bubble from "../components/ArtistBubble"
-import Sectiontitle from "../components/Sectiontitle"
 import yearWeekSelect from "../components/YearWeekSelect"
+import TopInfo from "../components/TopInfo"
 
 export default {
     components: {
         Bubble,
-        Infobox,
-        Sectiontitle,
         yearWeekSelect,
+        TopInfo
     },
     data() {
         return {
@@ -144,12 +138,21 @@ export default {
 
 <style scoped>
 .artist-bubble-box {
-    position: relative;
+    display: flex;
     width: 100%;
     font-family: Armata;
     font-style: normal;
     font-weight: normal;
     color: #ffffff;
+    justify-content: center;
+}
+
+.bubble-container {
+    justify-content: center;
+}
+
+.bubbles {
+    display: flex;
 }
 
 .top3 {
@@ -169,21 +172,7 @@ export default {
     display: flex;
     flex-grow: 1;
     align-items: center;
-}
 
-.top-three-title {
-    display: flex;
-    font-size: 2.5em;
-    width: 40%;
-    justify-content: center;
-}
-
-.description-text {
-    width: 60%;
-    font-family: Armata;
-    line-height: 2em;
-    font-size: 0.9em;
-    color: #ffffff;
 }
 
 .select-date-box {
@@ -214,42 +203,34 @@ export default {
 
 .button-container {
     display: flex;
-    margin-top: 5%;
+    margin-top: 2%;
     height: 2.5em;
     width: 100%;
     justify-content: center;
 }
 
-.go-button {
-    height: 3em;
-    width: 5em;
-}
-
-div + #bubble {
-    width: 11em;
-    height: 11em;
-    left: 2.5em;
-    top: 8em;
-
-    background: linear-gradient(180deg, rgba(0, 88, 104, 0.69) 0%, #145f6d 100%);
-}
-
-div + #bubble + #bubble {
-    width: 9.5em;
-    height: 9.5em;
-    left: 13.5em;
-    top: 15em;
-
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #84c1cc;
+.search-button {
+    color: #145f6d;
+    height: 48px;
+    width: 6em;
+    border: 1px solid #84c1cc;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 /* For bigger screens */
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .top3 {
         display: grid;
         grid-template-columns: 5fr 6fr;
         grid-template-rows: 1fr;
         width: 100%;
+        padding-top: 6em;
+    }
+
+    .info-box {
+        flex-direction: column;
     }
 }
 </style>
