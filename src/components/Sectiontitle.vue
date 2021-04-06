@@ -27,7 +27,7 @@ export default {
 }
 
 /* For bigger screens */
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .title {
         font-size: 5em;
     }
