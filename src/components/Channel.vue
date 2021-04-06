@@ -33,22 +33,20 @@ img {
 }
 
 input[type="radio"] {
-    width: 1.25em;
-    height: 1.25em;
+    transform: scale(1.2);
     padding: 5em;
     margin-top: 0;
     margin-left: 0;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     img {
         height: 8.75em;
         width: 8.75em;
     }
 
     input[type="radio"] {
-        width: 2.5em;
-        height: 2.5em;
+        transform: scale(1.7);
     }
 }
 </style>
