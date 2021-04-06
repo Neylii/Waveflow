@@ -90,12 +90,4 @@ body {
 .textAlignLeft {
     text-align: left;
 }
-
-/* For bigger screens */
-@media screen and (min-width: 700px) {
-    #app {
-        width: 100%;
-        text-align: center;
-    }
-}
 </style>

@@ -32,11 +32,17 @@ export default {
     min-height: 20%;
     transform: scale(0.8);
 }
+
+.sectiontitle {
+    width: 80%;
+}
+
 .infotext {
     position: relative;
     display: flex;
     align-items: center;
     margin-left: 0.5em;
+    color: #FAFEFF;
 }
 
 @media screen and (min-width: 576px) {
@@ -45,7 +51,7 @@ export default {
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .topinfo {
         display: grid;
     }
