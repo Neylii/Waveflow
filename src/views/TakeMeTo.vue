@@ -2,9 +2,11 @@
     <div id="takemeto">
         <div class="container">
             <div class="left">
-                <div class="info">
-                    <div><Sectiontitle msg="Låtlistan" /></div>
-                    <div class="infobox"><Infobox msg="Välj datum och se en mix av låtar som spelats på din valda radiokanal" /></div>
+                <div>
+                    <TopInfo
+                        title="Låtlistan"
+                        infotext="Välj datum och se en mix av låtar som spelats på din valda radiokanal"
+                    />
                 </div>
 
                 <label for="channel" class="description">Välj kanal<br /></label>
@@ -35,14 +37,12 @@
 </template>
 
 <script>
-import Infobox from "../components/Infobox.vue"
-import Sectiontitle from "../components/Sectiontitle.vue"
+import TopInfo from "../components/TopInfo.vue"
 import Channel from "../components/Channel.vue"
 export default {
     name: "Take me to",
     components: {
-        Infobox,
-        Sectiontitle,
+        TopInfo,
         Channel,
     },
     data() {
@@ -154,9 +154,7 @@ export default {
 #takemeto {
     display: flex;
     flex-direction: column;
-    padding-bottom: 5em;
-    min-height: 90vh;
-    color: #ffffff;
+    min-height: 99vh;
 }
 
 .container {
@@ -168,13 +166,6 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.info {
-    display: flex;
-    flex-direction: row;
-    min-height: 20%;
-    transform: scale(0.8);
 }
 
 .lefttop {
@@ -189,30 +180,21 @@ export default {
     flex-wrap: wrap;
     gap: 1em;
     text-align: center;
-    margin-left: -2em;
-    margin-right: -2em;
 }
 
 #channelcontainer {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 0.5em;
-    margin-top: 1em;
-    /* transform: scale(0.8); */
-    margin-left: 1em;
 }
 
 .date {
-    font-style: Armata;
     display: flex;
     flex-direction: row;
     margin-left: 3em;
     margin-right: 3em;
     margin-top: 1em;
-    margin-bottom: -3em;
     justify-content: center;
-    flex-wrap: wrap;
     transform: scale(1.2);
 }
 
@@ -225,9 +207,6 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
-    margin-right: 2em;
-    margin-left: 2em;
 }
 
 .songbox {
@@ -239,43 +218,26 @@ export default {
 }
 
 #songlist > li {
-    display: flex;
-    align-items: flex-end;
-    color: #ffffff;
-    font-family: Arimo;
-    list-style-type: none;
+    list-style-image: url("../assets/star.svg");
     padding: 0.2em;
-
-    margin: 1em;
+    margin: 2em;
     text-align: start;
+    /* font-size: large; */
 }
 
 @media screen and (min-width: 576px) {
     .songbox {
         transform: scale(1);
     }
-
-    .info {
-        transform: scale(1);
-    }
 }
 
 /* For medium screens */
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 765px) {
     #takemeto {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        margin-left: -2em;
         transform: scale(0.8);
-    }
-
-    .info {
-        display: grid;
-    }
-
-    .infobox {
-        transform: scale(0.9);
     }
 
     .description {
@@ -300,10 +262,7 @@ export default {
     #songlist > li {
         display: flex;
         align-items: flex-end;
-        color: #ffffff;
-        font-family: Arimo;
-        font-size: x-large;
-        list-style-type: none;
+        font-size: large;
         padding: 0.3em;
         margin: 1em;
         text-align: start;
@@ -317,8 +276,6 @@ export default {
             grid-template-rows: 1fr;
             transform: scale(0.8);
         }
-
-
     }
 }
 </style>
