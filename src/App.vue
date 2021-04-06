@@ -52,9 +52,8 @@ body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-        "Helvetica Neue", sans-serif;
-    color: #2c3e50;
+    font-family: Armata;
+    color: #FFFFFF;
     text-align: center;
 }
 

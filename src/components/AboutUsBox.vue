@@ -32,6 +32,7 @@ export default {
     flex-direction: column;
     height: 7em;
     width: 13.5em;
+    font-family: Abel;
 }
 
 h3 {

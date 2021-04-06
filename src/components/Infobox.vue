@@ -21,7 +21,7 @@ export default {
     
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .infobox {
         display: flex;
         flex-direction: row;
