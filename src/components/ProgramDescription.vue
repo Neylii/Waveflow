@@ -20,34 +20,52 @@ export default {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 1em;
-}
-
-#contentcontainer > * {
-    font-style: normal;
+    padding: 0.6em;
 }
 
 h2 {
     font-family: Arimo;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 23px;
     text-align: center;
 }
 
 p {
     font-weight: normal;
-    font-size: 12px;
+    font-size: 11px;
     margin-top: 1em;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 360px) {
+
+    #contentcontainer {
+    padding: 0.8em;
+    }
+
     h2 {
         font-size: 20px;
     }
 
     p {
-        font-weight: normal;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    
+    #contentcontainer {
+    padding: 1em;
+    }
+
+    p {
         font-size: 18px;
     }
 }
