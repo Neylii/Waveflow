@@ -32,9 +32,6 @@ export default {
 </script>
 
 <style>
-/* .border {
-    border: 1px solid black;
-} */
 * {
     margin: 0;
     padding: 0;
@@ -57,11 +54,12 @@ body {
     text-align: center;
 }
 
-.class section {
+.section {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    height: 99vh;
+    width: 99vw;
+    padding-top: 6em;
 }
 
 .header {
