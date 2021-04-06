@@ -27,8 +27,6 @@ export default {
         flex-direction: row;
         margin-top: 1em;
         margin-bottom: 0.5em;
-        margin-left: 4em;
-        margin-right: 4em;
         border-left: 0.0625em solid #ffffff;
         border-bottom: 0.0625em solid #ffffff;
 
