@@ -98,7 +98,7 @@ export default {
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: 5%;
+    gap: 2%;
 }
 
 label {

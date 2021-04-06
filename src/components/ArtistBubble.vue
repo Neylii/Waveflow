@@ -65,4 +65,50 @@ div + #bubble + #bubble {
         top: 0em;
     }
 }
+
+@media screen and (min-width: 992px) {
+    #bubble {
+        width: 15em;
+        height: 15em;
+        top: 10em;
+        left: 4em;
+    }
+
+    div + #bubble {
+        width: 13em;
+        height: 13em;
+        left: -7em;
+        top: 5em;
+    }
+
+    div + #bubble + #bubble {
+        width: 11em;
+        height: 11em;
+        left: 6em;
+        top: -2em;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #bubble {
+        width: 20em;
+        height: 20em;
+        top: 7em;
+        left: 0em;
+    }
+
+    div + #bubble {
+        width: 18em;
+        height: 18em;
+        left: -12em;
+        top: 3em;
+    }
+
+    div + #bubble + #bubble {
+        width: 16em;
+        height: 16em;
+        left: 7em;
+        top: -10em;
+    }
+}
 </style>
