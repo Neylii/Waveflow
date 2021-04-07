@@ -4,7 +4,7 @@
             <h2>vi är</h2>
             <h1>Waveflow!</h1>
         </div>
-        <div id="mainContent">
+        <div id="mainContentMobile">
             <div class="mainContentTop">
                 <about-us-box
                     class="mainContentTopLeft"
@@ -39,19 +39,43 @@
                 />
             </div>
             <div class="mainContentBottom">
-                <about-us-box
-                    name="Mia"
-                    description="Vinkonnässören som lämnade Borås för Lerum"
-                    role="UX-design"
-                />
+                <about-us-box name="Mia" description="Vinkonnässören som lämnade Borås för Lerum" role="UX-design" />
                 <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
             </div>
         </div>
-        <div id="bottomText">
-            <p>
-                Waveflow är en applikation baserad <br />på data från Sveriges Radio. <br />
-                Version 1.0
-            </p>
+
+        <div id="mainContentDesktop">
+            <div class="mainContentTop">
+                <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Niklas!" role="JAVA" />
+                <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
+                <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
+            </div>
+            <div class="mainContentBottom">
+                <about-us-box
+                    name="Marcus"
+                    description="Surfdrömmande majornabo som siktar mot Portugal"
+                    role="Ux-design"
+                />
+                <about-us-box
+                    name="Oscar"
+                    description="Tefantasten som lämnade Schlätta för Göteborg"
+                    role="UX-design"
+                />
+                <about-us-box name="Mia" description="Vinkonnässören som lämnade Borås för Lerum" role="UX-design" />
+                <about-us-box
+                    name="Caroline"
+                    description="Den kloka samhällsanalytikern med sin bas i Olskroken"
+                    role="UX-design"
+                />
+            </div>
+        </div>
+        <div class="bottomContainer">
+            <div id="bottomText">
+                <p>
+                    Waveflow är en applikation baserad <br />på data från Sveriges Radio. <br />
+                    Version 1.0
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -91,7 +115,6 @@ export default {
     font-size: 20px;
     font-style: normal;
     font-weight: normal;
-    color: #ffffff;
 }
 .topText > h1 {
     font-size: 28px;
@@ -101,7 +124,7 @@ export default {
     margin-left: 0.2em;
 }
 
-#mainContent {
+#mainContentMobile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,7 +136,7 @@ export default {
     padding-top: 2em;
 }
 
-#mainContent > * {
+#mainContentMobile > * {
     display: flex;
     justify-content: center;
     width: 23em;
@@ -129,6 +152,13 @@ export default {
     top: -3em;
 }
 
+.bottomContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.2;
+}
+
 #bottomText {
     display: flex;
     justify-content: center;
@@ -139,6 +169,10 @@ export default {
 #bottomText > p {
     font-family: Abel;
     font-size: 12px;
+}
+
+#mainContentDesktop {
+    display: none;
 }
 
 @media screen and (min-width: 320px) {
@@ -153,6 +187,57 @@ export default {
     }
     .mainContentBottom {
         gap: 1.5em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #mainContentMobile {
+        display: none;
+    }
+
+    #mainContentDesktop {
+        display: flex;
+        flex-direction: column;
+        gap: 6em;
+    }
+
+    .topText {
+        align-self: center;
+        margin-bottom: 4em;
+    }
+
+    .topText > h2 {
+        font-size: 50px;
+    }
+    .topText > h1 {
+        font-size: 72px;
+    }
+
+    .mainContentTop {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .mainContentBottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .bottomContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    #bottomText {
+        background: rgba(132, 193, 204, 0.1);
+        width: 6em;
+        padding: 1em;
+    }
+
+    #bottomText > p {
+        font-size: 14px;
     }
 }
 </style>

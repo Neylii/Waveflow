@@ -2,7 +2,7 @@
     <div id="boxContainer">
         <h3>{{ name }}</h3>
         {{ description }}
-        <br>{{ role }}
+        <br />{{ role }}
     </div>
 </template>
 
@@ -24,7 +24,6 @@ export default {
 <style scoped>
 * {
     font-size: 12px;
-    color: #FFFFFF;
 }
 
 #boxContainer {
@@ -45,5 +44,20 @@ h3 {
 
 #boxContainer > * {
     text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    * {
+        font-size: 20px;
+    }
+    
+    #boxContainer {
+        width: 13em;
+    }
+
+    h3 {
+        font-family: Abel;
+        font-size: 36px;
+    }
 }
 </style>
