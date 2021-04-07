@@ -9,7 +9,7 @@
                 <about-us-box
                     class="mainContentTopLeft"
                     name="Niklas"
-                    description="Musikskapande och hunden Nala, då trivs Niklas!"
+                    description="Musikskapande och hunden Nala, då trivs Kungsbackabon"
                     role="JAVA"
                 />
                 <about-us-box
@@ -40,15 +40,15 @@
             </div>
             <div class="mainContentBottom">
                 <about-us-box name="Mia" description="Vinkonnässören som lämnade Borås för Lerum" role="UX-design" />
-                <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
+                <about-us-box name="Tom" description="Den discgolfande gamern från Torslanda" role="JAVA" />
             </div>
         </div>
 
         <div id="mainContentDesktop" v-else>
             <div class="mainContentTop">
-                <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Niklas!" role="JAVA" />
+                <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Kungsbackabon" role="JAVA" />
                 <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
-                <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
+                <about-us-box name="Tom" description="Den discgolfande gamern från Torslanda" role="JAVA" />
             </div>
             <div class="mainContentBottom">
                 <about-us-box
