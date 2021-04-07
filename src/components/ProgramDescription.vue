@@ -26,7 +26,7 @@ export default {
 h2 {
     font-family: Arimo;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 23px;
     text-align: center;
 }
@@ -44,7 +44,7 @@ p {
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     p {
@@ -53,6 +53,10 @@ p {
 }
 
 @media screen and (min-width: 768px) {
+
+    h2 {
+        font-size: 20px;
+    }
 
     p {
         font-size: 14px;

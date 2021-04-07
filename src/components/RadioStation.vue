@@ -1,14 +1,14 @@
 <template>
-    <label :for="station" class="radiostation border">
+    <label :for="station" class="radiostation">
         <img :src="station + '.png'" :name="station" />
         <input
             type="checkbox"
-            class="biggerCheckBox"
             name="checkBoxStation"
             :id="station"
             @click="$parent.updateAllChannels"
             :checked="checked"
         />
+        <span class="checkMark"></span>
     </label>
 </template>
 
@@ -40,7 +40,7 @@ img {
     margin-bottom: 1em;
 }
 
-.biggerCheckBox {
+input[type="checkbox"] {
     transform: scale(1.2);
     margin-bottom: 0em;
 }
@@ -52,7 +52,7 @@ img {
         margin-bottom: 1em;
     }
 
-    .biggerCheckBox {
+    input[type="checkbox"] {
         transform: scale(1.4);
         margin-bottom: 0em;
     }
@@ -64,7 +64,7 @@ img {
         width: 5.8em;
     }
 
-    .biggerCheckBox {
+    input[type="checkbox"] {
         transform: scale(1.7);
         margin-bottom: 0em;
     }
@@ -77,7 +77,7 @@ img {
         margin-bottom: 1.5em;
     }
 
-    .biggerCheckBox {
+    input[type="checkbox"] {
         transform: scale(2.1);
         margin-bottom: 0.5em;
     }
@@ -89,7 +89,7 @@ img {
         width: 10em;
     }
 
-    .biggerCheckBox {
+    input[type="checkbox"] {
         transform: scale(2.5);
     }
 }
