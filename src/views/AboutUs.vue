@@ -46,7 +46,7 @@
 
         <div id="mainContentDesktop">
             <div class="mainContentTop">
-                <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Niklas!" role="JAVA" />
+                <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Kungsbackabon Niklas!" role="JAVA" />
                 <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
                 <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
             </div>
