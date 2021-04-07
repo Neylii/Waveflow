@@ -9,7 +9,7 @@
                 <about-us-box
                     class="mainContentTopLeft"
                     name="Niklas"
-                    description="Musikskapande och hunden Nala, då trivs Niklas!"
+                    description="Musikskapande och hunden Nala, då trivs Kungsbackabon Niklas!"
                     role="JAVA"
                 />
                 <about-us-box
