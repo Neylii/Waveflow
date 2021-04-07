@@ -4,7 +4,7 @@
             <h2>vi är</h2>
             <h1>Waveflow!</h1>
         </div>
-        <div id="mainContentMobile">
+        <div id="mainContentMobile" v-if="mobile">
             <div class="mainContentTop">
                 <about-us-box
                     class="mainContentTopLeft"
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div id="mainContentDesktop">
+        <div id="mainContentDesktop" v-else>
             <div class="mainContentTop">
                 <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Niklas!" role="JAVA" />
                 <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
@@ -87,6 +87,33 @@ export default {
     name: "Footer",
     components: {
         aboutUsBox,
+    },
+    data() {
+        return {
+            mobile: Boolean,
+        }
+    },
+
+    methods: {
+        checkScreenWidth() {
+            if (window.innerWidth > 768) {
+                this.mobile = false
+            } else {
+                this.mobile = true
+            }
+        },
+    },
+
+    created() {
+        window.addEventListener("resize", this.checkScreenWidth)
+    },
+
+    mounted() {
+        this.checkScreenWidth()
+    },
+
+    beforeUnmount() {
+        window.removeEventListener("resize", this.checkScreenWidth)
     },
 }
 </script>
@@ -171,10 +198,6 @@ export default {
     font-size: 12px;
 }
 
-#mainContentDesktop {
-    display: none;
-}
-
 @media screen and (min-width: 320px) {
     .mainContentTop {
         gap: 0;
@@ -191,9 +214,6 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
-    #mainContentMobile {
-        display: none;
-    }
 
     #mainContentDesktop {
         display: flex;
