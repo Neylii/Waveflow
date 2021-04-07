@@ -23,7 +23,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 6em;
+    padding: 1em 2em 6em;
 }
 
 img {
