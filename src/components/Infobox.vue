@@ -30,9 +30,6 @@ export default {
         border-left: 0.0625em solid #ffffff;
         border-bottom: 0.0625em solid #ffffff;
 
-        font-family: Armata;
-        font-style: normal;
-        font-weight: normal;
         font-size: 1.5em;
         line-height: 1.875em;
 

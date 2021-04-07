@@ -4,7 +4,7 @@
             <div class="left">
                 <div>
                     <TopInfo
-                        title="Låtlistan"
+                        title="Dagens Mix"
                         infotext="Välj datum och se en mix av låtar som spelats på din valda radiokanal"
                     />
                 </div>
@@ -52,6 +52,7 @@ export default {
             channelForQuery: "",
             channelID: [],
             songMix: [],
+            text: "Hello Vue.\nThis is a line of text.\nAnother line of text.\n",
         }
     },
     mounted() {
@@ -159,19 +160,13 @@ export default {
 
 .container {
     display: flex;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .left {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.lefttop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .leftbottom {
@@ -193,23 +188,47 @@ export default {
     flex-direction: row;
     margin-top: 1em;
     justify-content: center;
+    height: 3em;
 }
 
 #btn {
     border-radius: 50%;
-    border-color: #84C1CC;
+    border-color: #84c1cc;
+    text-transform: uppercase;
+    color: #10505c;
+    font-weight: bold;
+    letter-spacing: 0.05em;
     width: 3.5em;
     height: 3.5em;
-    text-transform: uppercase;
 }
 
 #inputdate {
-    border-radius: 1em;
-    border-color: #84C1CC;
-    width: 30%;
     text-align: center;
+    color: #145F6D;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 0.6em;
+    border-color: #84c1cc;
     text-transform: uppercase;
+    box-sizing: border-box;
+    outline: 0;
+    position: relative;
+    width: 14em;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
 .description {
     display: none;
 }
@@ -254,6 +273,11 @@ export default {
     .description {
         display: initial;
         font-size: large;
+    }
+
+    #btn {
+        border-radius: 1.5em;
+        width: 7em;
     }
 
     #channelcontainer {
