@@ -3,7 +3,6 @@
         <img :src="station + '.png'" :name="station" />
         <input
             type="checkbox"
-            name="checkBoxStation"
             :id="station"
             @click="$parent.updateAllChannels"
             :checked="checked"

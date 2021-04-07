@@ -148,7 +148,7 @@ export default {
 
         updateAllChannels() {
             this.programArrayTemp = []
-            let checkBoxes = document.getElementsByName("checkBoxStation")
+            let checkBoxes = document.querySelectorAll(`input[type="checkbox"]`)
 
             checkBoxes.forEach((station) => {
                 if (station.checked) {
