@@ -47,7 +47,12 @@
                 <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
             </div>
         </div>
-        <div id="bottomText">Waveflow är en applikation baserad på data från Sveriges Radio. Version 1.0</div>
+        <div id="bottomText">
+            <p>
+                Waveflow är en applikation baserad <br />på data från Sveriges Radio. <br />
+                Version 1.0
+            </p>
+        </div>
     </div>
 </template>
 
@@ -122,6 +127,18 @@ export default {
 .mainContentBottom {
     position: relative;
     top: -3em;
+}
+
+#bottomText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.2;
+}
+
+#bottomText > p {
+    font-family: Abel;
+    font-size: 12px;
 }
 
 @media screen and (min-width: 320px) {
