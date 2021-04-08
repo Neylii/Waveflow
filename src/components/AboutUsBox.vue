@@ -1,5 +1,5 @@
 <template>
-    <div id="boxContainer">
+    <div class="info-card-container">
         <h3>{{ name }}</h3>
         {{ description }}
         <br />{{ role }}
@@ -14,51 +14,37 @@ export default {
         description: String,
         role: String,
     },
-    data() {
-        return {}
-    },
 }
 </script>
 
 
 <style scoped>
-* {
-    font-size: 16px;
-}
-
-#boxContainer {
+.info-card-container {
     width: 9em;
     font-family: Abel;
-    min-height: 4em;
     margin-bottom: 0.5em;
 }
 
 h3 {
     font-family: Pacifico;
-    font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    text-align: center;
-}
-
-#boxContainer > * {
-    text-align: center;
 }
 
 @media screen and (min-width: 410px) {
-    #boxContainer {
-    width: 11em;
-    font-family: Abel;
-}
+    .info-card-container {
+        width: 11em;
+    }
 }
 
 @media screen and (min-width: 768px) {
     * {
         font-size: 20px;
     }
-    
-    #boxContainer {
-        width: 13em;
+
+    .info-card-container {
+        width: auto;
+        max-width: 13em;
     }
 
     h3 {
