@@ -4,49 +4,54 @@
             <h2>vi är</h2>
             <h1>Waveflow!</h1>
         </div>
-        <div id="mainContentMobile" v-if="mobile">
-            <div class="mainContentTop">
+        <div id="mainContentMobile">
+            <div class="abousUsUx">
+                <div class="mainContentTop">
+                    <about-us-box
+                        name="Caroline"
+                        description="Skidälskaren med sin bas i Olskroken"
+                        role="UX-design"
+                    />
+                    <about-us-box
+                        name="Mia"
+                        description="Vinkonnässören som lämnade Borås för Lerum"
+                        role="UX-design"
+                    />
+                </div>
+                <div class="mainContentMiddle">
+                    <about-us-box
+                        name="Marcus"
+                        description="Surfdrömmande majornabo som siktar mot Portugal"
+                        role="Ux-design"
+                    />
+                    <about-us-box
+                        name="Oscar"
+                        description="Tefantasten som lämnade Schlätta för Göteborg"
+                        role="UX-design"
+                    />
+                </div>
+            </div>
+            <div class="mainContentCenter">
+                <about-us-box name="Tom" description="Den discgolfande gamern från Torslanda" role="JAVA" />
+            </div>
+            <div class="mainContentBottom">
                 <about-us-box
-                    class="mainContentTopLeft"
                     name="Niklas"
                     description="Musikskapande och hunden Nala, då trivs Kungsbackabon"
                     role="JAVA"
                 />
-                <about-us-box
-                    class="mainContentTopRight"
-                    name="Emma"
-                    description="Frölundabo som gillar tidiga mornar på gymmet"
-                    role="JAVA"
-                />
-            </div>
-            <div class="mainContentMiddle">
-                <about-us-box
-                    name="Marcus"
-                    description="Surfdrömmande majornabo som siktar mot Portugal"
-                    role="Ux-design"
-                />
-                <about-us-box
-                    name="Oscar"
-                    description="Tefantasten som lämnade Schlätta för Göteborg"
-                    role="UX-design"
-                />
-            </div>
-            <div class="mainContentCenter">
-                <about-us-box
-                    name="Caroline"
-                    description="Den kloka samhällsanalytikern med sin bas i Olskroken"
-                    role="UX-design"
-                />
-            </div>
-            <div class="mainContentBottom">
-                <about-us-box name="Mia" description="Vinkonnässören som lämnade Borås för Lerum" role="UX-design" />
-                <about-us-box name="Tom" description="Den discgolfande gamern från Torslanda" role="JAVA" />
+
+                <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
             </div>
         </div>
 
-        <div id="mainContentDesktop" v-else>
+        <div id="mainContentDesktop">
             <div class="mainContentTop">
-                <about-us-box name="Niklas" description="Musikskapande och hunden Nala, då trivs Kungsbackabon" role="JAVA" />
+                <about-us-box
+                    name="Niklas"
+                    description="Musikskapande och hunden Nala, då trivs Kungsbackabon"
+                    role="JAVA"
+                />
                 <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
                 <about-us-box name="Tom" description="Den discgolfande gamern från Torslanda" role="JAVA" />
             </div>
@@ -87,33 +92,6 @@ export default {
     name: "Footer",
     components: {
         aboutUsBox,
-    },
-    data() {
-        return {
-            mobile: Boolean,
-        }
-    },
-
-    methods: {
-        checkScreenWidth() {
-            if (window.innerWidth > 768) {
-                this.mobile = false
-            } else {
-                this.mobile = true
-            }
-        },
-    },
-
-    created() {
-        window.addEventListener("resize", this.checkScreenWidth)
-    },
-
-    mounted() {
-        this.checkScreenWidth()
-    },
-
-    beforeUnmount() {
-        window.removeEventListener("resize", this.checkScreenWidth)
     },
 }
 </script>
@@ -163,18 +141,41 @@ export default {
     padding-top: 2em;
 }
 
-#mainContentMobile > * {
+.mainContentCenter {
     display: flex;
     justify-content: center;
-    width: 23em;
+}
+
+.mainContentBottom {
+    display: flex;
+    justify-content: center;
+}
+
+.abousUsUx {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContentTop {
+    display: flex;
+    flex-direction: row;
+    gap: 0.1em;
+}
+
+.mainContentMiddle {
+    display: flex;
+    flex-direction: row;
+    gap: 0.1em;
 }
 
 .mainContentCenter {
+    gap: 0.1em;
     position: relative;
     top: -1.6em;
 }
 
 .mainContentBottom {
+    gap: 0.1em;
     position: relative;
     top: -3em;
 }
@@ -183,6 +184,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 9em;
+    margin-bottom: 4em;
     flex-grow: 0.2;
 }
 
@@ -195,12 +198,16 @@ export default {
 
 #bottomText > p {
     font-family: Abel;
-    font-size: 12px;
+    font-size: 16px;
 }
 
-@media screen and (min-width: 320px) {
+#mainContentDesktop {
+    display: none;
+}
+
+@media screen and (min-width: 410px) {
     .mainContentTop {
-        gap: 0;
+        gap: 1.5em;
     }
     .mainContentMiddle {
         gap: 1.5em;
@@ -214,11 +221,15 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
+    #mainContentMobile {
+        display: none;
+    }
 
     #mainContentDesktop {
         display: flex;
         flex-direction: column;
         gap: 6em;
+        padding: 2em;
     }
 
     .topText {
@@ -231,6 +242,11 @@ export default {
     }
     .topText > h1 {
         font-size: 72px;
+    }
+
+    .abousUsUx {
+        display: flex;
+        flex-direction: column;
     }
 
     .mainContentTop {
@@ -254,10 +270,6 @@ export default {
         background: rgba(132, 193, 204, 0.1);
         width: 6em;
         padding: 1em;
-    }
-
-    #bottomText > p {
-        font-size: 14px;
     }
 }
 </style>

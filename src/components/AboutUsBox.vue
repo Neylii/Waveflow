@@ -23,27 +23,33 @@ export default {
 
 <style scoped>
 * {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 #boxContainer {
-    display: flex;
-    flex-direction: column;
-    height: 7em;
-    width: 13.5em;
+    width: 9em;
     font-family: Abel;
+    min-height: 4em;
+    margin-bottom: 0.5em;
 }
 
 h3 {
     font-family: Pacifico;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
 }
 
 #boxContainer > * {
     text-align: center;
+}
+
+@media screen and (min-width: 410px) {
+    #boxContainer {
+    width: 11em;
+    font-family: Abel;
+}
 }
 
 @media screen and (min-width: 768px) {
