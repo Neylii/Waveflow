@@ -18,7 +18,7 @@
                     <about-us-box
                         name="Marcus"
                         description="Surfdrömmande majornabo som siktar mot Portugal"
-                        role="Ux-design"
+                        role="UX-design"
                     />
                     <about-us-box
                         name="Oscar"
