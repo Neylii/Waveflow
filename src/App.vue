@@ -90,7 +90,7 @@ body {
 
 @media screen and (min-width: 768px) {
     .section {
-        padding-top: 6.3em;
+        padding-top: 6.6em;
     }
 }
 </style>

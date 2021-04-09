@@ -16,7 +16,7 @@
         <div class="box">
             <a href="#List">
                 <div id="linkbgr"><img src="../assets/takemeto.png" /></div>
-                <p>Låtlistan</p>
+                <p>Dagens Mix</p>
             </a>
         </div>
         <div class="box">
@@ -45,8 +45,6 @@ export default {
 .navbar {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
-    justify-content: center;
     width: 100%;
     background-color: #294c53;
     position: fixed;
@@ -66,8 +64,8 @@ export default {
 
 #linkbgr {
     padding: 0.5em;
-    width: 3em;
-    height: 3em;
+    width: 3.1em;
+    height: 3.1em;
     border-radius: 50%;
     background-color: rgba(229, 238, 240, 0.7);
 }
@@ -81,9 +79,25 @@ export default {
 }
 
 a {
+    display: contents;
     font-size: small;
     color: #fafeff;
     text-decoration: none;
+}
+
+a > p {
+    font-size: 0.7em;
+}
+
+@media screen and (min-width: 320px) {
+    a > p {
+        font-size: 0.75em;
+    }
+}
+@media screen and (min-width: 425px) {
+    a > p {
+        font-size: small;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -112,13 +126,14 @@ a {
         background: none;
         font-family: Pacifico;
         font-size: xxx-large;
-        color: #9CD9E4
+        color: #9cd9e4;
     }
 
     a {
+        display: initial;
         border-radius: 1.25em;
         color: #e5eef0;
-        width: 60%;
+        width: 70%;
         height: 3em;
         background-color: rgba(56, 12, 21, 0.1);
     }
