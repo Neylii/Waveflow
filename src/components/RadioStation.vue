@@ -31,6 +31,7 @@ export default {
     border: 4px solid #84c1cc;
     box-sizing: border-box;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 img {
@@ -42,6 +43,7 @@ img {
 input[type="checkbox"] {
     transform: scale(1.2);
     margin-bottom: 0em;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 360px) {
