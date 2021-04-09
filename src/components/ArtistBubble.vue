@@ -94,21 +94,21 @@ div + #bubble + #bubble {
         width: 20em;
         height: 20em;
         top: 7em;
-        left: 0em;
+        left: 2em;
     }
 
     div + #bubble {
-        width: 18em;
-        height: 18em;
-        left: -12em;
-        top: 3em;
+        width: 17em;
+        height: 17em;
+        left: -14em;
+        top: -2em;
     }
 
     div + #bubble + #bubble {
-        width: 16em;
-        height: 16em;
-        left: 7em;
-        top: -10em;
+        width: 15em;
+        height: 15em;
+        left: 2em;
+        top: -9em;
     }
 }
 </style>
