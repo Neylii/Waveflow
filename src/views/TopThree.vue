@@ -216,6 +216,7 @@ export default {
     border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 /* For bigger screens */
