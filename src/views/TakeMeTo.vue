@@ -243,7 +243,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .songbox {
@@ -259,12 +258,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 2em;
     text-align: start;
     font-size: large;
-}
-
-@media screen and (min-width: 576px) {
-    /* .songbox {
-        transform: scale(1);
-    } */
 }
 
 /* For medium screens */
@@ -298,6 +291,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         border: 2px solid #84c1cc;
         border-radius: 10px;
         transform: scale(1);
+        margin: 4em;
     }
 
     #songlist > li {
@@ -314,6 +308,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 1fr;
+        }
+
+        .right {
+            align-items: flex-start;
+        }
+
+        .songbox {
+            margin: 4em;
+            transform:scale(1.1)
         }
     }
 }
