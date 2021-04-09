@@ -20,7 +20,7 @@
                 </div>
                 <label for="date" class="description">Välj datum<br /></label>
                 <div class="date">
-                    <input type="date" id="inputdate" v-model="inputDate" />
+                    <input type="date" id="inputdate" v-model="inputDate" min="2011-01-01" :max="today"/>
                     <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
             </div>
@@ -49,6 +49,7 @@ export default {
         return {
             inputDate: "",
             inputChannel: "",
+            today: "",
             channelForQuery: "",
             channelID: [],
             songMix: [],
@@ -57,6 +58,7 @@ export default {
     },
     mounted() {
         this.getChannelId()
+        this.updateToday()
     },
     methods: {
         async getChannelId() {
@@ -74,7 +76,10 @@ export default {
                     this.channelID.push({ name: channel.name, id: channel.id })
                 }
             }
-            console.log(this.channelID)
+        },
+
+        updateToday() {
+            this.today = new Date().toISOString().split("T")[0]
         },
 
         channelCheck() {
@@ -251,16 +256,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 #songlist > li {
     list-style-image: url("../assets/star.svg");
-    padding: 0.2em;
     margin: 2em;
     text-align: start;
-    /* font-size: large; */
+    font-size: large;
 }
 
 @media screen and (min-width: 576px) {
-    .songbox {
+    /* .songbox {
         transform: scale(1);
-    }
+    } */
 }
 
 /* For medium screens */
@@ -293,10 +297,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         padding: 2.15em;
         border: 2px solid #84c1cc;
         border-radius: 10px;
+        transform: scale(1);
     }
 
     #songlist > li {
-        display: flex;
         align-items: flex-end;
         font-size: large;
         padding: 0.3em;
