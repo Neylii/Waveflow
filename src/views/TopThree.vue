@@ -6,7 +6,7 @@
             </div>
             <div class="select-date-box">
                 <div class="weekyear">
-                    <year-week-select @year="setYear" @week="setWeek" />
+                    <year-week-select @year="setYear" @week="setWeek" ref="yearWeek"/>
                     <div class="button-container">
                         <input type="button" value="Sök" class="search-button arimo-font" @click="addArtistsToList()" />
                     </div>
@@ -107,6 +107,10 @@ export default {
         },
 
         async addArtistsToList() {
+            let currentWeek = this.$refs.yearWeek.getCurrentWeek()
+            if (this.year === 2021 && this.week > currentWeek) {
+                this.week = currentWeek
+            }
             let artistMap = new Map()
             let artistList = []
             for (let i = 0; i < 7; i++) {
