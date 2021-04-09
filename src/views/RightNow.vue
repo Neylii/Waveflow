@@ -131,13 +131,10 @@ export default {
             let date = new Date()
             let tempArray = []
 
+            let query = `channelid=${channelId}&date=${this.getDateFormatter(date)}&size=500&format=json`
+
             do {
-                await this.getSingleTablo(
-                    `https://api.sr.se/api/v2/scheduledepisodes?channelid=${channelId}&date=${this.getDateFormatter(
-                        date
-                    )}&size=500&format=json`,
-                    tempArray
-                )
+                await this.getSingleTablo(`https://api.sr.se/api/v2/scheduledepisodes?${query}`, tempArray)
                 date.setDate(date.getDate() + 1)
             } while (tempArray.length < this.numberOfProgramsToShow)
 
@@ -227,8 +224,6 @@ export default {
         gap: 0.5em;
     }
 }
-
-
 
 @media screen and (min-width: 768px) {
     .rightnow {
