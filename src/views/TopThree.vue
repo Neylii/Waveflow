@@ -2,7 +2,7 @@
     <div class="top3">
         <div class="info-selection-box">
             <div class="info-box">
-                <TopInfo title="Topp 3" infotext="Se vilka tre artiser som är mest spelade på Sveriges Radio sorterat på år och vecka."/>
+                <TopInfo title="Topp 3" infotext="Se vilka tre artiser som är mest spelade på P3 sorterat på år och vecka."/>
             </div>
             <div class="select-date-box">
                 <div class="weekyear">
