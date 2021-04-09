@@ -229,6 +229,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: auto;
 }
 
+input[type="button"] {
+    cursor: pointer;
+}
+
 .description {
     display: none;
 }
