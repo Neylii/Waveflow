@@ -58,10 +58,8 @@ export default {
 
 .stationimg {
     display: flex;
-    justify-content: center;
     align-items: center;
     border-left: 1px solid #84c1cc;
-    box-sizing: border-box;
     border-radius: 0px 10px 10px 0px;
     background-color: #ffffff;
 }

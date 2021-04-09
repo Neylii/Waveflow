@@ -171,9 +171,7 @@ export default {
 
 <style scoped>
 .rightnow {
-    display: flex;
     flex-direction: column;
-    min-height: 99vh;
 }
 
 #container {
@@ -182,9 +180,6 @@ export default {
 }
 
 #left {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
     width: 100%;
 }
 
@@ -197,8 +192,6 @@ export default {
 #leftbottom {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1em;
 }
 
 #radioStationContainer {
@@ -210,8 +203,7 @@ export default {
 
 #right {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
 .programs {
@@ -228,7 +220,6 @@ export default {
     }
 
     #right {
-        flex-grow: 1;
         width: 100%;
     }
 

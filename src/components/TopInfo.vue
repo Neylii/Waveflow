@@ -30,18 +30,13 @@ export default {
 .topinfo {
     display: flex;
     flex-direction: row;
-    min-height: 20%;
 }
 
 .sectiontitle {
     min-width: 52%;
-    line-break: strict;
 }
 
 .infotext {
-    position: relative;
-    display: flex;
-    align-items: center;
     margin-left: 0.5em;
     color: #FAFEFF;
 }
@@ -54,7 +49,6 @@ export default {
 
 @media screen and (min-width: 768px) {
     .topinfo {
-        display: flex;
         flex-direction: column;
     }
 
