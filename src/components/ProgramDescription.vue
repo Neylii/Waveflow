@@ -17,22 +17,17 @@ export default {
 
 <style scoped>
 #contentcontainer {
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
     padding: 0.6em;
 }
 
 h2 {
     font-family: Arimo;
-    font-weight: bold;
-    font-size: 16px;
     line-height: 23px;
     text-align: center;
 }
 
 p {
-    font-weight: normal;
     font-size: 11px;
     margin-top: 1em;
 }

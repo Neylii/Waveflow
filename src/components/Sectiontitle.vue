@@ -20,8 +20,6 @@ export default {
 <style scoped>
 .title {
     font-family: Pacifico;
-    font-style: normal;
-    font-weight: normal;
     font-size: 2.5em;
     margin-bottom: 0.4em;
     /* identical to box height */
