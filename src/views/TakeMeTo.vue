@@ -4,7 +4,7 @@
             <div class="left">
                 <div>
                     <TopInfo
-                        title="Låtlistan"
+                        title="Dagens Mix"
                         infotext="Välj datum och se en mix av låtar som spelats på din valda radiokanal"
                     />
                 </div>
@@ -20,7 +20,7 @@
                 </div>
                 <label for="date" class="description">Välj datum<br /></label>
                 <div class="date">
-                    <input type="date" v-model="inputDate" />
+                    <input type="date" id="inputdate" v-model="inputDate" min="2011-01-01" :max="today"/>
                     <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
             </div>
@@ -49,13 +49,16 @@ export default {
         return {
             inputDate: "",
             inputChannel: "",
+            today: "",
             channelForQuery: "",
             channelID: [],
             songMix: [],
+            text: "Hello Vue.\nThis is a line of text.\nAnother line of text.\n",
         }
     },
     mounted() {
         this.getChannelId()
+        this.updateToday()
     },
     methods: {
         async getChannelId() {
@@ -73,7 +76,10 @@ export default {
                     this.channelID.push({ name: channel.name, id: channel.id })
                 }
             }
-            console.log(this.channelID)
+        },
+
+        updateToday() {
+            this.today = new Date().toISOString().split("T")[0]
         },
 
         channelCheck() {
@@ -159,19 +165,13 @@ export default {
 
 .container {
     display: flex;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .left {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.lefttop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .leftbottom {
@@ -193,6 +193,46 @@ export default {
     flex-direction: row;
     margin-top: 1em;
     justify-content: center;
+    height: 3em;
+}
+
+#btn {
+    border-radius: 50%;
+    border-color: #84c1cc;
+    text-transform: uppercase;
+    color: #10505c;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    width: 3.5em;
+    height: 3.5em;
+    cursor: pointer;
+}
+
+#inputdate {
+    text-align: center;
+    color: #145F6D;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 0.6em;
+    border-color: #84c1cc;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    outline: 0;
+    position: relative;
+    width: 14em;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
 }
 
 .description {
@@ -216,16 +256,15 @@ export default {
 
 #songlist > li {
     list-style-image: url("../assets/star.svg");
-    padding: 0.2em;
     margin: 2em;
     text-align: start;
-    /* font-size: large; */
+    font-size: large;
 }
 
 @media screen and (min-width: 576px) {
-    .songbox {
+    /* .songbox {
         transform: scale(1);
-    }
+    } */
 }
 
 /* For medium screens */
@@ -234,7 +273,6 @@ export default {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
-        transform: scale(0.8);
     }
 
     .description {
@@ -242,11 +280,16 @@ export default {
         font-size: large;
     }
 
+    #btn {
+        border-radius: 1.5em;
+        width: 7em;
+    }
+
     #channelcontainer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
-        transform: scale(0.8);
+        transform: scale(0.9);
     }
 
     .songbox {
@@ -254,10 +297,10 @@ export default {
         padding: 2.15em;
         border: 2px solid #84c1cc;
         border-radius: 10px;
+        transform: scale(1);
     }
 
     #songlist > li {
-        display: flex;
         align-items: flex-end;
         font-size: large;
         padding: 0.3em;

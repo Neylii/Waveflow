@@ -1,14 +1,13 @@
 <template>
-    <label :for="station" class="radiostation border">
+    <label :for="station" class="radiostation">
         <img :src="station + '.png'" :name="station" />
         <input
             type="checkbox"
-            class="biggerCheckBox"
-            name="checkBoxStation"
             :id="station"
             @click="$parent.updateAllChannels"
             :checked="checked"
         />
+        <span class="checkMark"></span>
     </label>
 </template>
 
@@ -23,16 +22,17 @@ export default {
 
 <style scoped>
 .radiostation {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #ffffff;
-        border-radius: 10px;
-        padding: 1em;
-        border: 4px solid #84c1cc;
-        box-sizing: border-box;
-        border-radius: 10px;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1em;
+    border: 4px solid #84c1cc;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 img {
     height: 3em;
@@ -40,22 +40,23 @@ img {
     margin-bottom: 1em;
 }
 
-.biggerCheckBox {
-    width: 1em;
-    height: 1em;
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-bottom: 0em;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 360px) {
     img {
-    height: 4em;
-    width: 4em;
-    margin-bottom: 1em;
-}
+        height: 4em;
+        width: 4em;
+        margin-bottom: 1em;
+    }
 
-.biggerCheckBox {
-    width: 1.25em;
-    height: 1.25em;
-}
+    input[type="checkbox"] {
+        transform: scale(1.4);
+        margin-bottom: 0em;
+    }
 }
 
 @media screen and (min-width: 500px) {
@@ -64,22 +65,22 @@ img {
         width: 5.8em;
     }
 
-    .biggerCheckBox {
-        width: 1.75em;
-        height: 1.75em;
+    input[type="checkbox"] {
+        transform: scale(1.7);
+        margin-bottom: 0em;
     }
-
 }
 
 @media screen and (min-width: 600px) {
     img {
         height: 8em;
         width: 8em;
+        margin-bottom: 1.5em;
     }
 
-    .biggerCheckBox {
-        width: 2em;
-        height: 2em;
+    input[type="checkbox"] {
+        transform: scale(2.1);
+        margin-bottom: 0.5em;
     }
 }
 
@@ -89,9 +90,8 @@ img {
         width: 10em;
     }
 
-    .biggerCheckBox {
-        width: 2.7em;
-        height: 2.7em;
+    input[type="checkbox"] {
+        transform: scale(2.5);
     }
 }
 </style>

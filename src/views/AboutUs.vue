@@ -1,53 +1,54 @@
 <template>
-    <div id="footerContainer">
-        <div class="topText">
+    <div id="about-us-container">
+        <div class="about-us-headers">
             <h2>vi är</h2>
             <h1>Waveflow!</h1>
         </div>
-        <div id="mainContent">
-            <div class="mainContentTop">
-                <about-us-box
-                    class="mainContentTopLeft"
-                    name="Niklas"
-                    description="Musikskapande och hunden Nala, då trivs Niklas!"
-                    role="JAVA"
-                />
-                <about-us-box
-                    class="mainContentTopRight"
-                    name="Emma"
-                    description="Frölundabo som gillar tidiga mornar på gymmet"
-                    role="JAVA"
-                />
+        <div class="about-us-content-container">
+            <div class="ux-container">
+                <div class="first-ux-subcontainer">
+                    <about-us-box name="Caroline" description="Skidälskaren med sin bas i Olskroken" role="UX-design" />
+                    <about-us-box
+                        name="Mia"
+                        description="Vinkonnässören som lämnade Borås för Lerum"
+                        role="UX-design"
+                    />
+                </div>
+                <div class="second-ux-subcontainer">
+                    <about-us-box
+                        name="Marcus"
+                        description="Surfdrömmande majornabo som siktar mot Portugal"
+                        role="Ux-design"
+                    />
+                    <about-us-box
+                        name="Oscar"
+                        description="Tefantasten som lämnade Schlätta för Göteborg"
+                        role="UX-design"
+                    />
+                </div>
             </div>
-            <div class="mainContentMiddle">
-                <about-us-box
-                    name="Marcus"
-                    description="Surfdrömmande majornabo som siktar mot Portugal"
-                    role="Ux-design"
-                />
-                <about-us-box
-                    name="Oscar"
-                    description="Tefantasten som lämnade Schlätta för Göteborg"
-                    role="UX-design"
-                />
-            </div>
-            <div class="mainContentCenter">
-                <about-us-box
-                    name="Caroline"
-                    description="Den kloka samhällsanalytikern med sin bas i Olskroken"
-                    role="UX-design"
-                />
-            </div>
-            <div class="mainContentBottom">
-                <about-us-box
-                    name="Mia"
-                    description="Vinkonnässören som lämnade Borås för Lerum"
-                    role="UX-design"
-                />
-                <about-us-box name="Tom" description="Den discogolfande gamern från Torslanda" role="JAVA" />
+            <div class="java-container">
+                <div class="first-java-subcontainer">
+                    <about-us-box name="Tom" description="Den discgolfande gamern från Torslanda" role="JAVA" />
+                </div>
+                <div class="second-java-subcontainer">
+                    <about-us-box
+                        name="Niklas"
+                        description="Musikskapande och hunden Nala, då trivs Kungsbackabon"
+                        role="JAVA"
+                    />
+                    <about-us-box name="Emma" description="Frölundabo som gillar tidiga mornar på gymmet" role="JAVA" />
+                </div>
             </div>
         </div>
-        <div id="bottomText">Waveflow är en applikation baserad på data från Sveriges Radio. Version 1.0</div>
+        <div class="about-us-bottom-container">
+            <div class="info-text-container">
+                <p>
+                    Waveflow är en applikation baserad <br />på data från Sveriges Radio. <br />
+                    Version 1.0
+                </p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -64,30 +65,28 @@ export default {
  
 
 <style scoped>
-#footerContainer {
+#about-us-container {
     min-height: 99vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
-.topText {
+.about-us-headers {
     display: flex;
-    align-self: flex-start;
     margin-left: 1em;
     font-family: Pacifico;
-    font-size: 28px;
     line-height: 49px;
     position: relative;
     top: 10px;
 }
 
-.topText > h2 {
+.about-us-headers > h2 {
     font-size: 20px;
     font-style: normal;
     font-weight: normal;
-    color: #ffffff;
 }
-.topText > h1 {
+.about-us-headers > h1 {
     font-size: 28px;
     font-style: normal;
     font-weight: normal;
@@ -95,7 +94,7 @@ export default {
     margin-left: 0.2em;
 }
 
-#mainContent {
+.about-us-content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,34 +106,113 @@ export default {
     padding-top: 2em;
 }
 
-#mainContent > * {
+.first-java-subcontainer {
     display: flex;
     justify-content: center;
-    width: 23em;
-}
-
-.mainContentCenter {
     position: relative;
     top: -1.6em;
 }
 
-.mainContentBottom {
+.second-java-subcontainer {
+    display: flex;
+}
+
+.ux-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-ux-subcontainer {
+    display: flex;
+    gap: 0.1em;
+}
+
+.second-ux-subcontainer {
+    display: flex;
+    gap: 0.1em;
+}
+
+.second-java-subcontainer {
+    gap: 0.1em;
     position: relative;
     top: -3em;
 }
 
-@media screen and (min-width: 320px) {
-    .mainContentTop {
-        gap: 0;
-    }
-    .mainContentMiddle {
+.about-us-bottom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 9em;
+    margin-bottom: 4em;
+}
+
+.info-text-container > p {
+    font-family: Abel;
+}
+
+@media screen and (min-width: 410px) {
+    .first-ux-subcontainer {
         gap: 1.5em;
     }
-    .mainContentCenter {
+
+    .second-ux-subcontainer {
         gap: 1.5em;
     }
-    .mainContentBottom {
+
+    .second-java-subcontainer {
         gap: 1.5em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .about-us-content-container {
+        flex-flow: column-reverse;
+        background: none;
+        padding: 2em;
+    }
+
+    #mainContentDesktop {
+        display: flex;
+        flex-direction: column;
+        gap: 6em;
+        padding: 2em;
+    }
+
+    .about-us-headers {
+        align-self: center;
+        margin-bottom: 4em;
+    }
+
+    .about-us-headers > h2 {
+        font-size: 50px;
+    }
+    .about-us-headers > h1 {
+        font-size: 72px;
+    }
+
+    .ux-container {
+        flex-direction: row;
+    }
+
+    .second-java-subcontainer {
+        top: 0em;
+    }
+
+    .java-container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 4em;
+    }
+
+    .first-java-subcontainer {
+        top: 0em;
+    }
+
+    .info-text-container {
+        background: rgba(132, 193, 204, 0.1);
+        width: 6em;
+        padding: 1em;
+        flex-grow: 0.2;
     }
 }
 </style>

@@ -119,6 +119,7 @@ label {
     height: 48px;
     margin-top: 5%;
     font-weight: bold;
+    cursor: pointer;
 }
 
 select > option {

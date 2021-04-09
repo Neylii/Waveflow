@@ -1,7 +1,7 @@
 <template>
     <div class="topinfo">
         <div class="sectiontitle">
-            <sectiontitle :msg="title" />
+            <sectiontitle :msg="title" :sub="sub" />
         </div>
         <div class="infotext">
             <infobox :msg="infotext" />
@@ -16,6 +16,7 @@ export default {
     name: "TopInfo",
     props: {
         title: String,
+        sub: String,
         infotext: String,
     },
     components: {
@@ -34,6 +35,7 @@ export default {
 
 .sectiontitle {
     min-width: 52%;
+    line-break: strict;
 }
 
 .infotext {
@@ -54,11 +56,10 @@ export default {
     .topinfo {
         display: flex;
         flex-direction: column;
-        
     }
 
     .infotext {
-        max-width: 300px;
+        max-width: 450px;
     }
 }
 </style>
