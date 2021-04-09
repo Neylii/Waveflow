@@ -2,11 +2,14 @@
     <div class="top3">
         <div class="info-selection-box">
             <div class="info-box">
-                <TopInfo title="Topp 3" infotext="Se vilka tre artiser som är mest spelade på P3 sorterat på år och vecka."/>
+                <TopInfo
+                    title="Topp 3"
+                    infotext="Se vilka tre artiser som är mest spelade på P3 sorterat på år och vecka."
+                />
             </div>
             <div class="select-date-box">
                 <div class="weekyear">
-                    <year-week-select @year="setYear" @week="setWeek" ref="yearWeek"/>
+                    <year-week-select @year="setYear" @week="setWeek" ref="yearWeek" />
                     <div class="button-container">
                         <input type="button" value="Sök" class="search-button arimo-font" @click="addArtistsToList()" />
                     </div>
@@ -33,14 +36,13 @@ export default {
     components: {
         Bubble,
         yearWeekSelect,
-        TopInfo
+        TopInfo,
     },
     data() {
         return {
             topThreeArtists: [],
             year: 2021,
             week: 1,
-            showNoMatches: false,
         }
     },
     name: "Top3",
@@ -99,7 +101,6 @@ export default {
                 json = await resp.json()
             } catch (err) {
                 console.log(err)
-                alert("Something went wrong.")
             }
             if (json !== undefined) {
                 return json.song
@@ -115,16 +116,17 @@ export default {
             let artistList = []
             for (let i = 0; i < 7; i++) {
                 let songs = await this.getSongs(this.getDateOfISOWeek(i))
-
                 for (const song of songs) {
-                    if (song.artist.includes(",") || song.artist.includes("&")) {
-                        let artistsInCollab = song.artist.replaceAll("&", ",").split(",")
-                        for (let artist of artistsInCollab) {
-                            artist = artist.trim()
-                            this.addArtistToMap(artistMap, artist)
+                    if (song.artist) {
+                        if (song.artist.includes(",") || song.artist.includes("&")) {
+                            let artistsInCollab = song.artist.replaceAll("&", ",").split(",")
+                            for (let artist of artistsInCollab) {
+                                artist = artist.trim()
+                                this.addArtistToMap(artistMap, artist)
+                            }
+                        } else {
+                            this.addArtistToMap(artistMap, song.artist)
                         }
-                    } else {
-                        this.addArtistToMap(artistMap, song.artist)
                     }
                 }
             }
@@ -175,7 +177,6 @@ export default {
     display: flex;
     flex-grow: 1;
     align-items: center;
-
 }
 
 .select-date-box {

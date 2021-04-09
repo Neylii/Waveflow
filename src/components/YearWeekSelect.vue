@@ -82,7 +82,6 @@ export default {
         selections() {
             this.$emit("year", this.selectedYear)
             this.$emit("week", this.selectedWeek)
-            console.log(this.selectedYear + ", " + this.selectedWeek)
         },
     },
 }
