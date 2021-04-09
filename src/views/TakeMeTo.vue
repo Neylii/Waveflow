@@ -200,6 +200,7 @@ export default {
     letter-spacing: 0.05em;
     width: 3.5em;
     height: 3.5em;
+    cursor: pointer;
 }
 
 #inputdate {
@@ -227,10 +228,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 0;
     top: 0;
     width: auto;
-}
-
-input[type="button"] {
-    cursor: pointer;
 }
 
 .description {
