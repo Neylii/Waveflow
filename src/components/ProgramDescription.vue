@@ -25,6 +25,7 @@ h2 {
     font-family: Arimo;
     line-height: 23px;
     text-align: center;
+    font-size: 18px;
 }
 
 p {
@@ -36,10 +37,6 @@ p {
 
     #contentcontainer {
     padding: 0.8em;
-    }
-
-    h2 {
-        font-size: 18px;
     }
 
     p {

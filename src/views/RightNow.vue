@@ -85,17 +85,13 @@ export default {
 
         sortArrayOnTime(arrayToSort) {
             arrayToSort = arrayToSort.sort(function (a, b) {
+                console.log(a.channel.name + a.starttimeutc)
                 if (a.starttimeutc > b.starttimeutc) {
                     return 1
                 } else if (a.starttimeutc < b.starttimeutc) {
                     return -1
                 }
-                if (a.channel.name > b.channel.name) {
-                    return 1
-                } else if (a.channel.name < b.channel.name) {
-                    return -1
-                }
-                return 0
+                return a.channel.name.localeCompare(b.channel.name)
             })
             return arrayToSort
         },
@@ -131,13 +127,10 @@ export default {
             let date = new Date()
             let tempArray = []
 
+            let query = `channelid=${channelId}&date=${this.getDateFormatter(date)}&size=500&format=json`
+
             do {
-                await this.getSingleTablo(
-                    `https://api.sr.se/api/v2/scheduledepisodes?channelid=${channelId}&date=${this.getDateFormatter(
-                        date
-                    )}&size=500&format=json`,
-                    tempArray
-                )
+                await this.getSingleTablo(`https://api.sr.se/api/v2/scheduledepisodes?${query}`, tempArray)
                 date.setDate(date.getDate() + 1)
             } while (tempArray.length < this.numberOfProgramsToShow)
 
@@ -227,8 +220,6 @@ export default {
         gap: 0.5em;
     }
 }
-
-
 
 @media screen and (min-width: 768px) {
     .rightnow {
