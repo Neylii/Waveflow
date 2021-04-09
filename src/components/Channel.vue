@@ -26,6 +26,7 @@ export default {
     padding: 1em;
     border: 4px solid #84c1cc;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 img {
@@ -38,6 +39,7 @@ input[type="radio"] {
     margin-top: 1em;
     margin-left: 0;
     transform: scale(1.2);
+    cursor: pointer;
 }
 
 @media screen and (min-width: 360px) {

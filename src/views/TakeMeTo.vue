@@ -200,6 +200,7 @@ export default {
     letter-spacing: 0.05em;
     width: 3.5em;
     height: 3.5em;
+    cursor: pointer;
 }
 
 #inputdate {
