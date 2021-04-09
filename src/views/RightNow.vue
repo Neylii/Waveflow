@@ -85,17 +85,13 @@ export default {
 
         sortArrayOnTime(arrayToSort) {
             arrayToSort = arrayToSort.sort(function (a, b) {
+                console.log(a.channel.name + a.starttimeutc)
                 if (a.starttimeutc > b.starttimeutc) {
                     return 1
                 } else if (a.starttimeutc < b.starttimeutc) {
                     return -1
                 }
-                if (a.channel.name > b.channel.name) {
-                    return 1
-                } else if (a.channel.name < b.channel.name) {
-                    return -1
-                }
-                return 0
+                return a.channel.name.localeCompare(b.channel.name)
             })
             return arrayToSort
         },
