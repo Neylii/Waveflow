@@ -48,16 +48,26 @@ export default {
     name: "Top3",
 
     methods: {
-        // Updates the year variable to the users selection. Value is sent from YearWeekSelect-component.
+        /**
+         * Updates the year variable to the users selection. Value is sent from YearWeekSelect-component.
+         */
         setYear(value) {
             this.year = value
         },
 
-        // Updates the week variable to the users selection. Value is sent from YearWeekSelect-component.
+        /**
+         * Updates the week variable to the users selection. Value is sent from YearWeekSelect-component.
+         */
         setWeek(value) {
             this.week = value
         },
 
+        /**
+         *  @param artistMap a map of artists
+         *  @param artist artist to be put in the map
+         * checks if artist is already in the map, and if it is the method adds 1 to that artists value.
+         * If artist isn't already in the map, value is set to 1.
+         */
         addArtistToMap(artistMap, artist) {
             let value = 0
             if (artistMap.has(artist)) {
@@ -68,6 +78,10 @@ export default {
             }
         },
 
+        /**
+         * @param date a non-formatted date
+         * Format the date to match YYYY-mm-dd
+         */
         formatDate(date) {
             var d = new Date(date),
                 month = "" + (d.getMonth() + 1),
@@ -80,6 +94,10 @@ export default {
             return [year, month, day].join("-")
         },
 
+        /**
+         * @param index will add days to the date
+         * using data() variables year and week to determine the first date of that specific year/week
+         */
         getDateOfISOWeek(index) {
             var simple = new Date(this.year, 0, 1 + (this.week - 1) * 7)
             var dow = simple.getDay()
@@ -89,6 +107,10 @@ export default {
             return this.formatDate(ISOweekStart)
         },
 
+        /**
+         * @param date is used to search the API for a specific day
+         * returns an array of songs from the API
+         */
         async getSongs(date) {
             let json
             try {
@@ -107,6 +129,11 @@ export default {
             }
         },
 
+        /**
+         * calling several methods to add artists to artistMap
+         * Push all artists in the map to the artistList in order to sort artists by amount of plays
+         * Updating topThreeArtists[] so that it contains the three artists with highest amount of plays
+         */
         async addArtistsToList() {
             let currentWeek = this.$refs.yearWeek.getCurrentWeek()
             if (this.year === 2021 && this.week > currentWeek) {

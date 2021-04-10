@@ -42,7 +42,9 @@ export default {
     },
 
     methods: {
-        // adds all years from 2011 to current year to the years[] array
+        /**
+         * adds all years from 2011 to current year to the years[] array
+         */
         createListOfAvailableYears() {
             let year = 2011
             let d = new Date()
@@ -52,7 +54,9 @@ export default {
                 year++
             }
         },
-        // adds all available weeks of the selected year to the weeks[] array
+        /**
+         * adds all available weeks of the selected year to the weeks[] array
+         */
         createListOfWeeks() {
             this.weeks.length = 0
             let d = new Date()
@@ -70,7 +74,9 @@ export default {
             }
         },
 
-        // returns the current week as a number
+        /**
+         * returns the current week as a number
+         */
         getCurrentWeek() {
             const today = new Date()
             const firstDayOfYear = new Date(today.getFullYear(), 0, 1)
@@ -78,7 +84,9 @@ export default {
             return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1
         },
 
-        // emits the selected year and week so that it can be used in the main view
+        /**
+         * emits the selected year and week so that it can be used in the TopThree view
+         */
         selections() {
             this.$emit("year", this.selectedYear)
             this.$emit("week", this.selectedWeek)
