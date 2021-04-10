@@ -18,9 +18,9 @@
                         <div><Channel channel="P4 Göteborg" channelID="chP4" /></div>
                     </div>
                 </div>
-                <label for="date" class="description">Välj datum<br /></label>
+                
                 <div class="date">
-                    <input type="date" id="inputdate" v-model="inputDate" min="2011-01-01" :max="today"/>
+                    <DatePicker :startDate="startDate" :today="today"/>
                     <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
             </div>
@@ -37,11 +37,13 @@
 </template>
 
 <script>
+import DatePicker from "../components/DatePicker.vue"
 import TopInfo from "../components/TopInfo.vue"
 import Channel from "../components/Channel.vue"
 export default {
     name: "Take me to",
     components: {
+        DatePicker,
         TopInfo,
         Channel,
     },
@@ -49,18 +51,22 @@ export default {
         return {
             inputDate: "",
             inputChannel: "",
+            startDate: "",
             today: "",
             channelForQuery: "",
             channelID: [],
             songMix: [],
-            text: "Hello Vue.\nThis is a line of text.\nAnother line of text.\n",
         }
     },
     mounted() {
         this.getChannelId()
-        this.updateToday()
+        this.updateDate()
     },
     methods: {
+        /**
+         * Fetch desired channel ID's from SR API.
+         * Saves the name and ID of the channels into a list.
+         */
         async getChannelId() {
             let response = await fetch("https://api.sr.se/api/v2/channels?format=json")
             let result = await response.json()
@@ -78,10 +84,18 @@ export default {
             }
         },
 
-        updateToday() {
-            this.today = new Date().toISOString().split("T")[0]
+        /**
+         * Set the start date for calendar as well as the end date to todays date.
+         */
+        updateDate() {
+            this.startDate = new Date("2011-01-01")
+            this.today = new Date()
         },
 
+        /**
+         * Checks if the channel the user choose matches any in channelID list
+         * and then takes the ID of that channel and saves it in channelForQuery for later use.
+         */
         channelCheck() {
             for (const channel of this.channelID) {
                 if (channel.name === this.inputChannel) {
@@ -90,6 +104,10 @@ export default {
             }
         },
 
+        /**
+         * Called when user clicks the search button.
+         * Fetches songs from SR API.
+         */
         async getSongMix() {
             //checks which channel the user chose.
             this.channelCheck()
@@ -204,35 +222,8 @@ export default {
     font-weight: bold;
     letter-spacing: 0.05em;
     width: 3.5em;
-    height: 3.5em;
+    height: 3em;
     cursor: pointer;
-}
-
-#inputdate {
-    text-align: center;
-    color: #145F6D;
-    font-weight: bold;
-    font-size: 1.2em;
-    border-radius: 0.6em;
-    border-color: #84c1cc;
-    text-transform: uppercase;
-    box-sizing: border-box;
-    outline: 0;
-    position: relative;
-    width: 14em;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
-    bottom: 0;
-    color: transparent;
-    cursor: pointer;
-    height: auto;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: auto;
 }
 
 .description {
@@ -316,7 +307,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
         .songbox {
             margin: 4em;
-            transform:scale(1.1)
+            transform: scale(1.1);
         }
     }
 }
