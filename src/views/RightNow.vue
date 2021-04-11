@@ -171,7 +171,10 @@ export default {
             do {
                 await this.getSingleTablo(`https://api.sr.se/api/v2/scheduledepisodes?${query}`, tempArray)
                 date.setDate(date.getDate() + 1)
-            } while (tempArray.length < this.numberOfProgramsToShow)
+            } 
+            //temporary stop of api calls
+            //while (tempArray.length < this.numberOfProgramsToShow)
+            while (false)
 
             //merge arrays
             Array.prototype.push.apply(this.programArrayTemp, tempArray)
