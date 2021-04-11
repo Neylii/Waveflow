@@ -74,9 +74,9 @@ export default {
          * @returns {String} time in HH:MM
          */
         startTime(dateString) {
-            let programStartTime = this.jsonDateToDate(dateString)
-            let h = programStartTime.getHours()
-            let m = programStartTime.getMinutes()
+            let programStartDate = this.jsonDateToDate(dateString)
+            let h = programStartDate.getHours()
+            let m = programStartDate.getMinutes()
             h = this.addZerosToSingleDigits(h)
             m = this.addZerosToSingleDigits(m)
             return h + ":" + m
