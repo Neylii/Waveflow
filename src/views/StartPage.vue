@@ -1,10 +1,12 @@
 <template>
-    <div id="startPage">
-        <div>
-            <img src="../assets/Waveflow2.png" alt="logo">
-            <div class="text-container">
-                <p>Välkommen till Waveflow!<br>
-                Här kan du se information och statistik från Sveriges Radio.</p>
+    <div class="home-page">
+        <div class="home-page-content-full-width">
+            <img src="../assets/Waveflow2.png" alt="Waveflow logo" />
+            <div class="waveflow-description-container">
+                <div>
+                    <p>Välkommen till Waveflow!</p>
+                    <p>Här kan du se information och statistik från Sveriges Radio.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -18,31 +20,45 @@ export default {
 
 
 <style scoped>
-
-.text-container {
+.home-page {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 1em 2em 6em;
+    min-height: 100vh;
 }
-
-img {
+.home-page-content-full-width {
     width: 100%;
 }
 
-#startPage {
+.home-page-content-full-width > img {
+    width: 100%;
+}
+
+.waveflow-description-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    height: 100vh;
+    padding: 1em 2em 2em;
+}
+
+p + p {
+    margin-top: 2em;
 }
 
 p {
     font-family: Abel;
-    font-style: normal;
-    font-weight: normal;
-    color: #fafeff;
     text-align: start;
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: 0.5em;
+}
+
+@media screen and (min-width: 768px) {
+    p {
+        font-size: 24px;
+        margin-top: 2em;
+    }
+
+    p + p {
+        margin-top: 0em;
+    }
 }
 </style>
