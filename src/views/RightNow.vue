@@ -161,7 +161,8 @@ export default {
          * @param {String} channelId the channels id
          */
         async addProgramsToProgramList(channelId) {
-            let date = new Date()
+             console.log(channelId)
+            /*let date = new Date()
             let tempArray = []
 
             // the query to add to the request
@@ -173,7 +174,7 @@ export default {
                 date.setDate(date.getDate() + 1)
             } 
             //temporary stop of api calls
-            //while (tempArray.length < this.numberOfProgramsToShow)
+            while (tempArray.length < this.numberOfProgramsToShow)
             while (false)
 
             //merge arrays
@@ -181,6 +182,7 @@ export default {
 
             //Sorts the array
             this.programArrayTemp = this.sortProgramList(this.programArrayTemp)
+            */
         },
 
         /**
