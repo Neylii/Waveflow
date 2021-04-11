@@ -1,5 +1,5 @@
 <template>
-    <div id="contentcontainer" class="border">
+    <div class="program-info-container">
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
     </div>
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style scoped>
-#contentcontainer {
+.program-info-container {
     flex-grow: 1;
     padding: 0.6em;
 }
@@ -25,7 +25,7 @@ h2 {
     font-family: Arimo;
     line-height: 23px;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 p {
@@ -35,8 +35,12 @@ p {
 
 @media screen and (min-width: 360px) {
 
-    #contentcontainer {
+    .program-info-container {
     padding: 0.8em;
+    }
+
+    h2 {
+        font-size: 18px;
     }
 
     p {
@@ -57,7 +61,7 @@ p {
 
 @media screen and (min-width: 1000px) {
     
-    #contentcontainer {
+    .program-info-container {
     padding: 1em;
     }
 

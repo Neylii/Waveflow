@@ -1,20 +1,18 @@
 <template>
-    <div class="rightnow">
-        <div id="left">
-            <div class="info">
-                <TopInfo title="Tablå" infotext="Här kan du se vad som sänds under dagen i vald kanal" />
-            </div>
-            <div id="leftbottom">
-                <div id="radioStationContainer">
+    <div class="right-now-container">
+        <div class="info-options-container">
+            <TopInfo title="Tablå" infotext="Här kan du se vad som sänds under dagen i vald kanal" />
+            <div class="options-container">
+                <div class="radio-station-container">
                     <Radio-station station="P1" id="132" />
                     <Radio-station station="P2" id="163" />
-                    <Radio-station station="P3" id="164" :checked="true" />
+                    <Radio-station station="P3" id="164" :preChecked="true" />
                     <Radio-station station="P4 Göteborg" id="212" />
                 </div>
             </div>
         </div>
-        <div id="right">
-            <div class="programs">
+        <div class="tablo-content-container">
+            <div class="program-list-container">
                 <Program
                     v-for="program in showCertainNumberOfPrograms"
                     :key="program"
@@ -213,75 +211,57 @@ export default {
 </script>
 
 <style scoped>
-.rightnow {
-    flex-direction: column;
-}
-
-#container {
-    display: flex;
-    margin-bottom: 2em;
-}
-
-#left {
+.info-options-container {
     width: 100%;
 }
 
-#lefttop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#leftbottom {
-    display: flex;
-    justify-content: center;
-}
-
-#radioStationContainer {
+.radio-station-container {
     display: flex;
     justify-content: center;
     margin-top: 1em;
     gap: 0.2em;
 }
 
-#right {
+.tablo-content-container {
     display: flex;
     justify-content: center;
 }
 
-.programs {
+.program-list-container {
     margin-top: 2em;
-    padding-right: 0.6em;
-    padding-left: 0.6em;
+    padding: 0em 0.6em;
 }
 
 /* For bigger screens */
 @media screen and (min-width: 360px) {
-    .programs {
-        padding-right: 1em;
-        padding-left: 1em;
-    }
-
-    #right {
-        width: 100%;
-    }
-
-    #radioStationContainer {
+    .radio-station-container {
         gap: 0.5em;
+    }
+
+    .program-list-container {
+        padding: 0em 1.5em;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .rightnow {
+    .right-now-container {
         display: flex;
-        flex-direction: row;
     }
 
-    #radioStationContainer {
+    .options-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .radio-station-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         gap: 2em;
+    }
+
+    .tablo-content-container {
+        width: 100%;
     }
 }
 </style>
