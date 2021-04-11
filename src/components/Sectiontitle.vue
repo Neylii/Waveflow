@@ -2,9 +2,6 @@
     <div class="title">
         {{ msg }}
     </div>
-        <div class="title sub">
-            {{ sub }}
-        </div>
 </template>
 
 <script>
@@ -12,7 +9,6 @@ export default {
     name: "Sectiontitle",
     props: {
         msg: String,
-        sub: String,
     },
 }
 </script>
