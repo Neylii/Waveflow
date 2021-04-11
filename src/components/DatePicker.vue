@@ -10,8 +10,8 @@ export default {
         Datepicker,
     },
     props: {
-        startDate: String,
-        today: String,
+        startDate: Date,
+        today: Date,
     },
 }
 </script>

@@ -18,11 +18,12 @@
                         <div><Channel channel="P4 Göteborg" channelID="chP4" /></div>
                     </div>
                 </div>
-                
+
                 <div class="date">
-                    <DatePicker :startDate="startDate" :today="today"/>
+                    <DatePicker :startDate="startDate" :today="today" />
                     <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
+                <div v-if="nochannel">Välj kanal först!</div>
             </div>
         </div>
 
@@ -51,6 +52,7 @@ export default {
         return {
             inputDate: "",
             inputChannel: "",
+            nochannel: false,
             startDate: "",
             today: "",
             channelForQuery: "",
@@ -61,11 +63,12 @@ export default {
     mounted() {
         this.getChannelId()
         this.updateDate()
+        this.channelCheck()
     },
     methods: {
         /**
          * Fetch desired channel ID's from SR API.
-         * Saves the name and ID of the channels into a list.
+         * Saves the name and ID of the channels into an array.
          */
         async getChannelId() {
             let response = await fetch("https://api.sr.se/api/v2/channels?format=json")
@@ -93,7 +96,44 @@ export default {
         },
 
         /**
-         * Checks if the channel the user choose matches any in channelID list
+         * Function is called when user clicks the search button.
+         * Calls other functions; check channel of users choice, fetches songs from
+         * SR API and adds either 6 or 6 random songs in an array to show the user.
+         */
+        async getSongMix() {
+            // First checks if user did not chose a channel.
+            if (this.inputChannel.length === 0) {
+                this.nochannel = true
+            } else {
+                this.nochannel = false
+                //checks which channel the user chose.
+                this.channelCheck()
+
+                //clears the array each time the function is called
+                this.songMix = []
+                let json = await this.fetchIt()
+
+                // If less than or equal to 6 songs in json, print out the songs.
+                if (json.song.length <= 6) {
+                    for (let i = 0; i < json.song.length; i++) {
+                        this.songMix.push(json.song[i].description)
+                    }
+                } else {
+                    // If more than 6 songs in json, take 6 songs at random
+                    for (let i = 0; i < 6; i++) {
+                        this.addRandomSong(json)
+
+                        // Check for duplicates, if duplicate are found, calls refillSongs
+                        while (this.checkDuplicates(this.songMix)) {
+                            this.refillSongs(json)
+                        }
+                    }
+                }
+            }
+        },
+
+        /**
+         * Checks if the channel the user choose matches any in channelID array
          * and then takes the ID of that channel and saves it in channelForQuery for later use.
          */
         channelCheck() {
@@ -105,40 +145,19 @@ export default {
         },
 
         /**
-         * Called when user clicks the search button.
-         * Fetches songs from SR API.
+         * Adds the song description from json into the songMix array.
+         * @param json - Json song to be added.
          */
-        async getSongMix() {
-            //checks which channel the user chose.
-            this.channelCheck()
-
-            //clears the list each time the function is called
-            this.songMix = []
-            let json = await this.fetchIt()
-
-            // If less than or equal to 6 songs in json, print out the songs.
-            if (json.song.length <= 6) {
-                for (let i = 0; i < json.song.length; i++) {
-                    this.songMix.push(json.song[i].description)
-                }
-                // If more than 6 songs in json, take 6 songs at random
-            } else {
-                for (let i = 0; i < 6; i++) {
-                    this.addSong(json)
-
-                    // Check for duplicates
-                    while (this.checkDuplicates(this.songMix)) {
-                        this.refillSongs(json)
-                    }
-                }
-            }
-        },
-
-        addSong(json) {
+        addRandomSong(json) {
             let randomIndex = Math.floor(Math.random() * json.song.length)
             this.songMix.push(json.song[randomIndex].description)
         },
 
+        /**
+         * Takes in array and make it into a set to be able to check for duplicates.
+         * @param array - Array to check for duplicates.
+         * @return true if duplicates are found. Otherwise return false.
+         */
         checkDuplicates(array) {
             let noDup = new Set(array)
 
@@ -149,24 +168,35 @@ export default {
             }
         },
 
+        /**
+         * Makes songMix into a set to take away duplicates,
+         * then back into an array and refill with another song until songMix have 6 songs.
+         * @param json - song to be added in array
+         */
         refillSongs(json) {
             let uniqSongs = new Set(this.songMix)
             do {
                 this.songMix = [...uniqSongs]
-                let randomIndex = Math.floor(Math.random() * json.song.length)
-                this.songMix.push(json.song[randomIndex].description)
-                console.log("change")
+                this.addRandomSong(json)
             } while (this.songMix.length > 7)
         },
 
+        /**
+         * Fetches json from SR API
+         * @return json
+         */
         async fetchIt() {
             let query = `id=${this.channelForQuery}&startdatetime=${this.inputDate}&format=json`
             let response = await fetch(`https://api.sr.se/api/v2/playlists/getplaylistbychannelid?${query}`)
-            if (!response.ok) {
-                throw new Error(response.status + " " + response.statusText)
-            } else {
-                let json = await response.json()
-                return json
+            try {
+                if (!response.ok) {
+                    throw new Error(response.status + " " + response.statusText)
+                } else {
+                    let json = await response.json()
+                    return json
+                }
+            } catch (error) {
+                console.log(error)
             }
         },
     },
