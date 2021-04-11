@@ -2,7 +2,7 @@
     <label :for="channelID">
         <div class="channel">
             <img :src="channel + '.png'" />
-            <input type="radio" :value="channel" :id="channelID" v-model="$parent.inputChannel" />
+            <input type="radio" :value="channel" :id="channelID" v-model="$parent.inputChannel"/>
         </div>
     </label>
 </template>
