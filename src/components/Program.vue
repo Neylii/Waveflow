@@ -1,19 +1,19 @@
 <template>
-    <div class="programcontainer">
-        <div class="timecontainer">
+    <div class="program-container">
+        <div class="program-start-time">
             <p>
                 <strong>{{ time }}</strong>
             </p>
         </div>
-        <Program-container :title="title" :description="description" />
+        <Program-Description :title="title" :description="description" />
         <div class="stationimg">
-            <img :src="imgSrc" />
+            <img :src="imgSrc" alt="channel picture"/>
         </div>
     </div>
 </template>
 
 <script>
-import ProgramContainer from "./ProgramDescription"
+import ProgramDescription from "./ProgramDescription"
 
 export default {
     name: "Program",
@@ -24,33 +24,35 @@ export default {
         imgSrc: String,
     },
     components: {
-        ProgramContainer,
+        ProgramDescription,
     },
 }
 </script>
 
 
 <style scoped>
-.programcontainer {
+.program-container {
     display: flex;
     background: rgba(20, 95, 109, 0.3);
-    border: 1px solid #84c1cc;
+    border: 1.5px solid #84c1cc;
     border-radius: 10px;
     width: 17em;
 }
 
-.programcontainer + .programcontainer {
+/* prevent double stacking of borders, only first siblin have border-top */
+.program-container + .program-container {
     border-top: none;
 }
 
-.timecontainer {
+.program-start-time {
     display: flex;
     align-items: center;
-    border-right: 1px solid #84c1cc;
+    border-right: 1.5px solid #84c1cc;
     padding: 0.5em;
 }
 
-.timecontainer > p {
+/* all p tags under a parent with the class program-start-time */
+.program-start-time > p {
     font-family: arimo;
     font-size: 14px;
     margin: 0.5em;
@@ -59,7 +61,7 @@ export default {
 .stationimg {
     display: flex;
     align-items: center;
-    border-left: 1px solid #84c1cc;
+    border-left: 1.5px solid #84c1cc;
     border-radius: 0px 10px 10px 0px;
     background-color: #ffffff;
 }
@@ -70,12 +72,13 @@ export default {
     margin: 0.2em;
 }
 
+/* media queries for bigger screens */
 @media screen and (min-width: 360px) {
-    .programcontainer {
+    .program-container {
         width: 21em;
     }
 
-    .timecontainer > p {
+    .program-start-time > p {
         font-size: 18px;
     }
 
@@ -87,28 +90,28 @@ export default {
 }
 
 @media screen and (min-width: 500px) {
-    .programcontainer {
+    .program-container {
         width: 27em;
     }
 
-    .timecontainer > p {
+    .program-start-time > p {
         font-size: 18px;
     }
 }
 
 @media screen and (min-width: 600px) {
-    .programcontainer {
+    .program-container {
         width: 33em;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .programcontainer {
+    .program-container {
         max-width: 28em;
         width: auto;
     }
 
-    .timecontainer > p {
+    .program-start-time > p {
         font-size: 20px;
     }
 
@@ -120,11 +123,11 @@ export default {
 }
 
 @media screen and (min-width: 1000px) {
-    .programcontainer {
+    .program-container {
         max-width: 40em;
     }
 
-    .timecontainer > p {
+    .program-start-time > p {
         font-size: 24px;
     }
 

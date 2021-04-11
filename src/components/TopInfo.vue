@@ -29,6 +29,7 @@ export default {
 .topinfo {
     display: flex;
     flex-direction: row;
+    padding: 0em 1em;
 }
 
 .sectiontitle {
