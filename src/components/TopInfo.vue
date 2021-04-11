@@ -1,7 +1,7 @@
 <template>
     <div class="topinfo">
         <div class="sectiontitle">
-            <sectiontitle :msg="title" :sub="sub" />
+            <sectiontitle :msg="title" />
         </div>
         <div class="infotext">
             <infobox :msg="infotext" />
@@ -16,7 +16,6 @@ export default {
     name: "TopInfo",
     props: {
         title: String,
-        sub: String,
         infotext: String,
     },
     components: {
