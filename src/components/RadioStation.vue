@@ -4,7 +4,7 @@
         <input
             type="checkbox"
             :id="station"
-            @click="$parent.updateAllChannels"
+            @click="$parent.filterSelectedChannels"
             :checked="checked"
         />
         <span class="checkMark"></span>
