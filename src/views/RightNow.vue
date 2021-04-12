@@ -6,6 +6,9 @@
     <div class="right-now-container">
         <div class="info-options-container">
             <TopInfo title="Tablå" infotext="Här kan du se vad som sänds under dagen i vald kanal" />
+            <div class="error-container">
+                {{ errorMessage }}
+            </div>
             <div class="options-container">
                 <div class="radio-station-container">
                     <Radio-station station="P1" id="132" />
@@ -44,6 +47,7 @@ export default {
             allPrograms: [],
             programArrayTemp: [],
             numberOfProgramsToShow: 6,
+            errorMessage: "",
         }
     },
     components: {
@@ -134,29 +138,33 @@ export default {
 
             try {
                 let response = await fetch(apiUrl)
-                if (!response.ok) {
-                    throw new Error(response.status + " " + response.statusText)
+                if (response.status >= 400) {
+                    throw new Error("Förlåt något gick snett")
                 }
                 json = await response.json()
             } catch (err) {
-                console.error(err)
+                this.errorMessage = err.message
             }
 
-            // schedule is the array with all programs
-            json = json.schedule
+            // if json is truthy and there are programs in the array
+            if (json && json.schedule.length > 0) {
+                this.errorMessage = ""
+                // schedule is the array with all programs
+                json = json.schedule
 
-            let dateNow = new Date()
+                let dateNow = new Date()
 
-            //removes all programs from the list that has already aired
-            for (let i = json.length - 1; i >= 0; i--) {
-                let dateProgram = this.jsonDateToDate(json[i].endtimeutc)
-                if (dateNow > dateProgram) {
-                    json.splice(i, 1)
+                //removes all programs from the list that has already aired
+                for (let i = json.length - 1; i >= 0; i--) {
+                    let dateProgram = this.jsonDateToDate(json[i].endtimeutc)
+                    if (dateNow > dateProgram) {
+                        json.splice(i, 1)
+                    }
                 }
-            }
 
-            // Merge the arrays
-            Array.prototype.push.apply(tempArray, json)
+                // Merge the arrays
+                Array.prototype.push.apply(tempArray, json)
+            }
         },
 
         /**
@@ -168,13 +176,17 @@ export default {
             let date = new Date()
             let tempArray = []
 
+            //to prevent endless loop
+            let maxApiCalls = 4
+
             // calls getSingleTablo one day at a time until number of programs is met
             do {
                 // the query to add to the request
                 let query = `channelid=${channelId}&date=${this.formatDate(date)}&size=500&format=json`
                 await this.getSingleTablo(`https://api.sr.se/api/v2/scheduledepisodes?${query}`, tempArray)
                 date.setDate(date.getDate() + 1)
-            } while (tempArray.length < this.numberOfProgramsToShow)
+                maxApiCalls--
+            } while (tempArray.length < this.numberOfProgramsToShow && maxApiCalls > 0)
 
             //merge arrays
             Array.prototype.push.apply(this.programArrayTemp, tempArray)
@@ -218,6 +230,10 @@ export default {
     width: 100%;
 }
 
+.error-container {
+    margin: 1em 0em;
+}
+
 .radio-station-container {
     display: flex;
     justify-content: center;
@@ -249,6 +265,10 @@ export default {
 @media screen and (min-width: 768px) {
     .right-now-container {
         display: flex;
+    }
+
+    .error-container {
+        margin: 0em 0em;
     }
 
     .options-container {
