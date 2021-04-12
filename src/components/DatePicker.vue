@@ -1,17 +1,29 @@
 <template>
-    <datepicker placeholder="Välj datum" v-model="$parent.inputDate" :lower-limit="startDate" :upper-limit="today" />
+    <datepicker
+        :placeholder="today.toLocaleDateString()"
+        v-model="$parent.inputDate"
+        :lower-limit="startDate"
+        :upper-limit="today"
+    />
 </template>
 
 <script>
+/**
+ * Component for TakeMeTo.vue
+ * Standard calendar with a min and max date.
+ */
 import Datepicker from "vue3-datepicker"
+import { ref } from "vue"
 export default {
     name: "DatePicker",
     components: {
         Datepicker,
     },
-    props: {
-        startDate: Date,
-        today: Date,
+    data() {
+        return {
+            startDate: new Date("2011-01-01"),
+            today: ref(new Date()),
+        }
     },
 }
 </script>

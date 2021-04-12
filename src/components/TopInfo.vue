@@ -10,6 +10,9 @@
 </template>
 
 <script>
+/**
+ * Component that shows a title of the visualization and information text.
+ */
 import Infobox from "./Infobox.vue"
 import Sectiontitle from "./Sectiontitle.vue"
 export default {
