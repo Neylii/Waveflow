@@ -59,10 +59,6 @@ body {
     padding-top: 0.5em;
 }
 
-.textAlignLeft {
-    text-align: left;
-}
-
 @media screen and (min-width: 768px) {
     .section {
         padding-top: 6.6em;
