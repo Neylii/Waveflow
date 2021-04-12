@@ -1,3 +1,7 @@
+<!--
+   Component for the RightNow view, Clickable card for each radio station
+   wheck clicked calls the method to fetch tablo for each channel that's clicked
+-->
 <template>
     <label :for="station" class="radio-station">
         <img :src="station + '.png'" :alt="station + 'channel picture '" />
