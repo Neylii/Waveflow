@@ -138,7 +138,7 @@ export default {
 
             try {
                 let response = await fetch(apiUrl)
-                if (response.status >= 400) {
+                if (!response.ok) {
                     throw new Error("Förlåt något gick snett")
                 }
                 json = await response.json()
