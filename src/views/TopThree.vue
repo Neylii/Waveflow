@@ -4,7 +4,7 @@
             <div class="info-box">
                 <TopInfo
                     title="Topp 3"
-                    infotext="Se vilka tre artiser som är mest spelade på P3 sorterat på år och vecka."
+                    infotext="Se vilka tre artister som är mest spelade på P3 sorterat på år och vecka."
                 />
             </div>
             <div class="select-date-box">
