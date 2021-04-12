@@ -1,3 +1,6 @@
+<!--
+    Home screen of the waveflow page containing logo and info about the page
+-->
 <template>
     <div class="home-page">
         <div class="home-page-content-full-width">
@@ -51,6 +54,7 @@ p {
     margin-top: 0.5em;
 }
 
+/* For desktop */
 @media screen and (min-width: 768px) {
     p {
         font-size: 24px;
