@@ -20,41 +20,42 @@
                 </div>
 
                 <div class="date">
-                    <DatePicker :startDate="startDate" :today="today" />
+                    <DatePicker :v-model="inputDate" />
                     <input type="button" id="btn" value="Sök" @click="getSongMix" />
                 </div>
-                <div v-if="nochannel">Välj kanal först!</div>
+                <div v-if="noChannel">Välj kanal först!</div>
             </div>
         </div>
 
         <div class="right">
-            <div class="songbox">
-                <ul id="songlist">
-                    <li v-for="description in songMix" :key="description">{{ description }}</li>
-                </ul>
-            </div>
+            <div v-if="afterSearch"><SongList /></div>
         </div>
     </div>
 </template>
 
 <script>
-import DatePicker from "../components/DatePicker.vue"
+/**
+ * Visualization for Dagens Mix. Lets the user choose a date and a channel.
+ * Shows result of a mix of songs played that day on the chosen channel.
+ */
 import TopInfo from "../components/TopInfo.vue"
 import Channel from "../components/Channel.vue"
+import DatePicker from "../components/DatePicker.vue"
+import SongList from "../components/SongList.vue"
 export default {
     name: "Take me to",
     components: {
-        DatePicker,
         TopInfo,
         Channel,
+        DatePicker,
+        SongList,
     },
     data() {
         return {
-            inputDate: "",
+            inputDate: null,
             inputChannel: "",
-            nochannel: false,
-            startDate: "",
-            today: "",
+            noChannel: false,
+            afterSearch: false,
             channelForQuery: "",
             channelID: [],
             songMix: [],
@@ -62,8 +63,6 @@ export default {
     },
     mounted() {
         this.getChannelId()
-        this.updateDate()
-        this.channelCheck()
     },
     methods: {
         /**
@@ -88,42 +87,36 @@ export default {
         },
 
         /**
-         * Set the start date for calendar as well as the end date to todays date.
-         */
-        updateDate() {
-            this.startDate = new Date("2011-01-01")
-            this.today = new Date()
-        },
-
-        /**
          * Function is called when user clicks the search button.
          * Calls other functions; check channel of users choice, fetches songs from
-         * SR API and adds either 6 or 6 random songs in an array to show the user.
+         * SR API and adds either 6 (if only 6 or less songs played that day), 
+         * or 6 random songs in an array to show the user.
          */
         async getSongMix() {
-            // First checks if user did not chose a channel.
+            // first checks if user did not chose a channel.
             if (this.inputChannel.length === 0) {
-                this.nochannel = true
+                this.noChannel = true
             } else {
-                this.nochannel = false
-                //checks which channel the user chose.
+                this.noChannel = false
+                this.afterSearch = true
+                // checks which channel the user chose.
                 this.channelCheck()
 
-                //clears the array each time the function is called
+                // clears the array each time the function is called
                 this.songMix = []
                 let json = await this.fetchIt()
 
-                // If less than or equal to 6 songs in json, print out the songs.
+                // if less than or equal to 6 songs in json, print out the songs.
                 if (json.song.length <= 6) {
                     for (let i = 0; i < json.song.length; i++) {
                         this.songMix.push(json.song[i].description)
                     }
                 } else {
-                    // If more than 6 songs in json, take 6 songs at random
+                    // if more than 6 songs in json, take 6 songs at random
                     for (let i = 0; i < 6; i++) {
                         this.addRandomSong(json)
 
-                        // Check for duplicates, if duplicate are found, calls refillSongs
+                        // check for duplicates, if duplicate are found, calls refillSongs
                         while (this.checkDuplicates(this.songMix)) {
                             this.refillSongs(json)
                         }
@@ -133,7 +126,7 @@ export default {
         },
 
         /**
-         * Checks if the channel the user choose matches any in channelID array
+         * Checks if the channel the user chose matches any in channelID array
          * and then takes the ID of that channel and saves it in channelForQuery for later use.
          */
         channelCheck() {
@@ -226,7 +219,6 @@ export default {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1em;
     text-align: center;
 }
 
@@ -234,6 +226,7 @@ export default {
     display: flex;
     justify-content: center;
     gap: 0.5em;
+    padding-top: 1em;
 }
 
 .date {
@@ -266,21 +259,6 @@ export default {
     align-items: center;
 }
 
-.songbox {
-    background: rgba(20, 95, 109, 0.3);
-    border: 2px solid #84c1cc;
-    box-sizing: border-box;
-    border-radius: 10px;
-    transform: scale(0.9);
-}
-
-#songlist > li {
-    list-style-image: url("../assets/star.svg");
-    margin: 2em;
-    text-align: start;
-    font-size: large;
-}
-
 /* For medium screens */
 @media screen and (min-width: 765px) {
     #takemeto {
@@ -306,23 +284,6 @@ export default {
         transform: scale(0.9);
     }
 
-    .songbox {
-        background: rgba(20, 95, 109, 0.3);
-        padding: 2.15em;
-        border: 2px solid #84c1cc;
-        border-radius: 10px;
-        transform: scale(1);
-        margin: 4em;
-    }
-
-    #songlist > li {
-        align-items: flex-end;
-        font-size: large;
-        padding: 0.3em;
-        margin: 1em;
-        text-align: start;
-    }
-
     /* For biggest screens */
     @media screen and (min-width: 992px) {
         #channelcontainer {
@@ -333,11 +294,6 @@ export default {
 
         .right {
             align-items: flex-start;
-        }
-
-        .songbox {
-            margin: 4em;
-            transform: scale(1.1);
         }
     }
 }

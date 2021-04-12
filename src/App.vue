@@ -56,30 +56,7 @@ body {
 
 .section {
     min-height: 100vh;
-}
-
-.header {
-    grid-column: 1/3;
-    font-size: xx-large;
-    margin-bottom: 2em;
-    text-align: center;
-}
-
-.lbtitle {
-    padding: 0.5em;
-    margin: 0em;
-}
-
-.rbtitle {
-    display: flex;
-    flex-direction: column;
-    font-weight: bolder;
-    font-size: xx-large;
-}
-
-.scaling {
-    max-width: 100%;
-    height: auto;
+    padding-top: 0.5em;
 }
 
 .textAlignLeft {

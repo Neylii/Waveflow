@@ -5,6 +5,9 @@
 </template>
 
 <script>
+/**
+ * Component that are a part of Sectiontitle.vue
+ */
 export default {
     name: "Sectiontitle",
     props: {

@@ -1,7 +1,12 @@
 # Waveflow
 
+Site which shows music and radio information using data from Sveriges Radios API. 
+Project is built using Vue CLI.
+Node.js is required to setup project.
+
 ## Project setup
 ```
+Clone Github repository
 npm install
 ```
 
@@ -29,6 +34,3 @@ npm run test:e2e
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -8,6 +8,10 @@
 </template>
 
 <script>
+/**
+ * Component for TakeMeTo.vue.
+ * Shows a row of channels in the form of radiobuttons.
+ */
 export default {
     props: {
         channel: String,
@@ -32,7 +36,6 @@ export default {
 img {
     height: 3em;
     width: 3em;
-    /* margin-bottom: 1em; */
 }
 
 input[type="radio"] {
@@ -46,7 +49,6 @@ input[type="radio"] {
     img {
         height: 4em;
         width: 4em;
-        /* margin-bottom: 1em; */
     }
 }
 
@@ -61,7 +63,6 @@ input[type="radio"] {
     img {
         height: 8em;
         width: 8em;
-        /* margin-bottom: 1.5em; */
     }
 }
 

@@ -35,6 +35,10 @@
 </template>
 
 <script>
+/**
+ * Navigationbar component. On bigger screens the bar is in a fixed position at the top. 
+ * Changes style and position to fixed at the bottom when the screen is smaller.
+ */
 export default {
     components: {},
     name: "Navbar",
