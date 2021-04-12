@@ -135,7 +135,7 @@ export default {
             try {
                 let response = await fetch(apiUrl)
                 if (!response.ok) {
-                    throw new Error(response.status)
+                    throw new Error(response.status + " " + response.statusText)
                 }
                 json = await response.json()
             } catch (err) {
@@ -168,11 +168,10 @@ export default {
             let date = new Date()
             let tempArray = []
 
-            // the query to add to the request
-            let query = `channelid=${channelId}&date=${this.formatDate(date)}&size=500&format=json`
-
             // calls getSingleTablo one day at a time until number of programs is met
             do {
+                // the query to add to the request
+                let query = `channelid=${channelId}&date=${this.formatDate(date)}&size=500&format=json`
                 await this.getSingleTablo(`https://api.sr.se/api/v2/scheduledepisodes?${query}`, tempArray)
                 date.setDate(date.getDate() + 1)
             } while (tempArray.length < this.numberOfProgramsToShow)

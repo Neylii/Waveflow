@@ -38,7 +38,7 @@ export default {
 .program-container {
     display: flex;
     background: rgba(20, 95, 109, 0.3);
-    border: 1.5px solid #84c1cc;
+    border: 1px solid #84c1cc;
     border-radius: 10px;
     width: 17em;
 }
@@ -51,7 +51,7 @@ export default {
 .program-start-time {
     display: flex;
     align-items: center;
-    border-right: 1.5px solid #84c1cc;
+    border-right: 1px solid #84c1cc;
     padding: 0.5em;
 }
 
@@ -65,7 +65,7 @@ export default {
 .stationimg {
     display: flex;
     align-items: center;
-    border-left: 1.5px solid #84c1cc;
+    border-left: 1px solid #84c1cc;
     border-radius: 0px 10px 10px 0px;
     background-color: #ffffff;
 }
