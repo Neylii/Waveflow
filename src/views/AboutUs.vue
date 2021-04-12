@@ -1,3 +1,6 @@
+<!-- 
+    About us page, shows info about the creators and which api the page uses and version
+-->
 <template>
     <div id="about-us-container">
         <div class="about-us-headers">
@@ -113,10 +116,6 @@ export default {
     top: -1.6em;
 }
 
-.second-java-subcontainer {
-    display: flex;
-}
-
 .ux-container {
     display: flex;
     flex-direction: column;
@@ -133,6 +132,7 @@ export default {
 }
 
 .second-java-subcontainer {
+    display: flex;
     gap: 0.1em;
     position: relative;
     top: -3em;
@@ -150,6 +150,7 @@ export default {
     font-family: Abel;
 }
 
+/* For bigger screens */
 @media screen and (min-width: 410px) {
     .first-ux-subcontainer {
         gap: 1.5em;
@@ -164,6 +165,7 @@ export default {
     }
 }
 
+/* For desktop  change order of ux and java to fit on the screen better */
 @media screen and (min-width: 768px) {
     .about-us-content-container {
         flex-flow: column-reverse;
