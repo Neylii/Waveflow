@@ -1,3 +1,6 @@
+<!--
+   Component for the program component, containing title and description of the program 
+-->
 <template>
     <div class="program-info-container">
         <h2>{{ title }}</h2>

@@ -1,3 +1,7 @@
+<!--
+    Component for RightNow view, a box containing start time and pic of the channel
+    and the component ProgramDescription which contains more info about the program
+-->
 <template>
     <div class="program-container">
         <div class="program-start-time">

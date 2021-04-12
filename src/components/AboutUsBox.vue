@@ -1,3 +1,6 @@
+<!--
+    Component for AboutUs, a card containing info about a creator
+-->
 <template>
     <div class="info-card-container">
         <h3>{{ name }}</h3>

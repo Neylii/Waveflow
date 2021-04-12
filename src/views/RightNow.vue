@@ -1,3 +1,7 @@
+<!-- 
+    Visualization for tablo, user can choose which channels they want to see the tablo for.
+    shows the results that are airing right now and forward
+-->
 <template>
     <div class="right-now-container">
         <div class="info-options-container">
