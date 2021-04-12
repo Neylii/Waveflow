@@ -161,8 +161,7 @@ export default {
          * @param {String} channelId the channels id
          */
         async addProgramsToProgramList(channelId) {
-             console.log(channelId)
-            /*let date = new Date()
+            let date = new Date()
             let tempArray = []
 
             // the query to add to the request
@@ -172,17 +171,13 @@ export default {
             do {
                 await this.getSingleTablo(`https://api.sr.se/api/v2/scheduledepisodes?${query}`, tempArray)
                 date.setDate(date.getDate() + 1)
-            } 
-            //temporary stop of api calls
-            while (tempArray.length < this.numberOfProgramsToShow)
-            while (false)
+            } while (tempArray.length < this.numberOfProgramsToShow)
 
             //merge arrays
             Array.prototype.push.apply(this.programArrayTemp, tempArray)
 
             //Sorts the array
             this.programArrayTemp = this.sortProgramList(this.programArrayTemp)
-            */
         },
 
         /**
